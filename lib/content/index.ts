@@ -258,7 +258,7 @@ export const blogPosts = [
 // ── Inner page content ────────────────────────────────────────────────────────
 
 // All real portfolio companies from Framer CMS
-// type: "Company" = co-built with equity | "Project" = AV internal | "Client" = service client
+// type: "Company" = co-built / strategic partner | "Project" = AV internal | "Client" = service engagement
 export const portfolioCompanies: {
   name: string;
   tagline: string;
@@ -266,15 +266,19 @@ export const portfolioCompanies: {
   year: string;
   category: string;
   type: "Company" | "Project" | "Client";
+  url?: string;
+  role?: string;
 }[] = [
-  // ── Companies (co-built with equity) ──────────────────────────────────────
+  // ── Companies (co-built / strategic partner) ──────────────────────────────
   {
-    name: "WiseMize",
+    name: "WizeMice",
     tagline: "Music tech platform. Slush Music Accelerator winner. Backed by SoundHub and Wave Lab.",
     stage: "Seed",
     year: "2024",
     category: "Music Tech",
     type: "Company",
+    url: "https://wizemice.com/",
+    role: "Market Research / Define Investor ICPs / Execute Investor Outreach Campaigns",
   },
   {
     name: "SiriNor",
@@ -283,6 +287,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "CleanTech",
     type: "Company",
+    url: "https://www.sirinor.com/",
   },
   {
     name: "Lissen",
@@ -293,7 +298,7 @@ export const portfolioCompanies: {
     type: "Company",
   },
   {
-    name: "MOD INC.",
+    name: "MOD",
     tagline: "Fan art licensing platform. Business pivot support, value proposition clarity, and pitch refinement.",
     stage: "Pre-seed",
     year: "2024",
@@ -307,6 +312,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music Tech / AI",
     type: "Company",
+    url: "https://ai-ok.org/",
+    role: "Develop pitch deck, data room, and investor strategy / Enhance communication strategies",
   },
   {
     name: "Digit Music",
@@ -315,6 +322,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "EdTech",
     type: "Company",
+    url: "https://www.digitmusic.co.uk/",
+    role: "Develop Product Features / Build Strategic Storytelling, Pitch Decks, and Investor Capital Strategy",
   },
   {
     name: "Allfeat",
@@ -323,14 +332,16 @@ export const portfolioCompanies: {
     year: "2023",
     category: "Music Tech / Web3",
     type: "Company",
+    role: "Conduct Market Research / Build Pitch Deck, Data Room, and Investor strategy",
   },
   {
     name: "Vyve",
-    tagline: "Idea to live product in 3 months. AI sustainability platform with active user pipeline.",
+    tagline: "AI sustainability platform. Idea to live product in 3 months. Active user pipeline.",
     stage: "Pre-seed",
     year: "2024",
     category: "AI / Sustainability",
     type: "Company",
+    role: "Investing as an Early-Stage Strategic Partner / Provide Full-Stack Tech Development / Lead Website Storytelling, Brand Messaging, and Social Media / Develop ICP, One-Pagers",
   },
   {
     name: "Blizbi",
@@ -339,6 +350,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Consumer Tech",
     type: "Company",
+    role: "Develop the full MVP Platform / Conduct Market Research and Create Storytelling and Pitch Deck / Provide Ongoing Operational Support",
   },
   {
     name: "The Blues Project",
@@ -347,6 +359,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music Tech",
     type: "Company",
+    url: "https://thebluesproject.co/",
+    role: "Develop MVP for the B2C platform / Design UI/UX, Build Backend Architecture, and Payment Integration",
   },
   {
     name: "Thor Kraft",
@@ -355,6 +369,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Energy",
     type: "Company",
+    url: "https://thor-kraft.no/",
+    role: "Pitch Deck, Data Rooms, and Investor Strategy",
   },
   {
     name: "Unlisted AI",
@@ -363,6 +379,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "FinTech / AI",
     type: "Company",
+    url: "https://en.unlisted.ai/",
   },
   {
     name: "Altech AS",
@@ -379,6 +396,7 @@ export const portfolioCompanies: {
     year: "2023",
     category: "Music Tech",
     type: "Company",
+    url: "https://www.tunedglobal.com/",
   },
   {
     name: "AIDAR",
@@ -387,6 +405,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music Tech / AI",
     type: "Company",
+    url: "https://www.aidar.ai/",
   },
   {
     name: "Unitesync",
@@ -395,6 +414,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music Tech",
     type: "Company",
+    url: "https://www.unitesync.com/",
+    role: "End-to-End Platform Development Service",
   },
   {
     name: "Music Tech Europe Academy",
@@ -402,6 +423,35 @@ export const portfolioCompanies: {
     stage: "Seed",
     year: "2023",
     category: "EdTech / Music",
+    type: "Company",
+    url: "https://www.musictecheuropeacademy.eu/",
+  },
+  {
+    name: "Advochord",
+    tagline: "Music technology and advocacy platform.",
+    year: "2024",
+    category: "Music Tech",
+    type: "Company",
+  },
+  {
+    name: "Mantik Music Norway",
+    tagline: "Norwegian music platform for discovery and artist development.",
+    year: "2024",
+    category: "Music Tech",
+    type: "Company",
+  },
+  {
+    name: "Russelåter.no",
+    tagline: "Digital platform preserving and celebrating Norwegian graduation music traditions.",
+    year: "2024",
+    category: "Music / Culture",
+    type: "Company",
+  },
+  {
+    name: "Mintix",
+    tagline: "Next-generation ticketing platform for live events.",
+    year: "2024",
+    category: "Events Tech",
     type: "Company",
   },
 
@@ -412,6 +462,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "AI / SaaS",
     type: "Project",
+    role: "Co-found and co-own the Company / Provide end to end platform development service",
   },
   {
     name: "Sera",
@@ -419,6 +470,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Future of Work",
     type: "Project",
+    role: "Found and Operate the Company / Manage End-to-End Development",
   },
   {
     name: "AI Dev Club",
@@ -426,6 +478,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Community",
     type: "Project",
+    role: "Found and Operate the Company / Manage End-to-End Development",
   },
   {
     name: "Sound Connections Podcast",
@@ -441,6 +494,15 @@ export const portfolioCompanies: {
     category: "Music Tech",
     type: "Project",
   },
+  {
+    name: "Molly og Mi",
+    tagline: "Norwegian family music brand. Social media, music production, and platform development.",
+    year: "2024",
+    category: "Music / Entertainment",
+    type: "Project",
+    url: "https://mollyogmi.no/",
+    role: "Co-own and Cooperate / Manage Social Media / Handle Music Production / Conduct Market Research / Develop Website",
+  },
 
   // ── Clients (service engagements) ─────────────────────────────────────────
   {
@@ -450,6 +512,8 @@ export const portfolioCompanies: {
     year: "2023",
     category: "Music Tech",
     type: "Client",
+    url: "https://volumio.com/",
+    role: "Define Targeted Profiles / Develop Sales Presentation Materials / Run Outreach Campaigns",
   },
   {
     name: "Solintegra",
@@ -458,6 +522,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Energy",
     type: "Client",
+    url: "https://www.solintegra.no/",
+    role: "Support Investor Outreach / Manage Platform Stability / Conduct Lead Research",
   },
   {
     name: "Matherials",
@@ -466,6 +532,8 @@ export const portfolioCompanies: {
     year: "2023",
     category: "EdTech",
     type: "Client",
+    url: "https://matherials.no/",
+    role: "Define ICP / Develop Tailored Messaging Framework / Set Up Outreach Tracking",
   },
   {
     name: "Instorier",
@@ -473,6 +541,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Consumer Tech",
     type: "Client",
+    url: "https://instorier.com/",
+    role: "Conduct Lead Identification / Design CRM-ready Systems / Develop Outreach Templates",
   },
   {
     name: "LongformAI",
@@ -480,6 +550,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "AI / SaaS",
     type: "Client",
+    url: "https://longform.ai/",
+    role: "Develop Investor Pitch Deck / Build CRM System / Support Investor Outreach",
   },
   {
     name: "Bandbeat",
@@ -487,6 +559,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music Tech",
     type: "Client",
+    url: "https://www.bandbeat.com/",
+    role: "Map Customer Segments / Develop Outreach Messaging and Run Campaigns",
   },
   {
     name: "Hopcast",
@@ -494,6 +568,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Events Tech",
     type: "Client",
+    url: "https://www.hopcast.fr/",
+    role: "Market Research / Define Investor Profiles / Craft Outreach Messaging",
   },
   {
     name: "Vekstpartner",
@@ -501,6 +577,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Business Services",
     type: "Client",
+    url: "https://www.vekstpartner.no/",
   },
   {
     name: "unhurd music",
@@ -508,6 +585,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music Tech",
     type: "Client",
+    url: "https://www.unhurdmusic.com/",
   },
   {
     name: "SpareBank 1",
@@ -522,6 +600,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music / Policy",
     type: "Client",
+    url: "https://www.musicestonia.eu/en",
   },
   {
     name: "PaleBlue",
@@ -529,6 +608,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "CleanTech",
     type: "Client",
+    url: "https://pale.blue/",
+    role: "Develop B2B Marketing Strategy / Conduct Market Analysis / Enrich Lead Data",
   },
   {
     name: "WARM",
@@ -536,6 +617,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Health Tech",
     type: "Client",
+    url: "https://www.warmmusic.net/",
+    role: "Modernize Web Application / Conduct Lead Research / Manage Outreach to Partners",
   },
   {
     name: "University of Stavanger",
@@ -543,6 +626,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "EdTech",
     type: "Client",
+    url: "https://www.uis.no/en",
   },
   {
     name: "Oracles of Norway",
@@ -550,6 +634,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Culture / Media",
     type: "Client",
+    url: "https://www.oraclesofnorway.com/",
+    role: "Digital Marketing Strategy / Develop End-to-End AI-Powered Mobile Platform",
   },
   {
     name: "Music Frontiers",
@@ -557,6 +643,8 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Music Tech",
     type: "Client",
+    url: "https://musicfrontiers.com/",
+    role: "Co-organize and manage accelerator program / Manage Participant outreach, mentorship, event promotion",
   },
   {
     name: "Temple Studios",
@@ -564,6 +652,7 @@ export const portfolioCompanies: {
     year: "2024",
     category: "Creative Industries",
     type: "Client",
+    url: "https://www.templestudios.be/",
   },
   {
     name: "Family in Music",
@@ -571,6 +660,42 @@ export const portfolioCompanies: {
     year: "2024",
     category: "EdTech / Music",
     type: "Client",
+    url: "https://familyinmusic.com/",
+  },
+  {
+    name: "Get Moments",
+    tagline: "Activity and experience discovery platform for event organizers.",
+    year: "2024",
+    category: "Events Tech",
+    type: "Client",
+    url: "https://organizer.getmoments.com/",
+    role: "Define ICPs / Run Targeted Outreach / Develop Sales Playbook",
+  },
+  {
+    name: "StreamPush",
+    tagline: "Streaming and content delivery technology for media companies.",
+    year: "2024",
+    category: "Media Tech",
+    type: "Client",
+    url: "https://streampush.co/",
+    role: "Lead Identification, Data Enrichment, and Prospect Qualification / Run Outreach Campaigns",
+  },
+  {
+    name: "Sambach",
+    tagline: "Creative arts platform connecting artists with collectors and fans.",
+    year: "2024",
+    category: "Creative Industries",
+    type: "Client",
+    url: "https://sambach.art/",
+    role: "Lead and Prospect Identification / Manage Outreach Campaigns",
+  },
+  {
+    name: "Music Tech at Slush",
+    tagline: "The leading music tech stage at Slush, Europe's top startup conference.",
+    year: "2024",
+    category: "Music Tech",
+    type: "Client",
+    url: "https://www.musictech.live/",
   },
 ];
 
@@ -582,6 +707,7 @@ export const about = {
     "Amplitude Ventures is a venture studio based in Stavanger, Norway. We partner with founders as early-stage co-builders — taking on the heavy lifting of product development, market validation, and investor storytelling.",
     "Our thesis is simple: most early-stage companies don't fail because they can't raise. They fail because they can't execute to the point where raising makes sense. We close the execution gap.",
     "With 70+ team members across Europe, Africa, and Asia, we build technology, run research, create investor narratives, and embed talent — so founders can move from zero to investor-ready without compromising speed or quality.",
+    "Every engagement begins with deep collaborative due diligence — stress-testing assumptions, mapping the competitive landscape, and aligning on what success looks like. In select cases, where the thesis and timing align, we also take an equity position as an early-stage strategic partner.",
   ],
   pullQuote:
     "We effectively operate as your early-stage co-founder. We're not here to maximise billings — we're here to build sustainable, investor-ready businesses alongside you.",

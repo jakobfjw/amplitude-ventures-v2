@@ -94,7 +94,7 @@ export default function PortfolioSection() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.25, duration: 0.8, ease }}
             >
-              40+ ventures supported. €48M raised by portfolio. From zero to investor-ready traction.
+              40+ ventures co-built across Scandinavia and Europe. Deep due diligence, hands-on execution, and selective equity investment — from first conversation to funding round.
             </motion.p>
           </div>
         </div>
@@ -185,19 +185,49 @@ export default function PortfolioSection() {
                 </h3>
 
                 <p
-                  className="text-warm-white/40 text-[15px] leading-snug flex-1 mb-5"
+                  className="text-warm-white/40 text-[15px] leading-snug mb-4"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {company.tagline}
                 </p>
 
-                <div className="pt-4 border-t border-white/[0.05]">
+                {company.role && (
+                  <div className="mb-5 flex-1">
+                    <p
+                      className="text-[11px] uppercase tracking-[0.15em] text-crimson/50 mb-1.5 font-[600]"
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    >
+                      What we did
+                    </p>
+                    <p
+                      className="text-warm-white/30 text-[13px] leading-relaxed"
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    >
+                      {company.role.split(" / ").join(" · ")}
+                    </p>
+                  </div>
+                )}
+                {!company.role && <div className="flex-1" />}
+
+                <div className="pt-4 border-t border-white/[0.05] flex items-center justify-between">
                   <span
                     className="text-warm-white/25 text-[12px] uppercase tracking-[0.15em]"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
                     {company.category}
                   </span>
+                  {company.url && (
+                    <a
+                      href={company.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-warm-white/25 hover:text-crimson transition-colors duration-200 text-[16px] leading-none"
+                      onClick={(e) => e.stopPropagation()}
+                      aria-label={`Visit ${company.name}`}
+                    >
+                      ↗
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
