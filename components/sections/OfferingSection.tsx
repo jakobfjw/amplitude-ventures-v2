@@ -9,19 +9,19 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const DETAILS: Record<string, { stat: string; statLabel: string; detail: string }> = {
   capital: {
-    stat: "€100k–€500k",
-    statLabel: "Ticket size",
-    detail: "Average decision: 3 weeks. No pitch deck required to start a conversation.",
+    stat: "6–20 wks",
+    statLabel: "Typical delivery",
+    detail: "From first brief to production-ready product. Web, mobile, and AI across any stack.",
   },
   build: {
-    stat: "Weekly",
-    statLabel: "Cadence",
-    detail: "Embedded operator support from day one — not a quarterly board call.",
+    stat: "Weeks",
+    statLabel: "Not months",
+    detail: "Market sizing, competitor mapping, and go/no-go analysis before you write a line of code.",
   },
   raise: {
-    stat: "200+",
-    statLabel: "Institutional investors",
-    detail: "Access to the right rooms, with the right introductions, at the right time.",
+    stat: "100+",
+    statLabel: "Investors contacted per raise",
+    detail: "10–40% response rates on outreach. Pitch decks and data rooms that close rounds.",
   },
 };
 
@@ -91,7 +91,7 @@ export default function OfferingSection() {
                   letterSpacing: "0.02em",
                 }}
               >
-                Capital.
+                Build.
               </h1>
               <h1
                 className="text-crimson italic leading-[0.88]"
@@ -101,7 +101,7 @@ export default function OfferingSection() {
                   fontWeight: 400,
                 }}
               >
-                Build. Raise.
+                Validate. Raise.
               </h1>
             </motion.div>
 
@@ -115,7 +115,7 @@ export default function OfferingSection() {
                 className="text-warm-white/50 text-[20px] leading-relaxed border-l-2 border-crimson/25 pl-5"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
-                Three ways we accelerate a company — from first cheque to Series A.
+                Three ways we work with early-stage companies — from idea through product, traction, and the raise.
               </p>
             </motion.div>
           </div>
@@ -280,10 +280,10 @@ export default function OfferingSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
             {[
-              { step: "01", title: "Two paragraphs", body: "No deck needed. Tell us what you're building in plain language. Email or a 20-minute call." },
-              { step: "02", title: "Working sessions", body: "We get into the problem together before making any decision. Usually 2–3 conversations." },
-              { step: "03", title: "Term sheet", body: "If there's conviction on both sides, we move fast. Typical time from first call to offer: 3 weeks." },
-              { step: "04", title: "Embedded", body: "Cheque lands, then so do we — weekly sessions, intros, product sessions, whatever you need." },
+              { step: "01", title: "Validate", body: "Pressure-test the idea before writing code. Market sizing, competitor mapping, feasibility — clear go/no-go in weeks." },
+              { step: "02", title: "Build", body: "Ship a product at a cost that makes sense. MVPs, AI agents, full platforms — from brief to live in 6–20 weeks." },
+              { step: "03", title: "Commercialize", body: "Find pricing, positioning, and first revenue. Sales pipeline, ICP definition, multi-channel outreach." },
+              { step: "04", title: "Shape the story", body: "Pitch decks, data rooms, and investor targeting. We build the fundraising narrative that gets responses." },
             ].map((step, i) => (
               <motion.div
                 key={step.step}

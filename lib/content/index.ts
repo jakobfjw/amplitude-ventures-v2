@@ -8,113 +8,115 @@ export const nav = {
   cta: { label: "Get in Touch", href: "/contact" },
 };
 
+// Real portfolio companies (confirmed from source documents)
 export const ticker = [
-  "Compera", "Nucase", "Share50", "Enquip", "2040 Vision",
-  "AltPath", "Meridian", "Foundry", "Vestry", "Catalyst",
-  "Compera", "Nucase", "Share50", "Enquip", "2040 Vision",
-  "AltPath", "Meridian", "Foundry", "Vestry", "Catalyst",
+  "WiseMize", "Vyve", "Volumio", "Solintegra", "Matherials", "MOD INC.", "Venture Builder AI",
+  "WiseMize", "Vyve", "Volumio", "Solintegra", "Matherials", "MOD INC.", "Venture Builder AI",
 ];
 
 export const hero = {
   eyebrow: "Venture Studio",
-  lineOne: "We Back",
-  lineTwo: "Extraordinary",
-  lineThree: "Founders.",
-  sub: "Pre-seed capital and hands-on operator support — for the founders who refuse to wait.",
+  lineOne: "We Build",
+  lineTwo: "Investor-Ready",
+  lineThree: "Companies.",
+  sub: "We partner with founders as early-stage co-builders — from first idea through product, traction, and the raise.",
 };
 
+// Real stats from services deck (30+ clients, 15+ co-built, 60+ team)
 export const stats = [
-  { number: "32", suffix: "+", label: "Portfolio companies" },
-  { number: "€48M", suffix: "", label: "Raised by founders" },
-  { number: "3", suffix: "×", label: "Avg. follow-on rate" },
+  { number: "30", suffix: "+", label: "Clients supported" },
+  { number: "15", suffix: "+", label: "Startups co-built" },
+  { number: "60", suffix: "+", label: "Team members globally" },
 ];
 
 export const whoWeWorkWith = [
   {
     num: "01",
-    title: "Technical founders",
-    body: "Engineers and scientists who've spotted a gap the market hasn't caught up to yet. We speak your language.",
-    tag: "Pre-product",
+    title: "Idea-stage founders",
+    body: "You have a validated insight but need someone to turn it into a company. We validate direction and move from concept to product — fast.",
+    tag: "Zero to one",
   },
   {
     num: "02",
-    title: "Second-time builders",
-    body: "Founders who've been through the wringer once and are ready to do it properly. Your experience is leverage.",
+    title: "Pre-seed teams",
+    body: "You've built something but need sharper execution, stronger storytelling, or real momentum toward your first institutional round.",
     tag: "Pre-seed",
   },
   {
     num: "03",
-    title: "Domain experts",
-    body: "People with deep industry knowledge who need the startup infrastructure built around them — fast.",
-    tag: "Idea stage",
+    title: "Founders at inflection points",
+    body: "You're stalled, pivoting, or facing hard decisions about focus and growth. We bring both clarity and hands-on execution capacity.",
+    tag: "Growth stage",
   },
 ];
 
 export const services = [
   {
     id: "capital",
-    title: "Capital",
-    headline: "First money in.",
-    body: "We write the first cheque so you don't spend months pitching when you should be building. €100k–€500k pre-seed tickets with fast decisions.",
-    detail: "Average decision: 3 weeks. No pitchdecks required to start a conversation.",
+    title: "Co-build",
+    headline: "Technology that works.",
+    body: "AI agents, functional MVPs, full platform builds, and production-ready codebases — delivered in 6–20 weeks. We stay close to execution, not just oversight.",
+    detail: "Web, mobile, and AI across any stack. We co-build and co-own — not an agency.",
   },
   {
     id: "build",
-    title: "Build",
-    headline: "Operator support.",
-    body: "Weekly working sessions, product strategy, go-to-market planning, and a network of operators who've done it before.",
-    detail: "Embedded support from day one — not a quarterly board call.",
+    title: "Validate",
+    headline: "Know before you build.",
+    body: "Market sizing, competitor mapping, and go/no-go feasibility analysis. We pressure-test the idea before writing a line of code. Research-backed clarity in weeks, not months.",
+    detail: "Clear frameworks so you build what the market actually needs.",
   },
   {
     id: "raise",
     title: "Raise",
     headline: "Investor-ready.",
-    body: "We help you craft the story, sharpen the data room, and make the right introductions for your Series A.",
-    detail: "Access to 200+ institutional investors who trust our thesis.",
+    body: "Pitch decks, one-pagers, investor targeting, outreach messaging, and data room structure. We've helped founders contact 100+ investors with 10–40% response rates.",
+    detail: "Fundraising strategy, not just slides. Story that closes rounds.",
   },
 ];
 
+// Principles sourced from "AV new copy direction.docx"
 export const principles = [
   {
     num: "01",
-    title: "Conviction over consensus",
-    body: "We don't invest by committee. When we see a founder worth backing, one voice is enough. Speed respects your time.",
+    title: "We push for what works",
+    body: "We challenge assumptions early and push back when focus drifts. No politeness — just honest direction toward what actually moves the needle.",
   },
   {
     num: "02",
-    title: "Operators, not spectators",
-    body: "Every partner has built and scaled a company. We've felt the 2am decisions. We give advice that costs something.",
+    title: "We do the heavy lifting",
+    body: "We stay close to execution and carry projects through ambiguity. Not a board seat — an embedded co-builder from day one.",
   },
   {
     num: "03",
-    title: "The unfair advantage",
-    body: "Capital alone is a commodity. We bring the network, the pattern recognition, and the infrastructure to multiply your odds.",
+    title: "Progress over politeness",
+    body: "Clarity, accountability, and delivery come first. We call problems early and keep communication honest, even when it's uncomfortable.",
   },
   {
     num: "04",
-    title: "Long arc thinking",
-    body: "We don't chase 18-month exits. We back companies that will matter in 10 years, and we're patient enough to prove it.",
+    title: "We build for durability",
+    body: "We optimise for companies that hold up over time — not quick outcomes. Investor-ready traction that founders can stand behind and defend.",
   },
 ];
 
+// Real testimonials — confirmed names and quotes from source documents
 export const testimonials = [
   {
-    quote: "They moved faster than any fund I've met. Cheque signed in 11 days, then showed up with sleeves rolled up.",
-    name: "Lena Dahl",
-    role: "CEO, Compera",
-    co: "Series A — €4.2M",
+    quote: "Working with Amplitude was a game changer for us. They helped us get the clarity we needed on our unique value and vision when pivoting our business and supported us in perfecting our new pitch.",
+    name: "Joseph Pinho",
+    role: "Co-founder",
+    co: "MOD INC.",
   },
   {
-    quote: "Not just money — they rebuilt our go-to-market strategy in three sessions and introduced us to our anchor customer.",
-    name: "Marcus Webb",
-    role: "Founder, Enquip",
-    co: "Pre-seed — €280k",
+    quote: "The most valuable aspects of our partnership have been the rapid development of an MVP and the swift establishment of a pipeline of interested customers — two critical pillars in our journey towards achieving product-market fit.",
+    name: "Kunal Karadia",
+    role: "Co-founder",
+    co: "Venture Builder AI",
   },
   {
-    quote: "The partner sat in on our board for six months before we even needed them. That level of care is rare.",
-    name: "Sofie Andersen",
-    role: "Co-founder, 2040 Vision",
-    co: "Seed — €1.1M",
+    quote: "I would recommend Jakob and the Amplitude team without hesitation to any founder or startup looking for a development partner that combines top-tier technical skills with heart, transparency, and real partnership.",
+    name: "Helene Birkeland",
+    role: "Founding CEO",
+    co: "HappyNova / Blizbi",
   },
 ];
 
@@ -130,157 +132,115 @@ export const blogPosts = [
       "The pitch deck has become the de facto gatekeeping mechanism of the venture industry. Before a founder gets a meeting, before they get to articulate why they got up at 5am again, before any human connection is made — they must first produce a 15-slide document optimised for a 90-second skim.",
       "We think this is backwards. A pitch deck is a compression artefact. It takes a complex, evolving, often brilliant idea and forces it into a static format designed for an audience that processes hundreds of them a week. The most interesting founders are often the worst at decks — not because their ideas are weak, but because their thinking is too rich, too early, too specific to be flattened.",
       "When we first talk to a founder, we want to hear the idea in their words. How do they describe the problem? What specific frustration are they solving? Who did they notice struggling that nobody else thought was worth helping? These answers — raw and unpolished — tell us more than any slide ever could.",
-      "The deck comes later, once we've decided to move forward. By then, we know what we care about, and we can help shape it into something that will actually work for Series A investors.",
+      "The deck comes later, once we've decided to move forward. By then, we know what we care about, and we can help shape it into something that will actually work for investors — because we've spent time understanding the business, not just its presentation.",
       "If you've been putting off reaching out because you haven't finished your deck: stop. Send us two paragraphs. Tell us what you're building and who you're building it for. That's enough to start.",
     ],
   },
   {
-    slug: "operator-vs-investor",
-    category: "Perspective",
-    title: "The Difference Between an Investor and an Operator",
-    excerpt: "Most VCs give advice that sounds right in a boardroom but falls apart at 2am when the system is down.",
+    slug: "venture-building-vs-venture-capital",
+    category: "Insights",
+    title: "Venture Building vs. Venture Capital: What Founders Need to Know",
+    excerpt: "Understanding the key differences between a venture studio and a traditional VC can help you choose the right path for your startup.",
     date: "2026-02-22",
     readTime: "6 min",
     body: [
-      "There's a version of venture capital that functions like a service industry. Investors deploy capital, attend board meetings, send intros, write quarterly updates, and — at the margins — give advice. The advice is well-intentioned. It's drawn from pattern recognition, from other portfolio companies, from frameworks developed over years of watching startups. It sounds sensible.",
-      "It also often falls apart in the specific. Because 'hire senior early' is good general advice. 'Here are the three engineers you should meet this week, and here's what to offer them to close' is a different category of thing entirely.",
-      "Operators know the difference. When you've run a growth team, when you've sat in the room where the pricing decision got made, when you've felt the exact weight of a churn number that was six points higher than the model — your advice changes texture. It becomes more specific, more uncomfortable, and more useful.",
-      "This is what we mean when we say we're operators. Every partner at Amplitude has built something. We've made the decisions that sounded easy in retrospect and were agonising in the moment. We've hired wrong and fired too slowly. We've priced too low and been afraid to raise. We know what those decisions feel like from inside, not from the board chair.",
-      "When we work with a founder, we're not offering a service. We're offering a shared frame of reference. The goal is that when something hard happens — and it will — you have someone to call who won't just respond with a framework. Someone who can say: 'Yes, that's exactly what it feels like. Here's what helped.' That's the only advice worth taking.",
+      "Most early-stage companies don't fail because they can't raise. They fail because they can't execute to the point where raising makes sense. That's the gap a venture studio exists to close — and it's fundamentally different from what a traditional VC does.",
+      "A traditional VC writes cheques. They attend board meetings, make introductions, and offer advice drawn from pattern recognition across a portfolio. That advice is often genuinely valuable. But it's advice. It assumes the founders already have the capacity to execute — the product skills, the GTM motion, the team, the story.",
+      "A venture studio doesn't just back you — it builds alongside you. That means showing up for the technical decisions, running the research, finding the first customers, structuring the fundraising narrative. It means carrying the heavy lifting through the parts of company building that don't fit neatly into a board deck.",
+      "The result looks different too. Founders who work with a studio typically get to a functional product, an active pipeline, and measurable traction before they ever sit in front of an institutional investor. That changes the conversation entirely — from 'here's a vision' to 'here's proof.'",
+      "Neither model is universally better. If you've already got the execution capacity and just need capital and connections, a traditional VC makes sense. If you need to build the execution capacity — if you're earlier, leaner, or moving into territory where you need someone embedded — a venture studio is worth understanding properly.",
     ],
   },
   {
-    slug: "pre-seed-conviction",
-    category: "Early Stage",
-    title: "What Pre-Seed Conviction Actually Looks Like",
-    excerpt: "We back 6 companies a year. Here's the exact checklist — and why most of it isn't on the checklist.",
-    date: "2026-02-10",
+    slug: "from-idea-to-traction-in-90-days",
+    category: "Guide",
+    title: "From Idea to Traction in 90 Days: Our Proven Framework",
+    excerpt: "We break down the exact process we use to validate, build, and launch new ventures in record time — without sacrificing quality.",
+    date: "2026-01-18",
     readTime: "5 min",
     body: [
-      "We back roughly six companies a year. That number isn't a constraint — it's a consequence. Six is how many we can work with properly: weekly sessions, deep involvement, genuine availability when things go sideways. If we backed twenty, we'd become the kind of VC we started Amplitude to avoid.",
-      "So what does the checklist look like? Here's the honest version. Market: big enough to build something meaningful, ideally with a regulatory or distribution moat that makes it harder to clone. Team: one or more people who understand the problem better than anyone we've met, and who will still be building it in five years when it gets hard. Timing: some external reason — regulatory, technological, cultural — why now is the right time and why this specific window won't be open forever.",
-      "That's the list. We've made exceptions to every item on it. We've backed small markets that expanded. We've backed solo founders who later found the perfect co-founder. We've backed ideas where the timing was slightly wrong and the founders' conviction made it right anyway.",
-      "The thing the checklist doesn't capture is the founder's relationship with the problem. We've had conversations where a founder described a problem so specifically, so viscerally, that we could feel they'd been living with it for years before deciding to fix it. That specificity — the kind that comes from personal frustration, not market research — is what we're actually looking for.",
-      "The best founders we've backed were embarrassed by how niche their focus seemed at the beginning. Compera was 'contract management for mid-size law firms in Scandinavia.' Foundry was 'no-code operations tooling for companies with 50–200 employees.' Both looked like narrow niches. Both turned out to be exactly the right wedge. That's what pre-seed conviction actually looks like.",
+      "Ninety days sounds ambitious. Most founders expect product development to take six months before anyone has seen it. But the difference between a 6-month cycle and a 90-day cycle isn't working faster — it's being disciplined about what you're actually building, and when.",
+      "The first 30 days are entirely pre-product. Validate the problem with real people, not surveys. Map the competitive landscape. Define the narrowest version of the problem your first product needs to solve. The temptation to jump to building is strong — resist it. Every week of validation saves two weeks of rework.",
+      "Days 30 to 60 are about building a version that can be shown, not a version that's complete. An MVP that gets a real response from a real user is worth more than a polished product that nobody has seen. Ship early, ship with rough edges, and watch how people actually interact with it. That feedback is the product roadmap.",
+      "The final 30 days are about the first signs of traction: a pipeline of interested users, a pricing model that someone has agreed to, a metric that points in the right direction. Not scale — signal. Signal is what you bring to the next conversation, whether that's an investor, a co-founder, or a customer.",
+      "This framework isn't a formula. Every venture has different constraints. But the shape of it — validate hard, build narrow, prove something — is consistent across the studios and startups that move fastest.",
     ],
   },
 ];
 
 // ── Inner page content ────────────────────────────────────────────────────────
 
+// Real portfolio companies confirmed from source documents
 export const portfolioCompanies = [
   {
-    name: "Compera",
-    tagline: "AI-powered contract intelligence for legal teams.",
-    stage: "Series A",
-    year: "2023",
-    category: "Legal Tech",
-  },
-  {
-    name: "Nucase",
-    tagline: "Modular hardware platform for industrial IoT deployments.",
+    name: "WiseMize",
+    tagline: "Music tech platform. Slush Music Accelerator winner. Backed by SoundHub and Wave Lab.",
     stage: "Seed",
     year: "2024",
-    category: "Hardware",
+    category: "Music Tech",
   },
   {
-    name: "Share50",
-    tagline: "Revenue-sharing infrastructure for the creator economy.",
+    name: "Vyve",
+    tagline: "Idea to live product in 3 months. Full platform build with active user pipeline.",
     stage: "Pre-seed",
     year: "2024",
-    category: "Fintech",
+    category: "Consumer Tech",
   },
   {
-    name: "Enquip",
-    tagline: "Equipment rental marketplace for construction and civil projects.",
-    stage: "Pre-seed",
+    name: "Volumio",
+    tagline: "Near break-even acquisition. Product development and growth support.",
+    stage: "Growth",
     year: "2023",
-    category: "PropTech",
+    category: "Music Tech",
   },
   {
-    name: "2040 Vision",
-    tagline: "Carbon accounting software purpose-built for mid-market companies.",
-    stage: "Seed",
-    year: "2023",
-    category: "Climate Tech",
-  },
-  {
-    name: "AltPath",
-    tagline: "Alternative credentialing platform for self-taught technical talent.",
+    name: "Solintegra",
+    tagline: "100+ investors contacted. 10–40% response rate on investor outreach.",
     stage: "Pre-seed",
     year: "2024",
+    category: "Energy",
+  },
+  {
+    name: "Matherials",
+    tagline: "Suitcase Whiteboard — portable education hardware with global market potential.",
+    stage: "Pre-seed",
+    year: "2023",
     category: "EdTech",
   },
   {
-    name: "Meridian",
-    tagline: "Supply chain visibility and analytics for Nordic manufacturers.",
-    stage: "Seed",
-    year: "2022",
-    category: "Logistics",
-  },
-  {
-    name: "Foundry",
-    tagline: "No-code workflow automation for operational teams in scaling companies.",
-    stage: "Series A",
-    year: "2022",
-    category: "SaaS",
-  },
-  {
-    name: "Vestry",
-    tagline: "Private wealth management infrastructure for the next generation.",
+    name: "MOD INC.",
+    tagline: "Business pivot support, value proposition clarity, and pitch refinement.",
     stage: "Pre-seed",
-    year: "2025",
-    category: "Fintech",
+    year: "2024",
+    category: "Creative Industries",
   },
   {
-    name: "Catalyst",
-    tagline: "Drug discovery acceleration through AI-predicted synthesis pathways.",
-    stage: "Seed",
+    name: "Venture Builder AI",
+    tagline: "AI-driven venture building platform. MVP built and customer pipeline established.",
+    stage: "Pre-seed",
     year: "2024",
-    category: "BioTech",
+    category: "AI / SaaS",
   },
 ];
 
 export const about = {
   eyebrow: "Our story",
-  headline: "We built\ncompanies.",
-  subheadline: "Now we back them.",
+  headline: "We build\ncompanies.",
+  subheadline: "Then we help raise.",
   story: [
-    "Amplitude Ventures was founded in Oslo in 2021 by three operators who each spent a decade building companies before they ever held a board seat. We were tired of advice that sounded right in the room but fell apart at 2am when the system was down.",
-    "Our thesis is simple: the best investors don't just write cheques. They've felt the weight of every decision — the ones that made the company and the ones that nearly broke it. We bring that experience to every founder we back.",
-    "We invest pre-seed across Scandinavia and Northern Europe, writing €100k–€500k tickets in companies that don't fit a template. If your idea is hard to explain to a generalist VC, you're probably speaking our language.",
+    "Amplitude Ventures is a venture studio based in Stavanger, Norway. We partner with founders as early-stage co-builders — taking on the heavy lifting of product development, market validation, and investor storytelling.",
+    "Our thesis is simple: most early-stage companies don't fail because they can't raise. They fail because they can't execute to the point where raising makes sense. We close the execution gap.",
+    "With 60+ team members across Europe, Africa, and Asia, we build technology, run research, create investor narratives, and embed talent — so founders can move from zero to investor-ready without compromising speed or quality.",
   ],
   pullQuote:
-    "We don't give advice from the sidelines. Every partner has felt the 2am decisions. That's the only way to give advice that costs something.",
-  pullQuoteAuthor: "Erik Norrman, Managing Partner",
-  team: [
-    {
-      name: "Erik Norrman",
-      role: "Managing Partner",
-      background:
-        "Previously co-founded Meridian (acquired 2020) and led growth at Nordic SaaS companies generating €40M+ in ARR. Built the first Scandinavian B2B logistics platform from zero to 60 employees.",
-      focus: "SaaS · Logistics · Operations",
-    },
-    {
-      name: "Astrid Lindqvist",
-      role: "General Partner",
-      background:
-        "Former VP Product at two unicorns and an angel investor with 18 early-stage bets before joining Amplitude. Deep network across Stockholm, Helsinki, and Copenhagen.",
-      focus: "Product · Consumer · Fintech",
-    },
-    {
-      name: "Jonas Berge",
-      role: "Partner, Operator Programmes",
-      background:
-        "First employee to VP at three separate companies. Built the operator-in-residence programme that now runs weekly working sessions with 24 portfolio founders.",
-      focus: "Early Operations · GTM · Hardware",
-    },
-  ],
+    "We effectively operate as your early-stage co-founder. We're not here to maximise billings — we're here to build sustainable, investor-ready businesses alongside you.",
+  pullQuoteAuthor: "Amplitude Ventures",
+  team: [] as { name: string; role: string; background: string; focus: string }[],
 };
 
 export const contact = {
   headline: "Let's talk.",
-  sub: "If you're building something worth backing, we want to hear it.",
+  sub: "Building something and need a co-builder? We want to hear it — no deck required.",
   email: "hello@amplitudeventures.vc",
   linkedin: "linkedin.com/company/amplitude-ventures",
 };

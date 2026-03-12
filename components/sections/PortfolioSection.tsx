@@ -6,11 +6,11 @@ import { portfolioCompanies } from "@/lib/content";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const STAGES = ["All", "Pre-seed", "Seed", "Series A"] as const;
+const STAGES = ["All", "Pre-seed", "Seed", "Growth"] as const;
 type Stage = (typeof STAGES)[number];
 
 const STAGE_COLORS: Record<string, string> = {
-  "Series A": "bg-crimson/15 text-crimson",
+  Growth: "bg-crimson/15 text-crimson",
   Seed: "bg-warm-white/[0.07] text-warm-white/55",
   "Pre-seed": "bg-warm-white/[0.04] text-warm-white/35",
 };
@@ -65,7 +65,7 @@ export default function PortfolioSection() {
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.1, duration: 0.9, ease }}
             >
-              32+{" "}
+              We{" "}
               <span
                 className="text-crimson italic"
                 style={{
@@ -74,10 +74,10 @@ export default function PortfolioSection() {
                   fontSize: "0.82em",
                 }}
               >
-                companies
+                build
               </span>
               <br />
-              backed.
+              companies.
             </motion.h1>
 
             <motion.p
@@ -87,7 +87,7 @@ export default function PortfolioSection() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.25, duration: 0.8, ease }}
             >
-              From day-zero ideas to Series A. Each one backed with capital and conviction.
+              30+ clients supported. 15+ startups co-built. From idea to investor-ready traction.
             </motion.p>
           </div>
         </div>

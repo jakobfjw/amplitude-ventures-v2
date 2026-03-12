@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "About — Amplitude Ventures",
   description:
-    "We built companies. Now we back them. Three operators turned investors — backing extraordinary founders at the earliest stage.",
+    "Amplitude Ventures is a venture studio based in Stavanger, Norway. We partner with founders as early-stage co-builders — from first idea through product, traction, and the raise.",
 };
 
 export default function AboutPage() {
