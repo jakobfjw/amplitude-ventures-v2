@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Portfolio — Amplitude Ventures",
   description:
-    "30+ clients supported. 15+ startups co-built. From idea to investor-ready traction — meet the companies we've built alongside.",
+    "40+ ventures supported across music tech, SaaS, and deep tech. Meet the companies Amplitude Ventures has co-built and backed from first idea through traction.",
 };
 
 export default function PortfolioPage() {

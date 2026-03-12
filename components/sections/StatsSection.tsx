@@ -7,17 +7,19 @@ import { stats } from "@/lib/content";
 const extended = [
   ...stats,
   { number: "11", suffix: "d", label: "Avg. first decision" },
-  { number: "6", suffix: "×", label: "Portfolio exits" },
+  { number: "100", suffix: "+", label: "Investors per raise" },
 ];
 
 function CountUp({
   value,
   suffix,
+  prefix = "",
   trigger,
   delay = 0,
 }: {
   value: string;
   suffix: string;
+  prefix?: string;
   trigger: boolean;
   delay?: number;
 }) {
@@ -56,6 +58,7 @@ function CountUp({
 
   return (
     <>
+      {prefix && <span className="text-crimson">{prefix}</span>}
       {display}
       <span className="text-crimson">{suffix}</span>
     </>
@@ -131,6 +134,7 @@ export default function StatsSection() {
                 <CountUp
                   value={s.number}
                   suffix={s.suffix}
+                  prefix={s.prefix}
                   trigger={isInView}
                   delay={i * 0.07}
                 />

@@ -64,12 +64,11 @@ export default function BlogSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {blogPosts.map((post, i) => (
+          {blogPosts.slice(0, 3).map((post, i) => (
             <motion.article
               key={post.slug}
               className={`group relative rounded-2xl border border-white/[0.06] bg-surface-2 p-7 hover:border-crimson/25 transition-colors duration-300 flex flex-col overflow-hidden ${
-                i === 0 ? "md:col-span-2" :
-                (blogPosts.length === 3 && i === 2) ? "md:col-span-2" : ""
+                i === 0 ? "md:col-span-2" : i === 2 ? "md:col-span-2" : ""
               }`}
               // Featured post slides from left; others from bottom with stagger
               initial={{

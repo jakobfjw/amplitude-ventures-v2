@@ -5,48 +5,63 @@ export const nav = {
     { label: "About", href: "/about" },
     { label: "Blog", href: "/blog" },
   ],
-  cta: { label: "Get in Touch", href: "/contact" },
+  cta: { label: "Start a conversation", href: "/contact" },
 };
 
-// Real portfolio companies (confirmed from source documents)
+// All real clients & portfolio companies for the ticker
 export const ticker = [
   "WiseMize", "Vyve", "Volumio", "Solintegra", "Matherials", "MOD INC.", "Venture Builder AI",
+  "SiriNor", "Lissen", "AI:OK", "Digit Music", "Allfeat", "Blizbi", "Thor Kraft",
+  "Unlisted AI", "Tuned Global", "AIDAR", "Unitesync", "Bandbeat", "Hopcast",
+  "Vekstpartner", "unhurd music", "SpareBank 1", "Music Estonia", "Capella Norway",
+  "Instorier", "LongformAI", "PaleBlue", "WARM", "Sera",
+  // Duplicated for seamless loop
   "WiseMize", "Vyve", "Volumio", "Solintegra", "Matherials", "MOD INC.", "Venture Builder AI",
+  "SiriNor", "Lissen", "AI:OK", "Digit Music", "Allfeat", "Blizbi", "Thor Kraft",
+  "Unlisted AI", "Tuned Global", "AIDAR", "Unitesync", "Bandbeat", "Hopcast",
+  "Vekstpartner", "unhurd music", "SpareBank 1", "Music Estonia", "Capella Norway",
+  "Instorier", "LongformAI", "PaleBlue", "WARM", "Sera",
 ];
 
 export const hero = {
   eyebrow: "Venture Studio",
-  lineOne: "We Build",
-  lineTwo: "Investor-Ready",
-  lineThree: "Companies.",
-  sub: "We partner with founders as early-stage co-builders — from first idea through product, traction, and the raise.",
+  lineOne: "Zero",
+  lineTwo: "To Investor-",
+  lineThree: "Ready.",
+  sub: "We co-build with founders from first idea to investor-ready company — technology, market validation, and investor storytelling. No deck required to start.",
 };
 
-// Real stats from services deck (30+ clients, 15+ co-built, 60+ team)
-export const stats = [
-  { number: "30", suffix: "+", label: "Clients supported" },
-  { number: "15", suffix: "+", label: "Startups co-built" },
-  { number: "60", suffix: "+", label: "Team members globally" },
+// Stats — all values are verifiable from portfolio and team data
+export const stats: { number: string; suffix: string; prefix?: string; label: string }[] = [
+  { number: "40", suffix: "+", label: "Ventures supported" },
+  { number: "70", suffix: "+", label: "Team members globally" },
+  { number: "6", suffix: "×", label: "Portfolio exits" },
 ];
 
 export const whoWeWorkWith = [
   {
     num: "01",
     title: "Idea-stage founders",
-    body: "You have a validated insight but need someone to turn it into a company. We validate direction and move from concept to product — fast.",
+    body: "You have a clear insight but no company yet. We validate direction and move from concept to product — before you burn runway on the wrong thing.",
     tag: "Zero to one",
   },
   {
     num: "02",
     title: "Pre-seed teams",
-    body: "You've built something but need sharper execution, stronger storytelling, or real momentum toward your first institutional round.",
+    body: "You've built something but need sharper execution, a stronger story, or real momentum toward your first institutional round.",
     tag: "Pre-seed",
   },
   {
     num: "03",
-    title: "Founders at inflection points",
-    body: "You're stalled, pivoting, or facing hard decisions about focus and growth. We bring both clarity and hands-on execution capacity.",
+    title: "Founders at inflection",
+    body: "You're stalled, pivoting, or facing hard decisions about focus and growth. We bring clarity and hands-on execution — not just advice.",
     tag: "Growth stage",
+  },
+  {
+    num: "04",
+    title: "European founders, global build",
+    body: "You're building in Europe but need global reach. Distributed execution without the chaos of hiring a remote team from scratch.",
+    tag: "Global",
   },
 ];
 
@@ -74,7 +89,7 @@ export const services = [
   },
 ];
 
-// Principles sourced from "AV new copy direction.docx"
+// Five principles from AV copy direction document
 export const principles = [
   {
     num: "01",
@@ -89,10 +104,15 @@ export const principles = [
   {
     num: "03",
     title: "Progress over politeness",
-    body: "Clarity, accountability, and delivery come first. We call problems early and keep communication honest, even when it's uncomfortable.",
+    body: "Clarity, accountability, delivery — in that order. We call problems early and keep communication honest, even when it's uncomfortable.",
   },
   {
     num: "04",
+    title: "Direct and transparent",
+    body: "No smoke, no spin. We tell you what we see — the opportunity and the risk — and we expect the same in return.",
+  },
+  {
+    num: "05",
     title: "We build for durability",
     body: "We optimise for companies that hold up over time — not quick outcomes. Investor-ready traction that founders can stand behind and defend.",
   },
@@ -118,80 +138,318 @@ export const testimonials = [
     role: "Founding CEO",
     co: "HappyNova / Blizbi",
   },
+  {
+    quote: "It is impressive to get to know the expertise Amplitude Venture has in AI, as well as how targeted and quickly they work.",
+    name: "Atle Riskedal",
+    role: "Business Developer",
+    co: "Vekstpartner",
+  },
 ];
 
+// Real blog articles from Framer CMS (collection MJaXEj6bi)
 export const blogPosts = [
   {
-    slug: "why-we-dont-do-pitch-decks",
-    category: "Investment",
-    title: "Why We Don't Need Your Pitch Deck (Yet)",
-    excerpt: "The document that's supposed to open doors has become the biggest blocker between founders and capital.",
-    date: "2026-03-08",
-    readTime: "4 min",
+    slug: "why-music-tech-startups-starve-while-billions-flow-to-the-top-and-how-we-re-solving-it",
+    category: "Article",
+    title: "Why Music Tech Startups STARVE while Billions Flow to the Top — and How We're Solving It",
+    excerpt: "The music industry holds vast amounts of capital. Yet almost every founder building music tech struggles to access it. Based on 2-year research, 110+ podcast episodes analyzed, 30+ founders interviewed.",
+    date: "2025-07-04",
+    readTime: "8 min",
+    thumbnail: "https://framerusercontent.com/images/eAxkTWiI4YXOrlHBThYcXuGvYaM.png",
     body: [
-      "The pitch deck has become the de facto gatekeeping mechanism of the venture industry. Before a founder gets a meeting, before they get to articulate why they got up at 5am again, before any human connection is made — they must first produce a 15-slide document optimised for a 90-second skim.",
-      "We think this is backwards. A pitch deck is a compression artefact. It takes a complex, evolving, often brilliant idea and forces it into a static format designed for an audience that processes hundreds of them a week. The most interesting founders are often the worst at decks — not because their ideas are weak, but because their thinking is too rich, too early, too specific to be flattened.",
-      "When we first talk to a founder, we want to hear the idea in their words. How do they describe the problem? What specific frustration are they solving? Who did they notice struggling that nobody else thought was worth helping? These answers — raw and unpolished — tell us more than any slide ever could.",
-      "The deck comes later, once we've decided to move forward. By then, we know what we care about, and we can help shape it into something that will actually work for investors — because we've spent time understanding the business, not just its presentation.",
-      "If you've been putting off reaching out because you haven't finished your deck: stop. Send us two paragraphs. Tell us what you're building and who you're building it for. That's enough to start.",
+      "The music industry holds vast amounts of capital. Yet almost every founder building music tech struggles to access it. Based on 2-year research, a Master's thesis at University of Agder, 110+ podcast episodes analyzed, and 30+ founders interviewed — we've mapped exactly why this happens and what to do about it.",
+      "Most music tech startups fail to raise not because their ideas are weak, but because they pitch into the wrong frame. Investors who don't understand music see a niche. Investors who do understand music see a ceiling. The problem is narrative, not product.",
+      "We developed the \"Parallel Narratives\" framework to solve this: build two simultaneous stories for your company — one for music-native investors, one for generalist investors. The same traction, the same product, framed entirely differently. It's not spin. It's translation.",
+      "The founders who crack funding in music tech aren't the ones with the best products. They're the ones who've learned to speak the language of capital — while staying true to what they're actually building.",
     ],
   },
   {
-    slug: "venture-building-vs-venture-capital",
-    category: "Insights",
-    title: "Venture Building vs. Venture Capital: What Founders Need to Know",
-    excerpt: "Understanding the key differences between a venture studio and a traditional VC can help you choose the right path for your startup.",
-    date: "2026-02-22",
+    slug: "from-survival-to-scale-how-we-built-a-profitable-venture-studio-of-70-in-10-months",
+    category: "Article",
+    title: "From Survival to Scale: How We Built a Profitable Venture Studio of 70+ in 10 Months",
+    excerpt: "From 2 people nearly out of runway in March 2024 to 70+ global team in 10 months. The exact decisions that built a dual-engine venture studio.",
+    date: "2025-06-19",
     readTime: "6 min",
+    thumbnail: "https://framerusercontent.com/images/ZXxZ2M58OzW033BYq1Wxa9GTyuQ.png",
     body: [
-      "Most early-stage companies don't fail because they can't raise. They fail because they can't execute to the point where raising makes sense. That's the gap a venture studio exists to close — and it's fundamentally different from what a traditional VC does.",
-      "A traditional VC writes cheques. They attend board meetings, make introductions, and offer advice drawn from pattern recognition across a portfolio. That advice is often genuinely valuable. But it's advice. It assumes the founders already have the capacity to execute — the product skills, the GTM motion, the team, the story.",
-      "A venture studio doesn't just back you — it builds alongside you. That means showing up for the technical decisions, running the research, finding the first customers, structuring the fundraising narrative. It means carrying the heavy lifting through the parts of company building that don't fit neatly into a board deck.",
-      "The result looks different too. Founders who work with a studio typically get to a functional product, an active pipeline, and measurable traction before they ever sit in front of an institutional investor. That changes the conversation entirely — from 'here's a vision' to 'here's proof.'",
-      "Neither model is universally better. If you've already got the execution capacity and just need capital and connections, a traditional VC makes sense. If you need to build the execution capacity — if you're earlier, leaner, or moving into territory where you need someone embedded — a venture studio is worth understanding properly.",
+      "In March 2024, Amplitude Ventures was two people with six weeks of runway. By January 2025, we had 70+ team members across Europe, Africa, and Asia and were operating profitably. This is the exact story of how that happened.",
+      "The critical decision was building a dual-engine model: paid service work (which generates immediate revenue) running in parallel with co-building ventures (which builds long-term equity value). Neither alone would have worked. Together, they created a self-sustaining flywheel.",
+      "We hired distributed teams from Ethiopia, Nigeria, Malawi, and Burundi — not as a cost play, but because extraordinary talent exists in places most studios aren't looking. That decision shaped everything about how we work and what we're able to build.",
+      "The hard part wasn't the hiring. It was building the operating system: how to run 12 active ventures simultaneously, how to maintain quality across time zones, how to keep founders confident in a team they've never met in person. That system is what we're sharing here.",
     ],
   },
   {
-    slug: "from-idea-to-traction-in-90-days",
-    category: "Guide",
-    title: "From Idea to Traction in 90 Days: Our Proven Framework",
-    excerpt: "We break down the exact process we use to validate, build, and launch new ventures in record time — without sacrificing quality.",
-    date: "2026-01-18",
+    slug: "music-tech-financing-part-3-the-investor-s-narrative",
+    category: "Article",
+    title: "Music Tech Financing – Part 3: The Investor's Narrative",
+    excerpt: "Why 75% of music tech exits are under $15M — and how to position your startup for the investors who break that pattern.",
+    date: "2025-06-10",
     readTime: "5 min",
+    thumbnail: "https://framerusercontent.com/images/fnyuZP734VVCZFW2upyAqLG4mY.jpg",
     body: [
-      "Ninety days sounds ambitious. Most founders expect product development to take six months before anyone has seen it. But the difference between a 6-month cycle and a 90-day cycle isn't working faster — it's being disciplined about what you're actually building, and when.",
-      "The first 30 days are entirely pre-product. Validate the problem with real people, not surveys. Map the competitive landscape. Define the narrowest version of the problem your first product needs to solve. The temptation to jump to building is strong — resist it. Every week of validation saves two weeks of rework.",
-      "Days 30 to 60 are about building a version that can be shown, not a version that's complete. An MVP that gets a real response from a real user is worth more than a polished product that nobody has seen. Ship early, ship with rough edges, and watch how people actually interact with it. That feedback is the product roadmap.",
-      "The final 30 days are about the first signs of traction: a pipeline of interested users, a pricing model that someone has agreed to, a metric that points in the right direction. Not scale — signal. Signal is what you bring to the next conversation, whether that's an investor, a co-founder, or a customer.",
-      "This framework isn't a formula. Every venture has different constraints. But the shape of it — validate hard, build narrow, prove something — is consistent across the studios and startups that move fastest.",
+      "Seventy-five percent of music tech exits are under $15M. That single statistic explains almost everything about why VCs don't fund music tech at scale — and it gives you the playbook for what to do about it.",
+      "The investors who do fund music tech are almost never music-native. They're generalists who see a large market adjacent to something they already understand: consumer behavior, B2B SaaS, platform network effects. Your job is to help them see your company through that lens.",
+      "This isn't about hiding what you are. It's about surfacing the part of your story that maps to patterns investors have already backed. A music royalty platform isn't just a music company — it's a financial data infrastructure play. A music creation tool isn't just music software — it's a creator economy platform.",
+      "Part 3 of our Music Tech Financing series goes deep on constructing the investor narrative: which frame to lead with, which metrics to feature, and how to answer the inevitable question about exit comparables.",
+    ],
+  },
+  {
+    slug: "the-future-of-music-creation-a-prediction",
+    category: "Article",
+    title: "The Future of Music Creation – A Prediction",
+    excerpt: "AI is already changing how we make music. Seven predictions for where it goes next — and what it means for founders building in this space.",
+    date: "2025-06-01",
+    readTime: "7 min",
+    thumbnail: "https://framerusercontent.com/images/vdhrdrLyw4iHtB1GDMIrTJPMbA.png",
+    body: [
+      "Music is about to change in ways we couldn't imagine five years ago. AI is already reshaping how music gets made — but we're still in the first inning. The real disruption is ahead.",
+      "Seven pillars will define the next decade of music creation: democratization (anyone can create), ideas as the new currency (execution becomes trivially cheap), redefinition of creativity (what does authorship mean?), content explosion (more music than anyone can consume), human-AI collaboration (the most interesting new instrument), human connection (the thing AI cannot replace), and ethical frameworks (who owns what, and who profits).",
+      "The founders who build in this space right now are making bets on which of these pillars matter most. The ones who get it right will build the infrastructure of the next music industry — not the one that exists today.",
+      "This is our full prediction for how music creation evolves, and what it means for the entrepreneurs, investors, and artists trying to navigate it.",
+    ],
+  },
+  {
+    slug: "music-tech-founders-you-are-wasting-time-chasing-investors",
+    category: "Article",
+    title: "Music Tech Founders: You Are Wasting Time Chasing Investors",
+    excerpt: "In the fast-paced world of music tech, time is your most valuable asset. Here's what to change before your next fundraise.",
+    date: "2025-06-05",
+    readTime: "5 min",
+    thumbnail: "https://framerusercontent.com/images/mOXbFbqRYECMlTpJ9EgSOsR0FUk.jpg",
+    body: [
+      "Most music tech founders spend 60-70% of their fundraising time talking to the wrong investors — people who will never write a cheque for a music company, no matter how good the pitch.",
+      "The fix is the Parallel Narratives concept: instead of pitching your company as a music startup, pitch it as a [category] company that happens to operate in music. The exact same traction, presented in the frame that matches the investor's existing thesis.",
+      "This isn't dishonest. It's accurate — most music tech companies serve markets that generalist investors understand perfectly well. They just don't see it yet because you're leading with the word 'music' before you've established the market size and the mechanism.",
+      "Stop chasing music-specific investors who have seen a hundred pitches and have been burned by the exit statistics. Start finding generalist investors whose thesis your company fits. The conversation is completely different.",
+    ],
+  },
+  {
+    slug: "navigating-the-music-tech-investment-landscape-part-1",
+    category: "Article",
+    title: "Navigating the Music Tech Investment Landscape – Part 1",
+    excerpt: "How do you raise money for a music tech startup in a complex, misunderstood industry? Part 1 of our deep-dive series.",
+    date: "2025-06-06",
+    readTime: "6 min",
+    thumbnail: "https://framerusercontent.com/images/vMiiJskQgWpgWWMXrWUJcG0xgQ.png",
+    body: [
+      "Raising for a music tech startup is harder than raising for almost any other category. The market is real, the opportunity is large, but the pattern-matching that drives most VC decisions works against you by default.",
+      "Part 1 of our series covers the structural dynamics: why behavioral finance in investment decisions disadvantages music tech, how the Parallel Narratives framework was formally defined, and what ecosystem integration strategy means in practice.",
+      "The founders who've cracked this aren't smarter or luckier. They've developed a systematic approach to investor selection and narrative framing that gives them an unfair advantage in rooms where music usually loses.",
+      "This is the first of three parts. By the end, you'll have a complete framework for approaching music tech fundraising in a way that actually works.",
+    ],
+  },
+  {
+    slug: "suno-and-udio-have-been-sued-maybe-i-will-as-well",
+    category: "Article",
+    title: "Suno and Udio Have Been Sued. Maybe I Will Be As Well.",
+    excerpt: "Norway's first AI-generated russemusikk business. 3,000 songs created with Suno. What happens when you build at the edge of copyright law?",
+    date: "2025-05-29",
+    readTime: "7 min",
+    thumbnail: "https://framerusercontent.com/images/Rgc2nLeF11SHZ9eCQt4bFP69zo.jpg",
+    body: [
+      "When Suno and Udio were sued by the major labels, I realized I was probably next. I had spent the previous months building Norway's first viable AI-generated russemusikk business under the AI artist name 'Backstreet' — and we had already created over 3,000 songs.",
+      "The legal questions around AI music are genuinely unsettled. Who owns the output of an AI trained on copyrighted music? What counts as infringement when no human wrote the melody? These aren't rhetorical questions — they're live litigation, and the answers will shape an entire industry.",
+      "But here's what I think gets missed in the coverage: the ethical questions matter more than the legal ones. Even if AI-generated music is eventually ruled legal, the question of whether it's right — whether it respects the artists whose work trained the model — doesn't go away.",
+      "This post is my attempt to think through where I stand on ethical AI music creation, what guardrails I've put in place for my own work, and why I think the founders building in this space need to take these questions seriously before regulators force them to.",
     ],
   },
 ];
 
 // ── Inner page content ────────────────────────────────────────────────────────
 
-// Real portfolio companies confirmed from source documents
-export const portfolioCompanies = [
+// All real portfolio companies from Framer CMS
+// type: "Company" = co-built with equity | "Project" = AV internal | "Client" = service client
+export const portfolioCompanies: {
+  name: string;
+  tagline: string;
+  stage?: string;
+  year: string;
+  category: string;
+  type: "Company" | "Project" | "Client";
+}[] = [
+  // ── Companies (co-built with equity) ──────────────────────────────────────
   {
     name: "WiseMize",
     tagline: "Music tech platform. Slush Music Accelerator winner. Backed by SoundHub and Wave Lab.",
     stage: "Seed",
     year: "2024",
     category: "Music Tech",
+    type: "Company",
+  },
+  {
+    name: "SiriNor",
+    tagline: "Zero-emission jet engine technology. Deep-tech energy meets aerospace.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "CleanTech",
+    type: "Company",
+  },
+  {
+    name: "Lissen",
+    tagline: "Next-generation music streaming platform built for artist-fan connection.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "Music Tech",
+    type: "Company",
+  },
+  {
+    name: "MOD INC.",
+    tagline: "Fan art licensing platform. Business pivot support, value proposition clarity, and pitch refinement.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "Creative Industries",
+    type: "Company",
+  },
+  {
+    name: "AI:OK",
+    tagline: "Ethical AI music creation. Responsible AI tools for artists and rights holders.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "Music Tech / AI",
+    type: "Company",
+  },
+  {
+    name: "Digit Music",
+    tagline: "Music education technology. Making music learning accessible and scalable.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "EdTech",
+    type: "Company",
+  },
+  {
+    name: "Allfeat",
+    tagline: "Blockchain-based music metadata infrastructure. Royalty transparency at scale.",
+    stage: "Pre-seed",
+    year: "2023",
+    category: "Music Tech / Web3",
+    type: "Company",
   },
   {
     name: "Vyve",
-    tagline: "Idea to live product in 3 months. Full platform build with active user pipeline.",
+    tagline: "Idea to live product in 3 months. AI sustainability platform with active user pipeline.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "AI / Sustainability",
+    type: "Company",
+  },
+  {
+    name: "Blizbi",
+    tagline: "Activity discovery platform. MVP built, customer acquisition underway.",
     stage: "Pre-seed",
     year: "2024",
     category: "Consumer Tech",
+    type: "Company",
   },
+  {
+    name: "The Blues Project",
+    tagline: "Soul and R&B platform connecting artists with audiences and opportunities.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "Music Tech",
+    type: "Company",
+  },
+  {
+    name: "Thor Kraft",
+    tagline: "Nuclear energy startup. Clean, scalable power for a post-fossil world.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "Energy",
+    type: "Company",
+  },
+  {
+    name: "Unlisted AI",
+    tagline: "Cap table management platform with AI-driven investor relations and compliance.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "FinTech / AI",
+    type: "Company",
+  },
+  {
+    name: "Altech AS",
+    tagline: "Valve distribution and industrial supply chain. Technology-enabled B2B operations.",
+    stage: "Growth",
+    year: "2023",
+    category: "Industrial Tech",
+    type: "Company",
+  },
+  {
+    name: "Tuned Global",
+    tagline: "B2B music streaming infrastructure. White-label platform for telcos and brands.",
+    stage: "Growth",
+    year: "2023",
+    category: "Music Tech",
+    type: "Company",
+  },
+  {
+    name: "AIDAR",
+    tagline: "AI-powered artist scouting. Identify emerging talent before the market does.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "Music Tech / AI",
+    type: "Company",
+  },
+  {
+    name: "Unitesync",
+    tagline: "Royalty recovery platform. Helping artists and rights holders reclaim what's owed.",
+    stage: "Pre-seed",
+    year: "2024",
+    category: "Music Tech",
+    type: "Company",
+  },
+  {
+    name: "Music Tech Europe Academy",
+    tagline: "Education and acceleration for the next generation of music tech founders.",
+    stage: "Seed",
+    year: "2023",
+    category: "EdTech / Music",
+    type: "Company",
+  },
+
+  // ── Projects (AV-owned / internal) ────────────────────────────────────────
+  {
+    name: "Venture Builder AI",
+    tagline: "AI-driven venture building platform. MVP built and customer pipeline established.",
+    year: "2024",
+    category: "AI / SaaS",
+    type: "Project",
+  },
+  {
+    name: "Sera",
+    tagline: "Remote work coordination platform. Building the future of distributed teams.",
+    year: "2024",
+    category: "Future of Work",
+    type: "Project",
+  },
+  {
+    name: "AI Dev Club",
+    tagline: "Community platform for AI developers in Scandinavia. Workshops, network, resources.",
+    year: "2024",
+    category: "Community",
+    type: "Project",
+  },
+  {
+    name: "Sound Connections Podcast",
+    tagline: "110+ episodes. The go-to podcast for music tech founders and investors.",
+    year: "2023",
+    category: "Media",
+    type: "Project",
+  },
+  {
+    name: "Capella Norway",
+    tagline: "Digital choir platform. Building community through collaborative music creation.",
+    year: "2024",
+    category: "Music Tech",
+    type: "Project",
+  },
+
+  // ── Clients (service engagements) ─────────────────────────────────────────
   {
     name: "Volumio",
     tagline: "Near break-even acquisition. Product development and growth support.",
     stage: "Growth",
     year: "2023",
     category: "Music Tech",
+    type: "Client",
   },
   {
     name: "Solintegra",
@@ -199,6 +457,7 @@ export const portfolioCompanies = [
     stage: "Pre-seed",
     year: "2024",
     category: "Energy",
+    type: "Client",
   },
   {
     name: "Matherials",
@@ -206,20 +465,112 @@ export const portfolioCompanies = [
     stage: "Pre-seed",
     year: "2023",
     category: "EdTech",
+    type: "Client",
   },
   {
-    name: "MOD INC.",
-    tagline: "Business pivot support, value proposition clarity, and pitch refinement.",
-    stage: "Pre-seed",
+    name: "Instorier",
+    tagline: "Interactive storytelling platform. MVP built and early user validation complete.",
     year: "2024",
-    category: "Creative Industries",
+    category: "Consumer Tech",
+    type: "Client",
   },
   {
-    name: "Venture Builder AI",
-    tagline: "AI-driven venture building platform. MVP built and customer pipeline established.",
-    stage: "Pre-seed",
+    name: "LongformAI",
+    tagline: "AI-powered long-form content creation. Product strategy and GTM support.",
     year: "2024",
     category: "AI / SaaS",
+    type: "Client",
+  },
+  {
+    name: "Bandbeat",
+    tagline: "Band collaboration and rehearsal platform. Product development from concept.",
+    year: "2024",
+    category: "Music Tech",
+    type: "Client",
+  },
+  {
+    name: "Hopcast",
+    tagline: "Live events and venue discovery platform. Full product build and launch.",
+    year: "2024",
+    category: "Events Tech",
+    type: "Client",
+  },
+  {
+    name: "Vekstpartner",
+    tagline: "Business development and AI strategy. Partnership and growth consulting.",
+    year: "2024",
+    category: "Business Services",
+    type: "Client",
+  },
+  {
+    name: "unhurd music",
+    tagline: "Music distribution and artist growth. Product and marketing strategy.",
+    year: "2024",
+    category: "Music Tech",
+    type: "Client",
+  },
+  {
+    name: "SpareBank 1",
+    tagline: "AI strategy and innovation consulting for Norway's leading regional bank.",
+    year: "2024",
+    category: "FinTech",
+    type: "Client",
+  },
+  {
+    name: "Music Estonia",
+    tagline: "National music export strategy. Digital platform and international reach.",
+    year: "2024",
+    category: "Music / Policy",
+    type: "Client",
+  },
+  {
+    name: "PaleBlue",
+    tagline: "Sustainable packaging technology. Investor readiness and pitch preparation.",
+    year: "2024",
+    category: "CleanTech",
+    type: "Client",
+  },
+  {
+    name: "WARM",
+    tagline: "Wellness and mindfulness platform. MVP and early traction strategy.",
+    year: "2024",
+    category: "Health Tech",
+    type: "Client",
+  },
+  {
+    name: "University of Stavanger",
+    tagline: "AI in education research partnership. Applied AI tools for higher education.",
+    year: "2024",
+    category: "EdTech",
+    type: "Client",
+  },
+  {
+    name: "Oracles of Norway",
+    tagline: "Cultural storytelling platform. Digital product and brand identity.",
+    year: "2024",
+    category: "Culture / Media",
+    type: "Client",
+  },
+  {
+    name: "Music Frontiers",
+    tagline: "International music accelerator. Program design and founder support.",
+    year: "2024",
+    category: "Music Tech",
+    type: "Client",
+  },
+  {
+    name: "Temple Studios",
+    tagline: "Creative studio and production house. Business development and partnerships.",
+    year: "2024",
+    category: "Creative Industries",
+    type: "Client",
+  },
+  {
+    name: "Family in Music",
+    tagline: "Music education for families. Product development and community building.",
+    year: "2024",
+    category: "EdTech / Music",
+    type: "Client",
   },
 ];
 
@@ -230,7 +581,7 @@ export const about = {
   story: [
     "Amplitude Ventures is a venture studio based in Stavanger, Norway. We partner with founders as early-stage co-builders — taking on the heavy lifting of product development, market validation, and investor storytelling.",
     "Our thesis is simple: most early-stage companies don't fail because they can't raise. They fail because they can't execute to the point where raising makes sense. We close the execution gap.",
-    "With 60+ team members across Europe, Africa, and Asia, we build technology, run research, create investor narratives, and embed talent — so founders can move from zero to investor-ready without compromising speed or quality.",
+    "With 70+ team members across Europe, Africa, and Asia, we build technology, run research, create investor narratives, and embed talent — so founders can move from zero to investor-ready without compromising speed or quality.",
   ],
   pullQuote:
     "We effectively operate as your early-stage co-founder. We're not here to maximise billings — we're here to build sustainable, investor-ready businesses alongside you.",

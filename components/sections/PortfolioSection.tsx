@@ -6,8 +6,8 @@ import { portfolioCompanies } from "@/lib/content";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const STAGES = ["All", "Pre-seed", "Seed", "Growth"] as const;
-type Stage = (typeof STAGES)[number];
+const TYPES = ["All", "Companies", "Projects", "Clients"] as const;
+type PortfolioType = (typeof TYPES)[number];
 
 const STAGE_COLORS: Record<string, string> = {
   Growth: "bg-crimson/15 text-crimson",
@@ -15,13 +15,20 @@ const STAGE_COLORS: Record<string, string> = {
   "Pre-seed": "bg-warm-white/[0.04] text-warm-white/35",
 };
 
+const TYPE_MAP: Record<PortfolioType, string | null> = {
+  All: null,
+  Companies: "Company",
+  Projects: "Project",
+  Clients: "Client",
+};
+
 export default function PortfolioSection() {
-  const [activeStage, setActiveStage] = useState<Stage>("All");
+  const [activeStage, setActiveStage] = useState<PortfolioType>("All");
 
   const filtered =
     activeStage === "All"
       ? portfolioCompanies
-      : portfolioCompanies.filter((c) => c.stage === activeStage);
+      : portfolioCompanies.filter((c) => c.type === TYPE_MAP[activeStage]);
 
   return (
     <section className="relative bg-void min-h-[calc(100vh-80px)] pt-[120px] pb-24 overflow-hidden">
@@ -87,7 +94,7 @@ export default function PortfolioSection() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.25, duration: 0.8, ease }}
             >
-              30+ clients supported. 15+ startups co-built. From idea to investor-ready traction.
+              40+ ventures supported. €48M raised by portfolio. From zero to investor-ready traction.
             </motion.p>
           </div>
         </div>
@@ -99,7 +106,7 @@ export default function PortfolioSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.6 }}
         >
-          {STAGES.map((s) => (
+          {TYPES.map((s) => (
             <button
               key={s}
               onClick={() => setActiveStage(s)}
@@ -150,11 +157,13 @@ export default function PortfolioSection() {
                 <div className="flex items-center justify-between mb-5">
                   <span
                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-[700] uppercase tracking-wider ${
-                      STAGE_COLORS[company.stage] ?? "bg-warm-white/5 text-warm-white/30"
+                      company.stage
+                        ? STAGE_COLORS[company.stage] ?? "bg-warm-white/5 text-warm-white/30"
+                        : "bg-warm-white/5 text-warm-white/30"
                     }`}
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    {company.stage}
+                    {company.stage ?? company.type}
                   </span>
                   <span
                     className="text-warm-white/20 text-[13px]"
