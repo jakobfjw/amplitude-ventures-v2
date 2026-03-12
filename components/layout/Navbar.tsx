@@ -11,7 +11,7 @@ import { TubelightNav, type NavItem } from "@/components/ui/tubelight-navbar";
 const NAV_ITEMS: NavItem[] = [
   { name: "Home",      url: "/",         icon: Home },
   { name: "About Us",  url: "/about",    icon: Users },
-  { name: "Services",  url: "/services", icon: Briefcase },
+  { name: "Offering",  url: "/offering", icon: Briefcase },
   { name: "Portfolio", url: "/portfolio",icon: BarChart2 },
   { name: "Blog",      url: "/blog",     icon: FileText },
   { name: "Contact",   url: "/contact",  icon: Mail },
