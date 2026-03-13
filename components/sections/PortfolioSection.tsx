@@ -240,7 +240,7 @@ export default function PortfolioSection() {
                   </span>
                 </div>
 
-                {/* Company logo — invert + screen blend makes white bg transparent */}
+                {/* TODO: Re-enable logos once sizing is finalized
                 {company.logo && (
                   <div className="mb-5 h-[48px] flex items-center">
                     <img
@@ -251,6 +251,7 @@ export default function PortfolioSection() {
                     />
                   </div>
                 )}
+                */}
 
                 <h3
                   className="text-warm-white leading-none mb-3 group-hover:text-crimson transition-colors duration-200"
