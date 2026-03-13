@@ -752,6 +752,8 @@ export const portfolioCompanies: {
   type: "Investment" | "Project" | "Client";
   url?: string;
   role: string;
+  logo?: string;
+  industry: string;
 }[] = [
   // ── Investments (equity / co-owned) ────────────────────────────────────────
   {
@@ -761,6 +763,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://wizemice.com/",
     role: "Market Research / Define Investor ICPs / Execute Investor Outreach Campaigns",
+    logo: "/logos/wizemice.png",
+    industry: "Music Tech",
   },
   {
     name: "SiriNor",
@@ -769,6 +773,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.sirinor.com/",
     role: "Build Pitch Deck, Data Rooms, and Investor Strategy",
+    logo: "/logos/sirinor.png",
+    industry: "Clean Energy",
   },
   {
     name: "Lissen",
@@ -777,6 +783,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "",
     role: "Consultation on Storytelling and Podcast Production Strategy",
+    logo: "/logos/lissen.png",
+    industry: "Music Tech",
   },
   {
     name: "MOD INC.",
@@ -785,6 +793,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://modfanart.com/",
     role: "Build Pitch Deck, Data Rooms, and Investor Strategy",
+    logo: "/logos/mod-inc.png",
+    industry: "Creative Industries",
   },
   {
     name: "AI:OK",
@@ -793,6 +803,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://ai-ok.org/",
     role: "Develop Pitch Deck, Data Room, and Investor Strategy / Enhance Communication Strategies",
+    logo: "/logos/aiok.png",
+    industry: "AI / Music Tech",
   },
   {
     name: "Digit Music",
@@ -801,6 +813,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.digitmusic.co.uk/",
     role: "Develop Product Features / Build Strategic Storytelling, Pitch Decks, and Investor Capital Strategy",
+    logo: "/logos/digit-music.png",
+    industry: "EdTech",
   },
   {
     name: "Allfeat",
@@ -809,6 +823,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://allfeat.org/",
     role: "Conduct Market Research / Build Pitch Deck, Data Room, and Investor Strategy",
+    logo: "/logos/allfeat.png",
+    industry: "Blockchain / Music Tech",
   },
   {
     name: "Vyve",
@@ -817,6 +833,8 @@ export const portfolioCompanies: {
     type: "Investment",
     url: "https://www.vyve.no/",
     role: "Early-Stage Strategic Partner / Full-Stack Tech Development / Website Storytelling, Brand Messaging, and Social Media / Develop ICP and One-Pagers",
+    logo: "/logos/vyve.png",
+    industry: "AI / Sustainability",
   },
   {
     name: "Blizbi",
@@ -825,6 +843,8 @@ export const portfolioCompanies: {
     type: "Investment",
     url: "https://blizbi.no/",
     role: "Develop Full MVP Platform / Conduct Market Research and Create Storytelling and Pitch Deck / Provide Ongoing Operational Support",
+    logo: "/logos/blizbi.svg",
+    industry: "Consumer Tech",
   },
   {
     name: "The Blues Project",
@@ -833,6 +853,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://thebluesproject.co/",
     role: "Develop MVP for B2C Platform / Design UI/UX, Build Backend Architecture, and Payment Integration",
+    logo: "/logos/blues-project.png",
+    industry: "Music Tech",
   },
   {
     name: "Thor Kraft",
@@ -841,6 +863,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://thor-kraft.no/",
     role: "Pitch Deck, Data Room, and Investor Strategy",
+    logo: "/logos/thor-kraft.png",
+    industry: "Energy",
   },
   {
     name: "Unlisted AI",
@@ -849,6 +873,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://en.unlisted.ai/",
     role: "Produce the 'Venture Capital Unlocked' Podcast",
+    logo: "/logos/unlisted-ai.png",
+    industry: "FinTech",
   },
   {
     name: "Altech AS",
@@ -857,6 +883,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.altech.no/",
     role: "Design and Develop Full-Stack Valve Management System",
+    logo: "/logos/altech.svg",
+    industry: "Industrial Tech",
   },
   {
     name: "Tuned Global",
@@ -865,6 +893,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.tunedglobal.com/",
     role: "Provide Development Services",
+    logo: "/logos/tuned-global.svg",
+    industry: "Music Tech",
   },
   {
     name: "AIDAR",
@@ -873,6 +903,8 @@ export const portfolioCompanies: {
     type: "Investment",
     url: "https://www.aidar.ai/",
     role: "Platform Development with AI Integration",
+    logo: "/logos/aidar.svg",
+    industry: "AI / Music Tech",
   },
   {
     name: "Unitesync",
@@ -881,6 +913,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.unitesync.com/",
     role: "End-to-End Platform Development",
+    logo: "/logos/unitesync.png",
+    industry: "Music Tech",
   },
   {
     name: "Music Tech Europe Academy",
@@ -889,6 +923,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.musictecheuropeacademy.eu/",
     role: "Mentorship on Financing Strategy for Music Tech Startups in MTEA Accelerator",
+    logo: "/logos/music-tech-europe.png",
+    industry: "EdTech / Music",
   },
   {
     name: "Advochord",
@@ -896,6 +932,8 @@ export const portfolioCompanies: {
     category: "Music Tech",
     type: "Client",
     role: "—",
+    logo: "/logos/advochord.png",
+    industry: "Music Tech",
   },
   {
     name: "Mantik Music Norway",
@@ -904,6 +942,8 @@ export const portfolioCompanies: {
     type: "Investment",
     url: "https://mantik.cc/",
     role: "—",
+    logo: "/logos/mantik-music.png",
+    industry: "Music Tech",
   },
   {
     name: "Russelåter.no",
@@ -912,6 +952,8 @@ export const portfolioCompanies: {
     type: "Project",
     url: "",
     role: "—",
+    logo: "/logos/russelaater.png",
+    industry: "Music / Culture",
   },
   {
     name: "Mintix",
@@ -920,6 +962,8 @@ export const portfolioCompanies: {
     type: "Investment",
     url: "https://mintixapp.com/",
     role: "—",
+    logo: "/logos/mintix.png",
+    industry: "Events Tech",
   },
 
   // ── Projects (AV-owned / internal) ────────────────────────────────────────
@@ -929,6 +973,8 @@ export const portfolioCompanies: {
     category: "AI / SaaS",
     type: "Investment",
     role: "Co-found and Co-own / End-to-End Platform Development",
+    logo: "/logos/venture-builder-ai.png",
+    industry: "AI / SaaS",
   },
   {
     name: "Sera",
@@ -936,6 +982,8 @@ export const portfolioCompanies: {
     category: "Future of Work",
     type: "Project",
     role: "Found and Operate / Manage End-to-End Development",
+    logo: "/logos/sera.png",
+    industry: "Future of Work",
   },
   {
     name: "AI Dev Club",
@@ -943,6 +991,8 @@ export const portfolioCompanies: {
     category: "Community",
     type: "Project",
     role: "Found and Operate / Manage End-to-End Development",
+    logo: "/logos/ai-dev-club.svg",
+    industry: "Community / AI",
   },
   {
     name: "Sound Connections Podcast",
@@ -951,6 +1001,8 @@ export const portfolioCompanies: {
     type: "Project",
     url: "https://www.soundconnections.io/",
     role: "Found and Produce Podcast / Interview 110+ Founders and Investors / Build Audience and Distribution",
+    logo: "/logos/sound-connections.png",
+    industry: "Media",
   },
   {
     name: "Capella Norway",
@@ -958,6 +1010,8 @@ export const portfolioCompanies: {
     category: "Music Tech",
     type: "Investment",
     role: "Co-found / Platform Development / Community Building",
+    logo: "/logos/capella-norway.png",
+    industry: "Music Tech",
   },
   {
     name: "Molly og Mi",
@@ -966,6 +1020,8 @@ export const portfolioCompanies: {
     type: "Investment",
     url: "https://mollyogmi.no/",
     role: "Co-own and Cooperate / Manage Social Media / Handle Music Production / Conduct Market Research / Develop Website",
+    logo: "/logos/molly-og-mi.png",
+    industry: "Music / Entertainment",
   },
 
   // ── Clients (service engagements) ─────────────────────────────────────────
@@ -976,6 +1032,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://volumio.com/",
     role: "Define Targeted Profiles / Develop Sales Presentation Materials / Run Outreach Campaigns",
+    logo: "/logos/volumio.png",
+    industry: "Music Tech",
   },
   {
     name: "Solintegra",
@@ -984,6 +1042,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.solintegra.no/",
     role: "Support Investor Outreach / Manage Platform Stability / Conduct Lead Research",
+    logo: "/logos/solintegra.png",
+    industry: "Energy",
   },
   {
     name: "Matherials",
@@ -992,6 +1052,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://matherials.no/",
     role: "Define ICP / Develop Tailored Messaging Framework / Set Up Outreach Tracking",
+    logo: "/logos/matherials.png",
+    industry: "EdTech",
   },
   {
     name: "Instorier",
@@ -1000,6 +1062,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://instorier.com/",
     role: "Conduct Lead Identification / Design CRM-ready Systems / Develop Outreach Templates",
+    logo: "/logos/instorier.png",
+    industry: "SaaS",
   },
   {
     name: "LongformAI",
@@ -1008,6 +1072,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://longform.ai/",
     role: "Develop Investor Pitch Deck / Build CRM System / Support Investor Outreach",
+    logo: "/logos/longformai.png",
+    industry: "AI / SaaS",
   },
   {
     name: "Bandbeat",
@@ -1016,6 +1082,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.bandbeat.com/",
     role: "Map Customer Segments / Develop Outreach Messaging and Run Campaigns",
+    logo: "/logos/bandbeat.png",
+    industry: "Music Tech",
   },
   {
     name: "Hopcast",
@@ -1024,6 +1092,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.hopcast.fr/",
     role: "Market Research / Define Investor Profiles / Craft Outreach Messaging",
+    logo: "/logos/hopcast.png",
+    industry: "Mobile Tech",
   },
   {
     name: "Vekstpartner",
@@ -1032,6 +1102,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.vekstpartner.no/",
     role: "Deliver Expert-Led Masterclasses on Advanced AI Tools",
+    logo: "/logos/vekstpartner.svg",
+    industry: "Business Services",
   },
   {
     name: "unhurd music",
@@ -1040,6 +1112,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.unhurdmusic.com/",
     role: "Develop and Execute Digital Marketing Strategy",
+    logo: "/logos/unhurd-music.png",
+    industry: "Music Tech",
   },
   {
     name: "SpareBank 1",
@@ -1048,6 +1122,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.sparebank1.no/",
     role: "Support AI-Avatar Innovation and Presentations at Innovation Conferences",
+    logo: "/logos/sparebank1.png",
+    industry: "FinTech",
   },
   {
     name: "Music Estonia",
@@ -1056,6 +1132,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.musicestonia.eu/en",
     role: "Run Accelerator Program for Tallinn Music Week",
+    logo: "/logos/music-estonia.png",
+    industry: "Music / Policy",
   },
   {
     name: "PaleBlue",
@@ -1064,6 +1142,8 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://pale.blue/",
     role: "Develop B2B Marketing Strategy / Conduct Market Analysis / Enrich Lead Data",
+    logo: "/logos/paleblue.png",
+    industry: "Industrial Tech",
   },
   {
     name: "WARM",
@@ -1072,6 +1152,8 @@ export const portfolioCompanies: {
     type: "Investment",
     url: "https://www.warmmusic.net/",
     role: "Modernize Web Application / Conduct Lead Research / Manage Outreach to Partners",
+    logo: "/logos/warm.png",
+    industry: "Music Tech",
   },
   {
     name: "University of Stavanger",
@@ -1080,6 +1162,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.uis.no/en",
     role: "Co-develop Advanced Online Courses",
+    industry: "EdTech",
   },
   {
     name: "Oracles of Norway",
@@ -1088,6 +1171,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.oraclesofnorway.com/",
     role: "Digital Marketing Strategy / End-to-End AI-Powered Mobile Platform Development",
+    industry: "Culture / Media",
   },
   {
     name: "Music Frontiers",
@@ -1096,6 +1180,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://musicfrontiers.com/",
     role: "Co-organize and Manage Accelerator Program / Participant Outreach, Mentorship, and Event Promotion",
+    industry: "Music Tech",
   },
   {
     name: "Temple Studios",
@@ -1104,6 +1189,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.templestudios.be/",
     role: "Build Pitch Deck, Data Room, and Investor Strategy",
+    industry: "Creative Industries",
   },
   {
     name: "Family in Music",
@@ -1112,6 +1198,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://familyinmusic.com/",
     role: "Build Pitch Deck, Data Rooms, and Investor Strategy",
+    industry: "Music Tech",
   },
   {
     name: "Get Moments",
@@ -1120,6 +1207,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://organizer.getmoments.com/",
     role: "Define ICPs / Run Targeted Outreach / Develop Sales Playbook",
+    industry: "Events Tech",
   },
   {
     name: "StreamPush",
@@ -1128,6 +1216,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://streampush.co/",
     role: "Lead Identification, Data Enrichment, and Prospect Qualification / Run Outreach Campaigns",
+    industry: "Music Tech",
   },
   {
     name: "Sambach",
@@ -1136,6 +1225,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://sambach.art/",
     role: "Lead and Prospect Identification / Manage Outreach Campaigns",
+    industry: "Music / Performance",
   },
   {
     name: "Music Tech at Slush",
@@ -1144,6 +1234,7 @@ export const portfolioCompanies: {
     type: "Client",
     url: "https://www.musictech.live/",
     role: "Design and Lead the Music Tech Accelerator Programme",
+    industry: "Music Tech",
   },
 ];
 

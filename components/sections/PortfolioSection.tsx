@@ -229,14 +229,31 @@ export default function PortfolioSection() {
                   {String(i + 1).padStart(2, "0")}
                 </div>
 
-                <div className="flex items-center justify-between mb-5">
+                {/* Industry label — top of card */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-3 h-px bg-crimson/50" />
                   <span
-                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-[700] uppercase tracking-wider bg-warm-white/[0.06] text-warm-white/40 border border-warm-white/[0.1] group-hover:border-crimson/20 group-hover:text-crimson/60 transition-colors duration-300"
+                    className="text-[10px] font-[600] uppercase tracking-[0.22em] text-warm-white/35 group-hover:text-crimson/60 transition-colors duration-300"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    {company.type}
+                    {company.industry}
                   </span>
                 </div>
+
+                {/* Company logo — small, monochrome */}
+                {company.logo && (
+                  <div className="mb-4 h-[28px] flex items-center">
+                    <img
+                      src={company.logo}
+                      alt={`${company.name} logo`}
+                      className="max-h-[28px] max-w-[100px] w-auto object-contain opacity-50 group-hover:opacity-80 transition-opacity duration-300"
+                      style={{
+                        filter: "grayscale(1) brightness(1.8) contrast(0.9)",
+                      }}
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
                 <h3
                   className="text-warm-white leading-none mb-3 group-hover:text-crimson transition-colors duration-200"
@@ -273,10 +290,10 @@ export default function PortfolioSection() {
 
                 <div className="pt-4 border-t border-warm-white/[0.1] flex items-center justify-between">
                   <span
-                    className="text-warm-white/50 text-[12px] uppercase tracking-[0.15em]"
+                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-[600] uppercase tracking-wider bg-warm-white/[0.05] text-warm-white/35 border border-warm-white/[0.08]"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    {company.category}
+                    {company.type}
                   </span>
                   {company.url && (
                     <span
