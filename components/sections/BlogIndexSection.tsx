@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { blogPosts } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { FloatingNodes, DataFragments, DashedArc } from "@/components/ui/ambient-orbitals";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -14,8 +16,51 @@ function fmt(d: string) {
 
 export default function BlogIndexSection() {
   return (
-    <section className="bg-void min-h-[calc(100vh-80px)] pt-[120px] pb-24">
-      <div className="mx-auto max-w-[1400px] px-8 md:px-12">
+    <section className="relative bg-void min-h-[calc(100vh-80px)] pt-[120px] pb-24 overflow-hidden">
+      {/* Dot grid texture */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(242,237,228,0.02) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+
+      {/* Crimson radial glow — right */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 40% 50% at 85% 40%, rgba(200,16,46,0.03) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* LogoMark — top-left, ghosted */}
+      <div className="absolute top-16 left-[-20px] hidden lg:block pointer-events-none select-none" aria-hidden>
+        <LogoMark
+          className="w-[240px] h-auto opacity-[0.035]"
+          pillarColor="rgba(242,237,228,0.025)"
+          archColor="rgba(200,16,46,0.025)"
+          strokeWidth={4}
+          style={{ transform: "rotate(-10deg)" }}
+        />
+      </div>
+
+      {/* FloatingNodes — top-right */}
+      <div className="absolute top-28 right-[8%] hidden lg:block w-[60px] h-[50px]">
+        <FloatingNodes bobSpeed={10} bobAmount={7} />
+      </div>
+
+      {/* DataFragments — bottom-left */}
+      <div className="absolute bottom-20 left-[10%] hidden md:block w-[55px] h-[36px]">
+        <DataFragments count={3} width={55} color="rgba(200,16,46,0.15)" secondaryColor="rgba(242,237,228,0.06)" bobSpeed={9} bobAmount={7} />
+      </div>
+
+      {/* DashedArc — bottom area */}
+      <div className="absolute bottom-8 right-[20%] hidden lg:block w-[240px] h-[100px]">
+        <DashedArc width={240} height={100} color="rgba(200,16,46,0.05)" dashArray="3 12" flip />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
         {/* ── Header ── */}
         <div className="mb-16">
           <motion.div

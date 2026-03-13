@@ -8,12 +8,12 @@ import { HeroVisual } from "@/components/ui/hero-visual";
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen bg-void flex flex-col justify-center overflow-hidden">
-      {/* Fine dot grid */}
+      {/* Fine dot grid — hidden on mobile where dots overpower the composition */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.05) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(242,237,228,0.03) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -27,12 +27,30 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Crimson glow behind headline */}
+      {/* Crimson glow behind headline — stronger on mobile for atmospheric depth */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse 60% 55% at 32% 48%, rgba(200,16,46,0.09) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Mobile: secondary crimson glow — bottom-right warmth (replaces hidden orbital visual) */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 40% at 85% 75%, rgba(200,16,46,0.07) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Mobile: subtle top-edge crimson bleed for depth */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 30% at 50% 0%, rgba(200,16,46,0.04) 0%, transparent 60%)",
         }}
       />
 
@@ -48,7 +66,7 @@ export default function HeroSection() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12 pt-32 pb-24">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12 pt-24 md:pt-32 pb-16 md:pb-24">
         {/* Eyebrow */}
         <motion.div
           className="flex items-center gap-3 mb-8"
@@ -91,8 +109,9 @@ export default function HeroSection() {
             transition={{ delay: 0.55, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="relative -mt-1 md:-mt-4"
           >
-            <h1
-              className="text-crimson italic leading-[0.85] select-none"
+            <span
+              role="doc-subtitle"
+              className="block text-crimson italic leading-[0.85] select-none"
               style={{
                 fontFamily: "var(--font-cormorant)",
                 fontSize: "clamp(37px, 12vw, 175px)",
@@ -100,7 +119,7 @@ export default function HeroSection() {
               }}
             >
               {hero.lineTwo}
-            </h1>
+            </span>
           </motion.div>
 
           {/* Line 3: FOUNDERS. — Bebas, outlined */}
@@ -110,8 +129,9 @@ export default function HeroSection() {
             transition={{ delay: 0.72, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="relative -mt-1 md:-mt-4"
           >
-            <h1
-              className="leading-[0.9] tracking-[0.02em] select-none"
+            <span
+              className="block leading-[0.9] tracking-[0.02em] select-none"
+              aria-hidden="true"
               style={{
                 fontFamily: "var(--font-bebas)",
                 fontSize: "clamp(70px, 15vw, 210px)",
@@ -120,19 +140,19 @@ export default function HeroSection() {
               }}
             >
               {hero.lineThree}
-            </h1>
+            </span>
           </motion.div>
         </div>
 
         {/* Sub copy + CTA */}
         <motion.div
-          className="mt-12 md:mt-16 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16"
+          className="mt-8 md:mt-16 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16"
           initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.95, duration: 0.7 }}
         >
           <p
-            className="text-warm-white/50 text-[20px] leading-relaxed max-w-sm border-l-2 border-crimson/35 pl-5"
+            className="text-warm-white/50 text-[17px] md:text-[20px] leading-relaxed max-w-sm border-l-2 border-crimson/35 pl-4 md:pl-5"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {hero.sub}
@@ -141,7 +161,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-crimson text-white rounded-full text-[17px] font-[500] hover:bg-[#a80d25] transition-colors duration-200 tracking-wide whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-crimson text-white rounded-full text-[17px] font-[500] hover:bg-crimson-dark transition-colors duration-200 tracking-wide whitespace-nowrap"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               Start a conversation
@@ -159,7 +179,7 @@ export default function HeroSection() {
 
         {/* Stats strip */}
         <motion.div
-          className="mt-20 pt-8 border-t border-white/[0.06] grid grid-cols-3 gap-8 max-w-xl"
+          className="mt-14 md:mt-20 pt-6 md:pt-8 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-5 md:gap-8 max-w-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.6 }}
@@ -170,7 +190,7 @@ export default function HeroSection() {
                 className="text-warm-white leading-none mb-1"
                 style={{
                   fontFamily: "var(--font-bebas)",
-                  fontSize: "clamp(40px, 5vw, 58px)",
+                  fontSize: "clamp(36px, 5vw, 58px)",
                   letterSpacing: "0.02em",
                 }}
               >

@@ -1,201 +1,233 @@
-# Amplitude Ventures — Claude Code Reference
+# Amplitude Ventures v2 — Codebase & Brand Reference
 
-> ## ⛔ LEGACY PROJECT — DO NOT EDIT
-> **This is an old version of the Amplitude Ventures website. It is no longer active.**
-> The canonical production project is at `/Users/jakobwredstrom/Desktop/amplitude-ventures-new`.
-> Do not make changes here. All future work goes to `amplitude-ventures-new`.
-
-> **For new agents**: Read this entire file before touching anything. It documents the exact current state of the project, all naming conventions, patterns to follow, and what is and isn't done. Do not assume based on file names — the source of truth is here.
+> **Production site**: `http://172.239.240.151:4000` (Linode VPS, nginx static)
+> **Dev server**: `npm run dev` → `http://localhost:3003`
+> **Project path**: `/Users/jakobwredstrom/Desktop/New website/amplitude-ventures-v2/`
 
 ---
 
-## What this project is
+## 1 · What This Is
 
-Production website for **Amplitude Ventures**, a Scandinavian early-stage VC firm.
+Production marketing website for **Amplitude Ventures**, a Scandinavian pre-seed venture studio based in Stavanger, Norway. They co-build with early-stage founders — product, validation, sales, and fundraising — from first idea to investor-ready company.
 
-**Aesthetic direction**: _Editorial dark luxury_ — near-black void background (`#080808`), crimson accents (`#C8102E`), massive Bebas Neue display type colliding with Cormorant Garamond italic, generous white space, zero decorative clutter. Think _Kinfolk_ meets _The Economist_ meets a Bloomberg terminal.
-
-**Dev server**: `npm run dev` → http://localhost:3003
-(Port is hardcoded in package.json. Do NOT change it.)
+The site is a fully static Next.js export (no server runtime), deployed to a Linode VPS via rsync and served by nginx.
 
 ---
 
-## Stack
+## 2 · Stack
 
-| Layer | Choice | Notes |
-|---|---|---|
-| Framework | Next.js 15 (App Router) | Server + Client components, `<Image>` optimisation |
-| Styling | Tailwind CSS v4 | Utility-first; all tokens in `app/globals.css` |
-| Animation | Framer Motion | `whileInView`, springs, `useScroll`/`useTransform`, SVG orbits |
-| Fonts | Google Fonts via `next/font` | Bebas Neue, Cormorant, DM Sans — loaded in `app/layout.tsx` |
-| Language | TypeScript | Strict mode |
-| Hero visual | Custom SVG + Framer Motion | `components/ui/hero-visual.tsx` — NO Spline, no external CDN |
+| Layer | Choice | Version | Notes |
+|---|---|---|---|
+| Framework | Next.js (App Router) | 16.1.6 | Static export (`output: "export"`) |
+| Styling | Tailwind CSS | v4 | `@theme inline` tokens in `globals.css` |
+| Animation | Framer Motion | 12.35.x | `whileInView`, springs, `useScroll`/`useTransform` |
+| Fonts | Google Fonts via `next/font` | — | Bebas Neue, Cormorant Garamond, DM Sans |
+| Icons | Lucide React | 0.577.x | Only a handful used (Linkedin, nav icons) |
+| Language | TypeScript | 5.x | Strict mode |
+| Build | Static HTML export | — | `npm run build` → `out/` directory |
+| Deploy | rsync over SSH to Linode | — | nginx serves port 4000 |
 
-> **Note**: The Spline 3D robot that was in the hero section has been **permanently removed** and replaced with `HeroVisual`. The file `components/ui/splite.tsx` (the old Spline wrapper) still exists but is unused — it can be deleted.
+### Key Architectural Decisions
 
----
-
-## Design Tokens
-
-Defined in `app/globals.css` via `@theme inline`. **Never change these without a full QA pass.**
-
-| Token | Value | Usage |
-|---|---|---|
-| `bg-void` | `#080808` | Main background — used on `<main>` |
-| `bg-surface` | `#0f0f0f` | Alternate section backgrounds |
-| `bg-surface-2` | `#171717` | Cards, panels |
-| `bg-surface-3` | `#1f1f1f` | Nested card elements |
-| `text-crimson` | `#C8102E` | Brand accent — CTAs, highlights, italic lines |
-| `crimson-dim` | `rgba(200,16,46,0.15)` | Subtle crimson fills |
-| `text-warm-white` | `#F2EDE4` | Primary body text |
-| `text-muted` | `#666666` | Secondary/meta text |
-| `text-faint` | `#2e2e2e` | Barely-visible decorative text |
-
-### Global CSS utilities (also in `globals.css`)
-- **Film grain overlay** — `body::after` pseudo-element, `opacity: 0.03`, z-index 9999, always on top
-- **Custom scrollbar** — 3px wide, crimson thumb
-- **Selection highlight** — crimson background
-- **Ticker marquee** — `.ticker-track` with 28s linear loop
-- **Ring rotations** — `.ring-cw-1`, `.ring-cw-2`, `.ring-ccw-1`, `.ring-ccw-2` — used in ServicesSection
+- **Static export** — no server-side rendering, no API routes, no middleware. Every page is pre-rendered to HTML at build time. This means `output: "export"` in `next.config.ts` and `images: { unoptimized: true }`.
+- **No CMS** — all content lives in `lib/content/index.ts`. Blog posts are static objects. This is intentional for v2; a CMS (Sanity, MDX) may be added later.
+- **No external dependencies for the hero** — the orbital animation is pure SVG + Framer Motion. No Spline, no Three.js, no CDN-hosted 3D.
 
 ---
 
-## Font Variables
+## 3 · Brand Identity
 
-```tsx
-var(--font-bebas)      // Bebas Neue — display/headline, ALL-CAPS only, weight: 400
-var(--font-cormorant)  // Cormorant Garamond — italic accents, weights: 300–700
-var(--font-dm-sans)    // DM Sans — body copy, UI labels, weights: 300–600
+### 3.1 Aesthetic Direction
+
+**Editorial dark luxury** — the visual language sits at the intersection of high-end editorial design and financial authority. Think _Kinfolk_ meets _The Economist_ meets a Bloomberg terminal.
+
+| Principle | Execution |
+|---|---|
+| **Near-black void** | `#080808` background everywhere. Never gray, never blue-black. |
+| **Crimson as the only accent** | `#C8102E`. Used for CTAs, italic lines, hover states, subtle glows. Never another color. |
+| **Warm white, not pure white** | `#F2EDE4` for text. Cream-toned, not clinical. |
+| **Massive type collisions** | Bebas Neue at 100–160px clamp sizes slamming into Cormorant italic. Headlines are architecture, not decoration. |
+| **Generous negative space** | Sections breathe. Content is never cramped. |
+| **Film grain overlay** | A barely-visible SVG noise texture sits over the entire page (`opacity: 0.03`). This adds organic warmth to the digital surface. |
+| **Crosshair cursor** | Everywhere — intentional, unconventional, signals precision. |
+
+### 3.2 Color Palette
+
+| Token | Hex | CSS Variable | Usage |
+|---|---|---|---|
+| Void | `#080808` | `bg-void` | Primary background — `<main>`, `<body>` |
+| Surface | `#0f0f0f` | `bg-surface` | Alternate section backgrounds |
+| Surface 2 | `#171717` | `bg-surface-2` | Cards, panels |
+| Surface 3 | `#1f1f1f` | `bg-surface-3` | Nested card elements |
+| Crimson | `#C8102E` | `text-crimson` / `bg-crimson` | Brand accent — CTAs, highlights, italic text |
+| Crimson Dim | `rgba(200,16,46,0.15)` | `bg-crimson-dim` | Subtle crimson fills, glow effects |
+| Crimson Dark | `#a80d25` | `bg-crimson-dark` | Hover state for crimson buttons/CTAs |
+| Warm White | `#F2EDE4` | `text-warm-white` | Primary body text, headlines |
+| Muted | `#666666` | `text-muted` | Secondary/meta text |
+| Faint | `#2e2e2e` | `text-faint` | Barely-visible decorative text |
+
+**Opacity conventions** used throughout:
+- `text-warm-white/80` — primary readable text
+- `text-warm-white/50` — body paragraphs
+- `text-warm-white/35` — secondary info, labels
+- `text-warm-white/15` — tags, borders, ghost elements
+- `border-white/[0.06]` — subtle dividers
+- `bg-crimson/[0.03]` — barely-there warmth overlays
+
+### 3.3 Typography
+
+Three fonts. No exceptions. Never add Inter, Roboto, Arial, or system fonts.
+
+| Font | Variable | Role | Weights | Usage Notes |
+|---|---|---|---|---|
+| **Bebas Neue** | `var(--font-bebas)` | Display headlines | 400 only | ALL-CAPS always. Used at massive sizes (52px–160px clamped). The voice of authority. |
+| **Cormorant Garamond** | `var(--font-cormorant)` | Italic accents, pull quotes | 300–700, normal + italic | Used italic for subheadlines, last names, quotes. The voice of elegance. |
+| **DM Sans** | `var(--font-dm-sans)` | Body copy, UI labels, buttons | 300–600 | The workhorse. Clean, modern, readable. |
+
+**Critical rule**: Always set font family with `style={{ fontFamily: "var(--font-bebas)" }}`. **Never** use `className="font-display"` or similar — Tailwind v4 variable resolution doesn't work correctly with `next/font` class injection.
+
+### 3.4 Type Hierarchy Examples
+
+```
+Page headline:     Bebas Neue, clamp(72px, 11vw, 160px), warm-white, leading-[0.86]
+Subheadline:       Cormorant italic, clamp(40px, 7vw, 100px), crimson, leading-none
+Section heading:   Bebas Neue, clamp(52px, 7vw, 96px), warm-white
+Body paragraph:    DM Sans, 18px, warm-white/50, leading-relaxed
+Eyebrow label:     DM Sans, 13px, crimson, font-600, uppercase, tracking-[0.3em]
+Tag/pill:          DM Sans, 10–11px, warm-white/15, uppercase, tracking-[0.22em]
+Pull quote:        Cormorant italic, clamp(28px, 4vw, 52px), warm-white/80
 ```
 
-**Rule**: Always set `fontFamily` inline with `style={{ fontFamily: "var(--font-bebas)" }}`.
-Never set font family in Tailwind `className` — it won't resolve to the CSS variable correctly.
+### 3.5 Logo
+
+The logo is a text wordmark: **"AMPLITUDE VENTURES"** in a condensed sans-serif. Stored at `/public/logo-main.png`.
+
+- **Navbar**: 28px height, white on transparent
+- **Footer**: 24px height, 55% opacity, hover to 75%
+- No icon mark is used on the live site (legacy icon marks exist in `/public/` but are unused)
+
+### 3.6 Photography Treatment
+
+Team photos use a cinematic grading system to dissolve into the dark background:
+
+```css
+filter: brightness(0.68) contrast(0.88) saturate(0.15)
+```
+
+Plus multi-layer gradient overlays:
+- **Bottom**: Strong dissolve to void (`from-[#080808] via-[#080808]/40`)
+- **Top**: Subtle haze (`from-[#080808]/50`)
+- **Side**: Directional bleed toward the text block
+- **Film grain**: SVG noise at `opacity: 0.07`, `mix-blend-overlay`
+- **Crimson warmth**: `bg-crimson/[0.03] mix-blend-color` for subtle warm toning
+
+This creates portraits that feel embedded in the page rather than floating on it.
 
 ---
 
-## Folder Structure
+## 4 · Folder Structure
 
 ```
 amplitude-ventures-v2/
 ├── app/
-│   ├── layout.tsx          ← Root layout: fonts declared, <Spotlight /> mounted, metadata
-│   ├── page.tsx            ← Home page: imports and renders all sections in order
-│   └── globals.css         ← Tailwind v4 config, all design tokens, CSS utilities
+│   ├── layout.tsx              # Root layout: fonts, metadata, JSON-LD, Spotlight
+│   ├── page.tsx                # Home — renders all sections in order
+│   ├── globals.css             # Tailwind v4 tokens, film grain, scrollbar, animations
+│   ├── not-found.tsx           # Custom 404
+│   ├── robots.ts               # SEO robots config
+│   ├── sitemap.ts              # Auto-generated sitemap
+│   ├── about/page.tsx          # /about — team bios, firm story
+│   ├── blog/page.tsx           # /blog — all posts index
+│   │   └── [slug]/page.tsx     # /blog/:slug — individual articles
+│   ├── contact/page.tsx        # /contact — contact form
+│   ├── offering/page.tsx       # /offering — service pillars
+│   └── portfolio/page.tsx      # /portfolio — company grid
 │
 ├── components/
 │   ├── layout/
-│   │   ├── Navbar.tsx      ← Fixed header, transparent→blurred on scroll, TubelightNav, logo
-│   │   └── Footer.tsx      ← Bottom links, copyright, social icons
+│   │   ├── Navbar.tsx          # Fixed header, scroll-blur, TubelightNav, mobile drawer
+│   │   └── Footer.tsx          # Column links, logo, copyright, motto
 │   │
-│   ├── sections/           ← One file per page section, rendered in order in page.tsx
-│   │   ├── HeroSection.tsx         ← Typographic collision (Bebas/Cormorant), HeroVisual orbital
-│   │   ├── TickerSection.tsx       ← Horizontal marquee of portfolio company names
-│   │   ├── WhoSection.tsx          ← Sticky heading + 3 founder type cards + parallax watermark
-│   │   ├── ServicesSection.tsx     ← Auto-advancing tabs (7s) + CSS ring visual
-│   │   ├── PrinciplesSection.tsx   ← Accordion, alternating left/right entrance animations
-│   │   ├── StatsSection.tsx        ← Animated CountUp numbers + "AV" parallax drift
-│   │   ├── TestimonialsSection.tsx ← Auto-advancing quote carousel (5.5s), pauses on hover
-│   │   ├── BlogSection.tsx         ← Featured post (large) + 2 smaller cards
-│   │   ├── FooterCta.tsx           ← Full-bleed crimson section, split-word entrance animation
-│   │   └── (index pages needed)   ← /portfolio, /about, /contact, /blog/[slug] NOT BUILT YET
+│   ├── sections/               # One file per page section (all "use client")
+│   │   ├── HeroSection.tsx     # Typographic collision + HeroVisual orbital
+│   │   ├── TickerSection.tsx   # Bi-directional marquee of portfolio names
+│   │   ├── WhoSection.tsx      # Sticky heading + 4 founder-type accordion cards
+│   │   ├── ServicesSection.tsx  # Auto-advancing tabs (7s) + CSS ring visual
+│   │   ├── PrinciplesSection.tsx # Accordion, alternating entrance animations
+│   │   ├── StatsSection.tsx    # Animated CountUp numbers + "AV" parallax drift
+│   │   ├── TestimonialsSection.tsx # Auto-advancing quote carousel (5.5s)
+│   │   ├── BlogSection.tsx     # Featured post + 2 smaller cards (home page)
+│   │   ├── FooterCta.tsx       # Full-bleed crimson CTA, split-word animation
+│   │   ├── AboutSection.tsx    # Team bios with editorial photo treatment
+│   │   ├── PortfolioSection.tsx # Company grid with category filters
+│   │   ├── OfferingSection.tsx  # Service pillars + process timeline
+│   │   ├── ContactSection.tsx   # Contact form + info
+│   │   ├── BlogIndexSection.tsx # Blog listing page
+│   │   └── BlogPostSection.tsx  # Individual blog post renderer
 │   │
 │   └── ui/
-│       ├── hero-visual.tsx         ← Abstract orbital SVG animation (pure SVG + Framer Motion)
-│       ├── spotlight.tsx           ← Fixed crimson mouse-tracking glow (mounted in layout)
-│       ├── tubelight-navbar.tsx    ← Shared-layout "lamp" indicator for nav items
-│       └── splite.tsx              ← UNUSED — old Spline wrapper, safe to delete
+│       ├── hero-visual.tsx     # Abstract orbital SVG animation (pure SVG + FM)
+│       ├── spotlight.tsx       # Fixed crimson mouse-tracking glow (mounted in layout)
+│       ├── tubelight-navbar.tsx # Shared-layout "lamp" indicator for nav items
+│       ├── team-member-card.tsx # Editorial team member card with photo treatment
+│       ├── logo-mark.tsx       # SVG pillar-and-arch mark (used decoratively)
+│       ├── ambient-orbitals.tsx # MiniOrbital, FloatingNodes, DashedArc components
+│       └── shimmer-text.tsx    # Text reveal animation utility
 │
 ├── lib/
 │   ├── content/
-│   │   └── index.ts        ← ALL site copy: nav, hero, stats, who, services, principles,
-│   │                          testimonials, blogPosts — single file, single import point
-│   └── utils.ts            ← `cn()` utility (clsx + tailwind-merge)
+│   │   └── index.ts            # ALL site copy — single source of truth
+│   └── utils.ts                # cn() utility (clsx + tailwind-merge)
 │
 ├── public/
-│   └── logo.svg            ← DROP THE REAL LOGO HERE. File expected but may not exist yet.
-│                             If missing, Navbar shows text-only wordmark "AMPLITUDE / ventures"
+│   ├── logo-main.png           # Primary wordmark logo
+│   ├── logo-mark-*.png         # Decorative icon marks (dark, red, white)
+│   ├── team/                   # Team member photos (jakob.jpg, tajdar.jpg, etc.)
+│   └── *.svg                   # Misc Next.js defaults
 │
-├── next.config.ts          ← Allows framerusercontent.com images (legacy, can be cleaned up)
-├── package.json            ← `dev` script hardcoded to port 3003
-├── tsconfig.json           ← @/* alias → root
-└── CLAUDE.md               ← This file
+├── next.config.ts              # Static export config
+├── package.json                # Dependencies, scripts
+├── tsconfig.json               # @/* alias → root
+└── CLAUDE.md                   # This file
 ```
 
 ---
 
-## Content Data (`lib/content/index.ts`)
+## 5 · Content System (`lib/content/index.ts`)
 
-**All copy lives here.** Never hardcode strings in components. Import like:
+**ALL copy lives in this one file.** Components never hardcode strings. Import like:
+
 ```tsx
 import { hero, stats, services, testimonials } from "@/lib/content";
 ```
 
-Current exports:
+### Exports
+
 | Export | Type | Used in |
 |---|---|---|
-| `nav` | `{ links[], cta }` | Navbar.tsx |
+| `nav` | `{ links[], cta }` | Navbar |
 | `ticker` | `string[]` | TickerSection |
 | `hero` | `{ eyebrow, lineOne, lineTwo, lineThree, sub }` | HeroSection |
-| `stats` | `{ number, suffix, label }[]` | HeroSection |
+| `stats` | `{ number, suffix, label }[]` | HeroSection, StatsSection |
 | `whoWeWorkWith` | `{ num, title, body, tag }[]` | WhoSection |
 | `services` | `{ id, title, headline, body, detail }[]` | ServicesSection |
 | `principles` | `{ num, title, body }[]` | PrinciplesSection |
 | `testimonials` | `{ quote, name, role, co }[]` | TestimonialsSection |
-| `blogPosts` | `{ slug, category, title, excerpt, date, readTime }[]` | BlogSection |
+| `blogPosts` | `{ slug, category, title, excerpt, date, ... }[]` | BlogSection, BlogIndex |
+| `about` | `{ headline, story, team[], pullQuote }` | AboutSection |
+| `portfolio` | `{ companies[], categories[] }` | PortfolioSection |
+| `offering` | `{ pillars[], process[] }` | OfferingSection |
+| `contact` | `{ heading, subheading, methods[] }` | ContactSection |
+| `footer` | `{ tagline, columns[], copyright, motto }` | Footer |
 
 ---
 
-## Component: HeroVisual (`components/ui/hero-visual.tsx`)
+## 6 · Animation System
 
-This is the orbital SVG animation on the right side of the hero. It replaced the Spline 3D robot.
+### 6.1 Standard Scroll Entrance
 
-**Architecture**: Three concentric elliptical orbits rotating at different speeds around a central pulsing node:
-- **Outer orbit**: 95s clockwise, tilted −22°, 5 nodes (crimson + white mix)
-- **Middle orbit**: 58s counter-clockwise, tilted +14°, 5 nodes
-- **Inner orbit**: 30s clockwise, circular, 3 nodes
+Every section uses this pattern for staggered reveal on scroll:
 
-**Key Framer Motion pattern for SVG rotation**:
-```tsx
-<motion.g
-  style={{ originX: cx, originY: cy }}  // SVG user-space coordinates, not CSS %
-  animate={{ rotate: 360 }}
-  transition={{ duration: 95, ease: "linear", repeat: Infinity }}
->
-```
-`originX`/`originY` must be raw numbers matching the SVG coordinate system — NOT `"50%"`.
-
-**Center point**: `cx = 320`, `cy = 330` (in a `viewBox="0 0 640 660"` SVG)
-
-Only visible on desktop (`hidden lg:flex` wrapper in HeroSection). Gradient fades on left, top, and bottom edges blend it into the background.
-
----
-
-## Component: Spotlight (`components/ui/spotlight.tsx`)
-
-Mounted once in `app/layout.tsx`. Tracks `mousemove` globally. Always `position: fixed`, `z-index: 3`.
-
-**Current opacity**: `rgba(200,16,46,0.13)` at center → `rgba(200,16,46,0.04)` at 50% → transparent at 72%.
-To strengthen: increase the first alpha value. To remove: delete `<Spotlight />` from `app/layout.tsx`.
-
----
-
-## Component: Navbar (`components/layout/Navbar.tsx`)
-
-- Transparent at page top, blurs to `bg-[#080808]/92` on scroll (threshold: 32px)
-- Uses `TubelightNav` (`components/ui/tubelight-navbar.tsx`) for the desktop nav — shared-layout `layoutId="tubelight-lamp"` animates the active indicator
-- Logo: `<Image src="/logo.svg" />` with `onError` fallback that hides the broken img. If `/public/logo.svg` doesn't exist, the text wordmark "AMPLITUDE / ventures" renders cleanly
-- Mobile: full-screen drawer with staggered entrance animations
-
-**Nav items** (defined in `NAV_ITEMS` array at top of Navbar.tsx):
-Home, About Us, Services, Portfolio, Blog, Contact
-
----
-
-## Animation Patterns
-
-Follow these **exactly** for consistency across sections:
-
-### Standard scroll entrance
 ```tsx
 initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -203,122 +235,246 @@ viewport={{ once: true, margin: "-80px" }}
 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
 ```
 
-### Directional entrance rules
-| Element type | Direction | Value |
+The ease curve `[0.22, 1, 0.36, 1]` is used everywhere. It's an aggressive ease-out that makes entries feel swift and decisive.
+
+### 6.2 Directional Conventions
+
+| Element | Direction | Translate |
 |---|---|---|
 | Section headings | Slide from left | `x: -28` |
 | Right-column content | Slide from right | `x: 24` |
-| Accordion items | Alternating per index | `x: i % 2 === 0 ? -24 : 24` |
-| FooterCta word split | "READY TO" from left, "build?" from right | |
+| Accordion items | Alternating | `x: i % 2 === 0 ? -24 : 24` |
+| Team cards (left) | Image from left, text from right | |
+| Team cards (right) | Image from right, text from left | |
+| FooterCta | "READY TO" from left, "build?" from right | |
 
-### Hero section entrance (page load, not scroll)
+### 6.3 Hero Entrance (Page Load)
+
 ```tsx
 initial={{ opacity: 0, y: 80, filter: "blur(20px)" }}
 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
 transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
 ```
 
-### Parallax watermarks
+Note: uses `animate` not `whileInView` — triggers immediately on load.
+
+### 6.4 Parallax Watermarks
+
 ```tsx
 const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-const y = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]); // WhoSection
-const x = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);  // StatsSection
+const y = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 ```
 
-### Auto-advancing UI timers
+Used for ghost text watermarks ("AMPLITUDE", "AV") that drift against the scroll direction.
+
+### 6.5 Auto-Advancing UI
+
 - **ServicesSection**: `setInterval(7000)` — pauses **permanently** on user click
 - **TestimonialsSection**: `setInterval(5500)` — pauses on hover, resumes on mouseLeave
 
 ---
 
-## Rules — Never Break These
+## 7 · Key Components
+
+### 7.1 HeroVisual (`components/ui/hero-visual.tsx`)
+
+Abstract orbital SVG — three concentric elliptical rings rotating at different speeds around a pulsing central node. Desktop only (`hidden lg:flex`).
+
+- Outer orbit: 95s clockwise, tilted −22°, 5 nodes
+- Middle orbit: 58s counter-clockwise, tilted +14°, 5 nodes
+- Inner orbit: 30s clockwise, circular, 3 nodes
+- ViewBox: `0 0 640 660`, center at `(320, 330)`
+
+**Critical**: `style={{ originX: cx, originY: cy }}` must use raw SVG coordinates (numbers), not CSS percentages.
+
+### 7.2 Spotlight (`components/ui/spotlight.tsx`)
+
+Global mouse-tracking crimson glow, mounted once in `layout.tsx`. `position: fixed`, `z-index: 3`. Creates a subtle light-follow effect on the dark background.
+
+### 7.3 TeamMemberCard (`components/ui/team-member-card.tsx`)
+
+Editorial-style team member layout with:
+- Alternating left/right positioning
+- Large ghosted index number
+- Multi-layer photo treatment (gradients + grain + desaturation)
+- Overlapping text block via negative margin (`-32px`)
+- LinkedIn CTA button
+- Focus area tags
+
+### 7.4 TubelightNav (`components/ui/tubelight-navbar.tsx`)
+
+Desktop navigation with a shared-layout animated indicator (Framer Motion `layoutId`). The "tubelight" lamp slides to the active item.
+
+---
+
+## 8 · Global CSS Features
+
+Defined in `app/globals.css`:
+
+| Feature | Implementation |
+|---|---|
+| Film grain | `body::after` pseudo-element, SVG noise, `opacity: 0.03`, `z-index: 9999` |
+| Custom scrollbar | 3px wide, crimson thumb, void track |
+| Selection highlight | Crimson background, white text |
+| Crosshair cursor | `cursor: crosshair` on `body`, `a`, `button` |
+| Ticker animation | `.ticker-track` (70s) + `.ticker-track-reverse` (85s), pause on hover |
+| CTA pulse | `.cta-pulse` / `.cta-pulse-crimson` — 2.4s ease-out infinite |
+| Ring rotations | `.ring-cw-1/2`, `.ring-ccw-1/2` — used in ServicesSection |
+| Smooth scroll | `html { scroll-behavior: smooth }` |
+
+---
+
+## 9 · Page Routes
+
+| Route | File | Status | Description |
+|---|---|---|---|
+| `/` | `app/page.tsx` | ✅ Complete | Home — all sections |
+| `/about` | `app/about/page.tsx` | ✅ Complete | Team, story, pull quote |
+| `/offering` | `app/offering/page.tsx` | ✅ Complete | Service pillars (Co-build, Validate, Sell, Raise) |
+| `/portfolio` | `app/portfolio/page.tsx` | ✅ Complete | Company grid with category filters |
+| `/blog` | `app/blog/page.tsx` | ✅ Complete | Blog index |
+| `/blog/[slug]` | `app/blog/[slug]/page.tsx` | ✅ Complete | Individual blog posts |
+| `/contact` | `app/contact/page.tsx` | ✅ Complete | Contact form + methods |
+
+---
+
+## 10 · Deployment
+
+### Build
+
+```bash
+cd "/Users/jakobwredstrom/Desktop/New website/amplitude-ventures-v2"
+npm run build
+```
+
+This generates `out/` with static HTML. Build must pass with **zero TypeScript errors** before deploying.
+
+### Deploy to Linode
+
+```bash
+tar -cf - -C out . | ssh -i ~/.ssh/gigevate_deploy -p 2222 deploy@172.239.240.151 \
+  "sudo rm -rf /var/www/amplitude-ventures/* && sudo tar -xf - -C /var/www/amplitude-ventures/"
+```
+
+The site runs on nginx at port 4000. The nginx config handles:
+- SPA-style routing (`.html` extension stripping)
+- Static asset caching
+- Gzip compression
+
+### Verify
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/
+curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/about
+curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/offering
+curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/portfolio
+```
+
+All should return `200`.
+
+---
+
+## 11 · Rules — Never Break These
 
 1. **Content in `lib/content/` only** — never hardcode strings in components
-2. **Always use font variables** — `style={{ fontFamily: "var(--font-bebas)" }}` — never `font-sans` in className
+2. **Font variables via `style={{}}` only** — never `font-sans` or `font-display` in className
 3. **`"use client"` on every section** — they all use Framer Motion hooks
-4. **Design token names** — always `bg-void`, `text-crimson`, `text-warm-white` etc.; never hardcode hex in className
-5. **No heavy CDN dependencies in hero** — HeroVisual is intentionally pure SVG + Framer. Keep it that way.
-6. **No `position: absolute` mouse tracking** — anything tracking mouse position must be `position: fixed` (see Spotlight)
-7. **Port 3003** — always. Don't change start scripts.
-8. **Don't add Inter/Roboto/Arial** — only Bebas, Cormorant, DM Sans
+4. **Design token names** — always `bg-void`, `text-crimson`, `text-warm-white`; never hardcode hex in className
+5. **No heavy CDN dependencies in hero** — HeroVisual is pure SVG. Keep it that way.
+6. **No `position: absolute` mouse tracking** — Spotlight and anything mouse-tracking must be `position: fixed`
+7. **Port 3003 for dev** — hardcoded in package.json. Don't change it.
+8. **Only Bebas + Cormorant + DM Sans** — no Inter, no Roboto, no Arial, no system fonts
+9. **Static export** — no API routes, no server actions, no middleware
+10. **Three-color palette** — void black, crimson, warm white. No blues, no grays, no gradients that aren't void→crimson
 
 ---
 
-## `preview_start` MCP Note
+## 12 · Adding New Pages
 
-The `preview_start` MCP tool **cannot** serve this project because it requires the cwd to be relative to the Claude Code session root. To check if the dev server is running:
-```bash
-curl -s -o /dev/null -w "%{http_code}" http://localhost:3003
-# Should return: 200
-```
-To start: `cd /Users/jakobwredstrom/Desktop/amplitude-ventures-v2 && npm run dev`
+1. Create `app/[route]/page.tsx` — Server Component (no animations at route level)
+2. Export `metadata` for SEO
+3. Import `Navbar`, your section, `FooterCta`, `Footer`
+4. Create section under `components/sections/` with `"use client"`
+5. Add content to `lib/content/index.ts`
+6. Follow animation patterns from Section 6
+7. Run `npm run build` — must pass cleanly
+8. Deploy with the rsync pipeline
 
----
+### Template
 
-## What Is and Isn't Built
+```tsx
+import type { Metadata } from "next";
+import Navbar from "@/components/layout/Navbar";
+import YourSection from "@/components/sections/YourSection";
+import FooterCta from "@/components/sections/FooterCta";
+import Footer from "@/components/layout/Footer";
 
-### ✅ Complete — Home page (`/`)
-| Section | File | Status |
-|---|---|---|
-| Navbar | `components/layout/Navbar.tsx` | ✅ Done |
-| Hero | `components/sections/HeroSection.tsx` | ✅ Done — uses HeroVisual (orbital SVG), no Spline |
-| Ticker | `components/sections/TickerSection.tsx` | ✅ Done |
-| Who We Work With | `components/sections/WhoSection.tsx` | ✅ Done |
-| Services | `components/sections/ServicesSection.tsx` | ✅ Done |
-| Principles | `components/sections/PrinciplesSection.tsx` | ✅ Done |
-| Stats | `components/sections/StatsSection.tsx` | ✅ Done |
-| Testimonials | `components/sections/TestimonialsSection.tsx` | ✅ Done |
-| Blog Preview | `components/sections/BlogSection.tsx` | ✅ Done |
-| Footer CTA | `components/sections/FooterCta.tsx` | ✅ Done |
-| Footer | `components/layout/Footer.tsx` | ✅ Done |
+export const metadata: Metadata = {
+  title: "Page Title",
+  description: "Page description for SEO.",
+};
 
-### ❌ Not Yet Built — Inner Pages
-| Page | Route | Notes |
-|---|---|---|
-| Portfolio | `/portfolio` | List of portfolio companies |
-| About | `/about` | Team bios, firm story |
-| Contact | `/contact` | Form + contact info |
-| Blog index | `/blog` | List of all posts |
-| Blog post | `/blog/[slug]` | Individual article — slug from `blogPosts` in content |
-
-### ⚠️ Pending / Known Issues
-- **`/public/logo.svg`** — may not exist. Drop the real SVG there; Navbar auto-picks it up.
-- **`components/ui/splite.tsx`** — dead file (old Spline wrapper). Safe to delete.
-- **`next.config.ts`** — still allowlists `framerusercontent.com`. Can be removed since logo no longer uses it.
-- **No CMS** — blog posts are static in `lib/content/`. Add MDX or Sanity for production.
-- **No forms backend** — `/contact` page doesn't exist yet and will need form handling (Resend, Formspree, etc.)
-- **Mobile QA** — not formally done. Hero's orbital visual is already hidden on mobile (`hidden lg:flex`).
-- **Not deployed** — use `/vercel:deploy` skill when ready.
-
----
-
-## Adding Inner Pages — Step-by-Step
-
-1. Create `app/[route]/page.tsx` — Server Component is fine (no animations needed at route level)
-2. Add `"use client"` sections under `components/sections/` as needed
-3. Content goes in `lib/content/index.ts` — add new exports
-4. Follow animation patterns from this doc
-5. Test: `npm run build` must pass with zero TypeScript errors
-
----
-
-## Deployment
-
-Run the deploy skill: `/vercel:deploy`
-
-Or manually:
-```bash
-npm run build   # must pass cleanly first
-npx vercel      # follow prompts
+export default function YourPage() {
+  return (
+    <main className="bg-void min-h-screen">
+      <Navbar />
+      <YourSection />
+      <FooterCta />
+      <Footer />
+    </main>
+  );
+}
 ```
 
-Environment: no env vars needed currently (no database, no CMS, no API keys).
+---
+
+## 13 · SEO & Structured Data
+
+The root layout (`app/layout.tsx`) includes:
+
+- **Full metadata** — title template, description, keywords, OpenGraph, Twitter cards
+- **JSON-LD Organization schema** — feeds AI answer engines (Perplexity, ChatGPT, Google SGE)
+- **robots.ts** — allows indexing with full capabilities
+- **sitemap.ts** — auto-generated sitemap
+- **Canonical URL** — `https://amplitude.ventures`
 
 ---
 
-## Session Context Tips for Agents
+## 14 · Known Issues & Future Work
 
-- The `.bashrc` spits `pyenv`/`nvm` warnings on every Bash call — **these are harmless**, ignore them
+- **No forms backend** — Contact form needs a handler (Resend, Formspree, etc.)
+- **No CMS** — Blog posts are static in `lib/content/`. Consider MDX or Sanity for production.
+- **Spline dependencies** — `@splinetool/react-spline` and `@splinetool/runtime` are still in `package.json` but unused. Safe to remove.
+- **OG image** — `/public/og-image.png` exists (1200×630, programmatically generated). To regenerate with Nano Banana 2 (Gemini image gen), enable billing on the Google AI Studio project first — the free tier daily quota is shared across all image models.
+- **Gemini API key** — stored in `.env.local` as `GEMINI_API_KEY`. Free tier only — enable billing at [Google AI Studio](https://aistudio.google.com/) to unlock paid-tier rate limits for image generation.
+- **Domain** — `amplitude.ventures` is configured in metadata but DNS may point elsewhere.
+
+---
+
+## 15 · Session Tips for AI Agents
+
+- The `.bashrc` prints `pyenv`/`nvm` warnings on every Bash call — **ignore them**, they're harmless
 - `npm run build` is the ground truth for "does the code work" — run it before claiming anything is done
-- The project is at `/Users/jakobwredstrom/Desktop/amplitude-ventures-v2/`
-- All imports use `@/` alias → project root (configured in `tsconfig.json`)
+- All imports use `@/` alias → project root
+- Framer Motion `whileInView` animations require **incremental scrolling** in Playwright to trigger — scrolling to bottom all at once won't fire them
+- The site uses static export, so there's no dev server needed for production. But `npm run dev` on port 3003 is useful for local preview.
+- When deploying, always verify with `curl` that key routes return 200
+
+---
+
+## 16 · Quick Reference Card
+
+```
+Background:    bg-void (#080808)
+Accent:        text-crimson (#C8102E)
+Text:          text-warm-white (#F2EDE4)
+Headline font: var(--font-bebas)     — Bebas Neue, ALL CAPS
+Italic font:   var(--font-cormorant) — Cormorant Garamond
+Body font:     var(--font-dm-sans)   — DM Sans
+Ease curve:    [0.22, 1, 0.36, 1]
+Blur entrance: filter: "blur(12px)" → "blur(0px)"
+Logo:          /public/logo-main.png (28px in nav, 24px in footer)
+Dev port:      3003
+Build:         npm run build → out/
+Deploy:        tar pipe over SSH to 172.239.240.151
+```

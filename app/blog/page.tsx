@@ -5,7 +5,7 @@ import FooterCta from "@/components/sections/FooterCta";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Blog — Amplitude Ventures",
+  title: "Blog",
   description:
     "Perspectives on early-stage investing, operator lessons, and what it actually takes to build a company worth backing.",
 };

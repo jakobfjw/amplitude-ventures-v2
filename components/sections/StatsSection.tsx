@@ -2,13 +2,9 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { stats } from "@/lib/content";
-
-const extended = [
-  ...stats,
-  { number: "11", suffix: "d", label: "Avg. first decision" },
-  { number: "100", suffix: "+", label: "Investors per raise" },
-];
+import { stats, statsSection } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { MiniOrbital, DataFragments, DashedArc } from "@/components/ui/ambient-orbitals";
 
 function CountUp({
   value,
@@ -32,7 +28,7 @@ function CountUp({
   useEffect(() => {
     if (!trigger) return;
     let raf: number;
-    const duration = 1600;
+    const duration = 2000;
     let startTime: number | null = null;
 
     const run = (now: number) => {
@@ -42,7 +38,7 @@ function CountUp({
         return;
       }
       const t = Math.min((now - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - t, 3);
+      const ease = 1 - Math.pow(1 - t, 4);
       const current = ease * num;
       setDisplay(
         decimals > 0
@@ -73,62 +69,107 @@ export default function StatsSection() {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  // Background "AV" drifts horizontally with scroll
-  const avX = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
+  const avX = useTransform(scrollYProgress, [0, 1], ["-2%", "3%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="bg-surface relative py-[150px] overflow-hidden"
+      className="bg-surface relative overflow-hidden"
     >
-      {/* Giant background letters — parallax drift */}
-      <motion.div
-        className="absolute -right-12 top-1/2 -translate-y-1/2 leading-none pointer-events-none select-none"
+      {/* Ambient decorations */}
+      <MiniOrbital
+        size={200}
+        rings={3}
+        tilt={-25}
+        speed={80}
+        nodeColor="rgba(200,16,46,0.25)"
+        ringColor="rgba(200,16,46,0.05)"
+        dotColor="rgba(242,237,228,0.07)"
+        className="absolute bottom-8 left-[2%] w-[200px] h-[200px] opacity-[0.45] hidden lg:block"
+      />
+      <DataFragments
+        count={3}
+        width={55}
+        color="rgba(200,16,46,0.12)"
+        secondaryColor="rgba(242,237,228,0.05)"
+        bobSpeed={8}
+        bobAmount={7}
+        className="absolute top-20 right-[6%] w-[55px] h-[50px] hidden lg:block"
+      />
+      <DashedArc
+        width={320}
+        height={60}
+        color="rgba(200,16,46,0.05)"
+        dashArray="4 14"
+        className="absolute top-0 left-[10%] w-[320px] h-[60px] hidden lg:block"
+      />
+
+      {/* Mobile: stronger crimson glow centered */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
         style={{
-          fontFamily: "var(--font-bebas)",
-          fontSize: "clamp(240px, 30vw, 480px)",
-          color: "transparent",
-          WebkitTextStroke: "1px rgba(200,16,46,0.13)",
-          letterSpacing: "0.02em",
-          x: avX,
+          background:
+            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(200,16,46,0.06) 0%, transparent 60%)",
         }}
+      />
+      {/* Crimson radial glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 70% at 80% 50%, rgba(200,16,46,0.05) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Logo mark watermark — parallax drift */}
+      <motion.div
+        className="absolute -right-16 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+        style={{ x: avX }}
         aria-hidden
       >
-        AV
+        <LogoMark
+          className="w-[clamp(300px,38vw,560px)] h-auto"
+          pillarColor="rgba(242,237,228,0.03)"
+          archColor="rgba(200,16,46,0.045)"
+          strokeWidth={4}
+        />
       </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12">
         <motion.p
-          className="text-crimson text-[16px] font-[600] uppercase tracking-[0.3em] mb-16"
+          className="text-crimson text-[13px] font-[600] uppercase tracking-[0.3em] pt-12 md:pt-20 mb-10 md:mb-20"
           style={{ fontFamily: "var(--font-dm-sans)" }}
           initial={{ opacity: 0, y: 8, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          By the numbers
+          {statsSection.eyebrow}
         </motion.p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
-          {extended.map((s, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-white/[0.06]">
+          {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              className={`bg-surface p-10 flex flex-col justify-between ${i === 0 ? "border-l-2 border-crimson/60" : ""}`}
-              initial={{ opacity: 0, y: 28, filter: "blur(12px)" }}
+              className={`relative py-10 md:py-24 flex flex-col justify-between group ${
+                i === 0 ? "md:border-r border-white/[0.06] md:pr-16" : "md:pl-16"
+              }`}
+              initial={{ opacity: 0, y: 40, filter: "blur(16px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{
-                delay: i * 0.07,
-                duration: 0.65,
+                delay: i * 0.15,
+                duration: 0.8,
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
+
               <div
-                className="text-warm-white leading-none mb-3"
+                className="text-warm-white leading-none mb-4 tabular-nums"
                 style={{
                   fontFamily: "var(--font-bebas)",
-                  fontSize: "clamp(56px, 7vw, 88px)",
-                  letterSpacing: "0.02em",
+                  fontSize: "clamp(72px, 14vw, 200px)",
+                  letterSpacing: "0.01em",
                 }}
               >
                 <CountUp
@@ -136,11 +177,11 @@ export default function StatsSection() {
                   suffix={s.suffix}
                   prefix={s.prefix}
                   trigger={isInView}
-                  delay={i * 0.07}
+                  delay={i * 0.15}
                 />
               </div>
               <p
-                className="text-warm-white/35 text-[16px] leading-snug font-[500] uppercase tracking-[0.12em]"
+                className="text-warm-white/30 text-[14px] font-[500] uppercase tracking-[0.25em] transition-colors duration-300 group-hover:text-warm-white/50"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {s.label}
@@ -148,6 +189,9 @@ export default function StatsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Bottom rule */}
+        <div className="border-b border-white/[0.06] pb-0" />
       </div>
     </section>
   );

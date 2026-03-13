@@ -3,17 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolioCompanies } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { PulseNode, DataFragments, ScatterField } from "@/components/ui/ambient-orbitals";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const TYPES = ["All", "Companies", "Projects", "Clients"] as const;
 type PortfolioType = (typeof TYPES)[number];
-
-const STAGE_COLORS: Record<string, string> = {
-  Growth: "bg-crimson/15 text-crimson",
-  Seed: "bg-warm-white/[0.07] text-warm-white/55",
-  "Pre-seed": "bg-warm-white/[0.04] text-warm-white/35",
-};
 
 const TYPE_MAP: Record<PortfolioType, string | null> = {
   All: null,
@@ -32,15 +28,49 @@ export default function PortfolioSection() {
 
   return (
     <section className="relative bg-void min-h-[calc(100vh-80px)] pt-[120px] pb-24 overflow-hidden">
-      {/* Dot grid */}
+      {/* Dot grid — desktop only */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.03) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
           backgroundSize: "44px 44px",
         }}
       />
+
+      {/* Crimson radial glow — right */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 40% 50% at 85% 60%, rgba(200,16,46,0.035) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* LogoMark — bottom-left, ghosted */}
+      <div className="absolute bottom-16 left-[-20px] hidden lg:block pointer-events-none select-none" aria-hidden>
+        <LogoMark
+          className="w-[240px] h-auto opacity-[0.035]"
+          pillarColor="rgba(242,237,228,0.025)"
+          archColor="rgba(200,16,46,0.025)"
+          strokeWidth={4}
+          style={{ transform: "rotate(-15deg)" }}
+        />
+      </div>
+
+      {/* PulseNode — top-right */}
+      <div className="absolute top-32 right-[8%] hidden lg:block w-[48px] h-[48px]">
+        <PulseNode size={48} color="rgba(200,16,46,0.2)" coreColor="rgba(200,16,46,0.45)" pulseSpeed={3.5} />
+      </div>
+
+      {/* DataFragments — bottom-right */}
+      <div className="absolute bottom-24 right-[12%] hidden md:block w-[60px] h-[40px]">
+        <DataFragments count={3} width={60} color="rgba(200,16,46,0.15)" secondaryColor="rgba(242,237,228,0.06)" bobSpeed={8} bobAmount={8} />
+      </div>
+
+      {/* ScatterField — background */}
+      <div className="absolute top-[20%] left-[5%] hidden lg:block w-[300px] h-[200px] opacity-60">
+        <ScatterField count={10} width={300} height={200} dotColor="rgba(242,237,228,0.03)" accentColor="rgba(200,16,46,0.06)" accentCount={2} />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
         {/* ── Header ── */}
@@ -135,7 +165,7 @@ export default function PortfolioSection() {
             {filtered.map((company, i) => (
               <motion.div
                 key={company.name}
-                className="group relative border border-white/[0.06] bg-surface-2 rounded-xl p-6 hover:border-crimson/20 transition-colors duration-300 overflow-hidden flex flex-col"
+                className="group relative border border-white/[0.06] bg-surface-2 rounded-xl p-6 hover:border-crimson/30 transition-all duration-300 overflow-hidden flex flex-col"
                 initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{
@@ -143,33 +173,66 @@ export default function PortfolioSection() {
                   duration: 0.55,
                   ease,
                 }}
-                whileHover={{ y: -3, transition: { duration: 0.18 } }}
+                whileHover={{ y: -4, transition: { duration: 0.22, ease } }}
               >
-                {/* Top hover glow */}
+                {/* Corner accent — top-right crimson corner on hover */}
                 <div
-                  className="absolute inset-x-0 top-0 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
+                  className="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
                     background:
-                      "linear-gradient(to bottom, rgba(200,16,46,0.06), transparent)",
+                      "linear-gradient(225deg, rgba(200,16,46,0.18) 0%, transparent 65%)",
+                  }}
+                />
+                {/* Scan line sweep */}
+                <div
+                  className="absolute inset-x-0 top-0 h-[1px] pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(200,16,46,0.6), transparent)",
+                    transform: "translateY(-2px)",
+                    transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)",
+                  }}
+                />
+                <div className="absolute inset-x-0 top-0 overflow-hidden h-full pointer-events-none">
+                  <div
+                    className="w-full h-[1px] opacity-0 group-hover:opacity-100 group-hover:[transform:translateY(300px)]"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, rgba(200,16,46,0.5), transparent)",
+                      transition:
+                        "opacity 0.1s, transform 0.65s cubic-bezier(0.22,1,0.36,1)",
+                    }}
+                  />
+                </div>
+                {/* Ambient bottom glow */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(200,16,46,0.04), transparent)",
                   }}
                 />
 
+                {/* Ghost index number */}
+                <div
+                  className="absolute right-4 top-3 leading-none select-none pointer-events-none opacity-[0.035] group-hover:opacity-[0.06] transition-opacity duration-500"
+                  style={{
+                    fontFamily: "var(--font-bebas)",
+                    fontSize: "64px",
+                    letterSpacing: "0.05em",
+                    color: "#F2EDE4",
+                  }}
+                  aria-hidden
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+
                 <div className="flex items-center justify-between mb-5">
                   <span
-                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-[700] uppercase tracking-wider ${
-                      company.stage
-                        ? STAGE_COLORS[company.stage] ?? "bg-warm-white/5 text-warm-white/30"
-                        : "bg-warm-white/5 text-warm-white/30"
-                    }`}
+                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-[700] uppercase tracking-wider bg-warm-white/[0.04] text-warm-white/25 border border-white/[0.05] group-hover:border-crimson/20 group-hover:text-crimson/60 transition-colors duration-300"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    {company.stage ?? company.type}
-                  </span>
-                  <span
-                    className="text-warm-white/20 text-[13px]"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
-                    {company.year}
+                    {company.type}
                   </span>
                 </div>
 
@@ -191,23 +254,20 @@ export default function PortfolioSection() {
                   {company.tagline}
                 </p>
 
-                {company.role && (
-                  <div className="mb-5 flex-1">
-                    <p
-                      className="text-[11px] uppercase tracking-[0.15em] text-crimson/50 mb-1.5 font-[600]"
-                      style={{ fontFamily: "var(--font-dm-sans)" }}
-                    >
-                      What we did
-                    </p>
-                    <p
-                      className="text-warm-white/30 text-[13px] leading-relaxed"
-                      style={{ fontFamily: "var(--font-dm-sans)" }}
-                    >
-                      {company.role.split(" / ").join(" · ")}
-                    </p>
-                  </div>
-                )}
-                {!company.role && <div className="flex-1" />}
+                <div className="mb-5 flex-1">
+                  <p
+                    className="text-[11px] uppercase tracking-[0.15em] text-crimson/50 mb-1.5 font-[600]"
+                    style={{ fontFamily: "var(--font-dm-sans)" }}
+                  >
+                    What we did
+                  </p>
+                  <p
+                    className="text-warm-white/30 text-[13px] leading-relaxed"
+                    style={{ fontFamily: "var(--font-dm-sans)" }}
+                  >
+                    {company.role.split(" / ").join(" · ")}
+                  </p>
+                </div>
 
                 <div className="pt-4 border-t border-white/[0.05] flex items-center justify-between">
                   <span
@@ -239,7 +299,7 @@ export default function PortfolioSection() {
             className="text-warm-white/25 text-[16px] mt-8"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
-            No companies at this stage yet.
+            Nothing here yet.
           </p>
         )}
       </div>

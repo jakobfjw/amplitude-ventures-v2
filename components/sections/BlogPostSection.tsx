@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import LogoMark from "@/components/ui/logo-mark";
+import { PulseNode, ScatterField } from "@/components/ui/ambient-orbitals";
 
 interface Post {
   slug: string;
@@ -29,7 +31,7 @@ function fmt(d: string) {
 
 export default function BlogPostSection({ post }: Props) {
   return (
-    <article className="relative bg-void min-h-[calc(100vh-80px)] pt-[120px] pb-24 overflow-hidden">
+    <article className="relative bg-void min-h-[calc(100vh-80px)] pt-[100px] md:pt-[120px] pb-16 md:pb-24 overflow-hidden">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -40,13 +42,42 @@ export default function BlogPostSection({ post }: Props) {
         }}
       />
 
+      {/* Crimson radial glow — left, subtle */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 35% 45% at 10% 50%, rgba(200,16,46,0.025) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* LogoMark — far right center, ghosted */}
+      <div className="absolute top-[35%] right-[-40px] hidden lg:block pointer-events-none select-none" aria-hidden>
+        <LogoMark
+          className="w-[200px] h-auto opacity-[0.03]"
+          pillarColor="rgba(242,237,228,0.02)"
+          archColor="rgba(200,16,46,0.02)"
+          strokeWidth={4}
+          style={{ transform: "rotate(5deg)" }}
+        />
+      </div>
+
+      {/* PulseNode — top-right */}
+      <div className="absolute top-32 right-[12%] hidden lg:block w-[40px] h-[40px]">
+        <PulseNode size={40} color="rgba(200,16,46,0.15)" coreColor="rgba(200,16,46,0.35)" pulseSpeed={4} />
+      </div>
+
+      {/* ScatterField — background, very faint */}
+      <div className="absolute top-[15%] left-[2%] hidden lg:block w-[280px] h-[180px] opacity-50">
+        <ScatterField count={8} width={280} height={180} dotColor="rgba(242,237,228,0.025)" accentColor="rgba(200,16,46,0.05)" accentCount={1} />
+      </div>
+
       <div className="relative z-10 mx-auto max-w-[860px] px-8 md:px-12">
         {/* ── Back link ── */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-12"
+          className="mb-6 md:mb-12"
         >
           <Link
             href="/blog"
@@ -59,7 +90,7 @@ export default function BlogPostSection({ post }: Props) {
 
         {/* ── Meta ── */}
         <motion.div
-          className="flex items-center gap-4 mb-8"
+          className="flex flex-wrap items-center gap-3 md:gap-4 mb-4 md:mb-8"
           initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.1, duration: 0.6 }}
@@ -88,7 +119,7 @@ export default function BlogPostSection({ post }: Props) {
 
         {/* ── Title ── */}
         <motion.h1
-          className="text-warm-white leading-[1.05] mb-8"
+          className="text-warm-white leading-[1.05] mb-4 md:mb-8"
           style={{
             fontFamily: "var(--font-bebas)",
             fontSize: "clamp(48px, 7vw, 96px)",
@@ -103,7 +134,7 @@ export default function BlogPostSection({ post }: Props) {
 
         {/* Divider */}
         <motion.div
-          className="w-full h-px bg-white/[0.07] mb-10"
+          className="w-full h-px bg-white/[0.07] mb-6 md:mb-10"
           initial={{ scaleX: 0, originX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.4, duration: 0.8, ease }}
@@ -111,7 +142,7 @@ export default function BlogPostSection({ post }: Props) {
 
         {/* ── Pull excerpt ── */}
         <motion.p
-          className="text-warm-white/65 italic leading-[1.4] mb-12 pl-6 border-l-2 border-crimson/40"
+          className="text-warm-white/65 italic leading-[1.4] mb-8 md:mb-12 pl-6 border-l-2 border-crimson/40"
           style={{
             fontFamily: "var(--font-cormorant)",
             fontSize: "clamp(22px, 2.5vw, 30px)",
@@ -159,7 +190,7 @@ export default function BlogPostSection({ post }: Props) {
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-crimson text-white rounded-full text-[15px] font-[500] hover:bg-[#a80d25] transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-crimson text-white rounded-full text-[15px] font-[500] hover:bg-crimson-dark transition-colors duration-200"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Start a conversation →

@@ -3,6 +3,9 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { about } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { MiniOrbital, FloatingNodes, DashedArc } from "@/components/ui/ambient-orbitals";
+import TeamMemberCard from "@/components/ui/team-member-card";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -18,12 +21,12 @@ export default function AboutSection() {
     <div>
       {/* ── Hero ── */}
       <section className="relative bg-void pt-[120px] pb-20 overflow-hidden">
-        {/* Dot grid */}
+        {/* Dot grid — desktop only */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none hidden md:block"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(242,237,228,0.035) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
             backgroundSize: "44px 44px",
           }}
         />
@@ -39,6 +42,40 @@ export default function AboutSection() {
           }}
         >
           AMPLITUDE
+        </div>
+
+        {/* Crimson radial glow — left */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse 40% 50% at 10% 50%, rgba(200,16,46,0.035) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* LogoMark — top-right, ghosted */}
+        <div className="absolute top-12 right-[-40px] hidden lg:block pointer-events-none select-none" aria-hidden>
+          <LogoMark
+            className="w-[260px] h-auto opacity-[0.04]"
+            pillarColor="rgba(242,237,228,0.03)"
+            archColor="rgba(200,16,46,0.03)"
+            strokeWidth={4}
+            style={{ transform: "rotate(12deg)" }}
+          />
+        </div>
+
+        {/* MiniOrbital — mid-right */}
+        <div className="absolute top-[45%] right-[5%] hidden lg:block w-[220px] h-[220px]">
+          <MiniOrbital size={220} rings={2} tilt={-14} speed={70} ringColor="rgba(200,16,46,0.06)" nodeColor="rgba(200,16,46,0.35)" dotColor="rgba(242,237,228,0.1)" />
+        </div>
+
+        {/* FloatingNodes — bottom-left */}
+        <div className="absolute bottom-16 left-[8%] hidden md:block w-[60px] h-[50px]">
+          <FloatingNodes bobSpeed={11} bobAmount={6} />
+        </div>
+
+        {/* DashedArc — top area */}
+        <div className="absolute top-8 left-[20%] hidden lg:block w-[200px] h-[100px]">
+          <DashedArc width={200} height={100} color="rgba(200,16,46,0.06)" dashArray="4 12" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
@@ -184,72 +221,21 @@ export default function AboutSection() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex flex-col gap-28 md:gap-40">
             {about.team.map((member, i) => (
-              <motion.div
+              <TeamMemberCard
                 key={member.name}
-                className="group relative border border-white/[0.06] bg-surface-2 rounded-xl p-8 hover:border-crimson/20 transition-colors duration-300 overflow-hidden"
-                initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.1, duration: 0.7, ease }}
-              >
-                {/* Top hover glow */}
-                <div
-                  className="absolute inset-x-0 top-0 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, rgba(200,16,46,0.06), transparent)",
-                  }}
-                />
-
-                {/* Number */}
-                <div
-                  className="text-crimson/20 leading-none mb-6 select-none"
-                  style={{
-                    fontFamily: "var(--font-bebas)",
-                    fontSize: "clamp(48px, 5vw, 72px)",
-                    letterSpacing: "0.05em",
-                  }}
-                  aria-hidden
-                >
-                  0{i + 1}
-                </div>
-
-                <h3
-                  className="text-warm-white mb-1 leading-tight"
-                  style={{
-                    fontFamily: "var(--font-bebas)",
-                    fontSize: "clamp(28px, 2.5vw, 38px)",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  {member.name}
-                </h3>
-
-                <p
-                  className="text-crimson text-[13px] uppercase tracking-[0.18em] mb-5"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
-                  {member.role}
-                </p>
-
-                <p
-                  className="text-warm-white/45 text-[15px] leading-relaxed mb-6"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
-                  {member.background}
-                </p>
-
-                <div className="pt-4 border-t border-white/[0.05]">
-                  <p
-                    className="text-warm-white/25 text-[12px] uppercase tracking-[0.15em]"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
-                    {member.focus}
-                  </p>
-                </div>
-              </motion.div>
+                position={i % 2 === 0 ? "left" : "right"}
+                firstName={member.firstName}
+                lastName={member.lastName}
+                role={member.role}
+                tagline={member.tagline}
+                image={member.image}
+                linkedin={member.linkedin}
+                background={member.background}
+                focus={member.focus}
+                index={i}
+              />
             ))}
           </div>
         </div>

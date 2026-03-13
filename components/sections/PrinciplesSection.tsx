@@ -3,13 +3,72 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { principles } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { FloatingNodes, DashedArc, PulseNode } from "@/components/ui/ambient-orbitals";
 
 export default function PrinciplesSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section className="bg-void py-[110px]">
-      <div className="mx-auto max-w-[1400px] px-8 md:px-12">
+    <section className="bg-void py-16 md:py-[110px] relative overflow-hidden">
+      {/* Ambient decorations */}
+      <FloatingNodes
+        bobSpeed={11}
+        bobAmount={6}
+        className="absolute top-20 right-[8%] w-[60px] h-[50px] opacity-[0.5] hidden lg:block"
+      />
+      <DashedArc
+        width={180}
+        height={100}
+        color="rgba(200,16,46,0.06)"
+        dashArray="3 12"
+        flip
+        className="absolute bottom-12 left-[2%] w-[180px] h-[100px] hidden lg:block"
+      />
+      <PulseNode
+        size={42}
+        color="rgba(200,16,46,0.1)"
+        coreColor="rgba(200,16,46,0.25)"
+        pulseSpeed={3.8}
+        className="absolute top-1/2 right-[3%] -translate-y-1/2 w-[42px] h-[42px] hidden lg:block"
+      />
+
+      {/* Mobile: crimson atmospheric glow */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 40% at 30% 50%, rgba(200,16,46,0.05) 0%, transparent 60%)",
+        }}
+      />
+      {/* Fine dot grid — desktop only */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden md:block"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+        }}
+      />
+      {/* Logo mark — large, ghosted, bottom-left */}
+      <div className="absolute -left-12 bottom-0 pointer-events-none select-none" aria-hidden>
+        <LogoMark
+          className="w-[clamp(180px,22vw,340px)] h-auto opacity-[0.6]"
+          pillarColor="rgba(242,237,228,0.02)"
+          archColor="rgba(200,16,46,0.025)"
+          strokeWidth={5}
+          animate
+        />
+      </div>
+      {/* Subtle crimson glow behind heading area */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 40% 50% at 20% 30%, rgba(200,16,46,0.04) 0%, transparent 70%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-16 lg:gap-32">
           {/* Left: header — slides in from left */}
           <div>
@@ -60,7 +119,7 @@ export default function PrinciplesSection() {
                   transition={{ delay: i * 0.07, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <button
-                    className="w-full text-left py-6 group flex items-center gap-6"
+                    className="w-full text-left py-5 md:py-6 group flex items-center gap-4 md:gap-6"
                     onClick={() => setOpenIdx(isOpen ? null : i)}
                   >
                     <motion.span
@@ -109,7 +168,7 @@ export default function PrinciplesSection() {
                         className="overflow-hidden"
                       >
                         <p
-                          className="pb-6 pl-12 text-warm-white/50 text-[19px] leading-relaxed"
+                          className="pb-6 pl-8 md:pl-12 text-warm-white/50 text-[16px] md:text-[19px] leading-relaxed"
                           style={{ fontFamily: "var(--font-dm-sans)" }}
                         >
                           {p.body}

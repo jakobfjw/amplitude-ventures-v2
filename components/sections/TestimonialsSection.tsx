@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { testimonials } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { MiniOrbital, DashedArc, FloatingNodes } from "@/components/ui/ambient-orbitals";
 
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
@@ -20,13 +22,50 @@ export default function TestimonialsSection() {
   const words = testimonials[active].quote.split(" ");
 
   return (
-    <section className="bg-void py-[110px] relative overflow-hidden">
+    <section className="bg-void py-16 md:py-[110px] relative overflow-hidden">
+      {/* Mobile: crimson atmospheric glow */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 65% 50% at 50% 40%, rgba(200,16,46,0.05) 0%, transparent 65%)",
+        }}
+      />
+      {/* Dot grid texture — desktop only */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden md:block"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      {/* Logo mark — ghosted, far right */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block" aria-hidden>
+        <LogoMark
+          className="w-[260px] h-auto"
+          pillarColor="rgba(242,237,228,0.018)"
+          archColor="rgba(200,16,46,0.022)"
+          strokeWidth={4}
+          animate
+        />
+      </div>
+      {/* Ambient decorations */}
+      <div className="absolute bottom-16 left-12 w-[140px] h-[140px] hidden lg:block opacity-[0.5]" aria-hidden>
+        <MiniOrbital size={140} rings={2} tilt={-25} speed={80} nodeColor="rgba(200,16,46,0.4)" ringColor="rgba(200,16,46,0.06)" />
+      </div>
+      <div className="absolute top-1/3 right-4 w-[160px] h-[80px] hidden lg:block" aria-hidden>
+        <DashedArc width={160} height={80} color="rgba(200,16,46,0.06)" />
+      </div>
+      <div className="absolute bottom-8 right-[20%] w-[60px] h-[50px] hidden lg:block" aria-hidden>
+        <FloatingNodes bobSpeed={11} bobAmount={6} />
+      </div>
       {/* Big background serif quote mark */}
       <motion.div
         className="absolute top-8 left-0 right-0 text-center leading-none pointer-events-none select-none"
         style={{
           fontFamily: "var(--font-cormorant)",
-          fontSize: "clamp(180px, 22vw, 320px)",
+          fontSize: "clamp(120px, 22vw, 320px)",
           color: "transparent",
           WebkitTextStroke: "1px rgba(200,16,46,0.09)",
           fontStyle: "italic",
@@ -40,9 +79,9 @@ export default function TestimonialsSection() {
         &ldquo;
       </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12">
         <motion.p
-          className="text-crimson text-[16px] font-[600] uppercase tracking-[0.3em] mb-16"
+          className="text-crimson text-[14px] md:text-[16px] font-[600] uppercase tracking-[0.3em] mb-8 md:mb-16"
           style={{ fontFamily: "var(--font-dm-sans)" }}
           initial={{ opacity: 0, y: 8, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -54,7 +93,7 @@ export default function TestimonialsSection() {
 
         {/* Founder selector tabs */}
         <motion.div
-          className="flex gap-2 mb-14 flex-wrap"
+          className="flex gap-2 mb-8 md:mb-14 flex-wrap"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -71,7 +110,7 @@ export default function TestimonialsSection() {
                 hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
                 visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
               }}
-              className={`relative px-5 py-2.5 rounded-full text-[14px] font-[500] tracking-wide transition-all duration-200 overflow-hidden ${
+              className={`relative px-3.5 md:px-5 py-2 md:py-2.5 rounded-full text-[13px] md:text-[14px] font-[500] tracking-wide transition-all duration-200 overflow-hidden ${
                 active === i
                   ? "border border-crimson text-crimson bg-crimson/10"
                   : "border border-white/10 text-warm-white/50 hover:text-warm-white hover:border-white/25"
@@ -112,7 +151,7 @@ export default function TestimonialsSection() {
                 className="italic text-warm-white leading-[1.25] mb-10"
                 style={{
                   fontFamily: "var(--font-cormorant)",
-                  fontSize: "clamp(28px, 4vw, 52px)",
+                  fontSize: "clamp(24px, 4vw, 52px)",
                   fontWeight: 400,
                 }}
               >
@@ -123,7 +162,7 @@ export default function TestimonialsSection() {
                     initial={{ opacity: 0, filter: "blur(8px)", y: 6 }}
                     animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                     transition={{
-                      delay: i * 0.03,
+                      delay: i * 0.02,
                       duration: 0.35,
                       ease: "easeOut",
                     }}
@@ -139,7 +178,7 @@ export default function TestimonialsSection() {
                 className="flex items-center gap-4"
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: words.length * 0.03 + 0.1, duration: 0.5 }}
+                transition={{ delay: words.length * 0.02 + 0.1, duration: 0.5 }}
               >
                 <div className="w-10 h-px bg-crimson" />
                 <div>

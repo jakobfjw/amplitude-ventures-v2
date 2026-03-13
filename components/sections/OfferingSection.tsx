@@ -3,27 +3,11 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { services } from "@/lib/content";
+import { services, offering } from "@/lib/content";
+import { MiniOrbital, FloatingNodes, DashedArc } from "@/components/ui/ambient-orbitals";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const DETAILS: Record<string, { stat: string; statLabel: string; detail: string }> = {
-  capital: {
-    stat: "6–20 wks",
-    statLabel: "Typical delivery",
-    detail: "From first brief to production-ready product. Web, mobile, and AI across any stack.",
-  },
-  build: {
-    stat: "Weeks",
-    statLabel: "Not months",
-    detail: "Market sizing, competitor mapping, and go/no-go analysis before you write a line of code.",
-  },
-  raise: {
-    stat: "100+",
-    statLabel: "Investors contacted per raise",
-    detail: "10–40% response rates on outreach. Pitch decks and data rooms that close rounds.",
-  },
-};
 
 export default function OfferingSection() {
   const pillarsRef = useRef<HTMLDivElement>(null);
@@ -37,12 +21,12 @@ export default function OfferingSection() {
     <div>
       {/* ── Hero ── */}
       <section className="relative bg-void pt-[120px] pb-20 overflow-hidden">
-        {/* Dot grid */}
+        {/* Dot grid — desktop only */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none hidden md:block"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(242,237,228,0.04) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(242,237,228,0.03) 1px, transparent 1px)",
             backgroundSize: "44px 44px",
           }}
         />
@@ -61,6 +45,30 @@ export default function OfferingSection() {
           OFFERING
         </div>
 
+        {/* Mobile: crimson atmospheric glow to replace hidden orbital decorations */}
+        <div
+          className="absolute inset-0 pointer-events-none md:hidden"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 80% 30%, rgba(200,16,46,0.06) 0%, transparent 60%)",
+          }}
+        />
+
+        {/* MiniOrbital — top-left area */}
+        <div className="absolute top-20 left-[5%] hidden lg:block w-[200px] h-[200px]">
+          <MiniOrbital size={200} rings={3} tilt={-16} speed={68} ringColor="rgba(200,16,46,0.06)" nodeColor="rgba(200,16,46,0.3)" dotColor="rgba(242,237,228,0.1)" />
+        </div>
+
+        {/* FloatingNodes — bottom-right */}
+        <div className="absolute bottom-12 right-[8%] hidden md:block w-[60px] h-[50px]">
+          <FloatingNodes bobSpeed={10} bobAmount={7} />
+        </div>
+
+        {/* DashedArc — mid-section */}
+        <div className="absolute top-[50%] right-[18%] hidden lg:block w-[180px] h-[90px]">
+          <DashedArc width={180} height={90} color="rgba(200,16,46,0.05)" dashArray="3 12" />
+        </div>
+
         <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
           <motion.div
             className="flex items-center gap-3 mb-10"
@@ -73,7 +81,7 @@ export default function OfferingSection() {
               className="text-crimson text-[13px] font-[600] uppercase tracking-[0.3em]"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
-              What we do
+              {offering.eyebrow}
             </span>
           </motion.div>
 
@@ -91,18 +99,18 @@ export default function OfferingSection() {
                   letterSpacing: "0.02em",
                 }}
               >
-                Build.
+                {offering.headline.line1}
               </h1>
-              <h1
-                className="text-crimson italic leading-[0.88]"
+              <span
+                className="block text-crimson italic leading-[0.88]"
                 style={{
                   fontFamily: "var(--font-cormorant)",
                   fontSize: "clamp(52px, 9vw, 130px)",
                   fontWeight: 400,
                 }}
               >
-                Validate. Raise.
-              </h1>
+                {offering.headline.line2}
+              </span>
             </motion.div>
 
             <motion.div
@@ -115,7 +123,7 @@ export default function OfferingSection() {
                 className="text-warm-white/50 text-[20px] leading-relaxed border-l-2 border-crimson/25 pl-5"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
-                Three ways we work with early-stage companies — from idea through product, traction, and the raise.
+                {offering.sub}
               </p>
             </motion.div>
           </div>
@@ -140,7 +148,7 @@ export default function OfferingSection() {
         </motion.div>
 
         {services.map((svc, i) => {
-          const meta = DETAILS[svc.id];
+          const meta = (offering.details as Record<string, { stat: string; statLabel: string }>)[svc.id] ?? { stat: "—", statLabel: "" };
           const isEven = i % 2 === 0;
 
           return (
@@ -211,7 +219,7 @@ export default function OfferingSection() {
                         className="text-warm-white/35 text-[15px] leading-relaxed italic"
                         style={{ fontFamily: "var(--font-cormorant)", fontSize: "20px" }}
                       >
-                        {meta.detail}
+                        {svc.detail}
                       </p>
                     </div>
 
@@ -257,7 +265,7 @@ export default function OfferingSection() {
               className="text-crimson text-[13px] font-[600] uppercase tracking-[0.3em] mb-4"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
-              How it works
+              {offering.process.eyebrow}
             </p>
             <h2
               className="text-warm-white leading-[0.9]"
@@ -278,13 +286,8 @@ export default function OfferingSection() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
-            {[
-              { step: "01", title: "Validate", body: "Pressure-test the idea before writing code. Market sizing, competitor mapping, feasibility — clear go/no-go in weeks." },
-              { step: "02", title: "Build", body: "Ship a product at a cost that makes sense. MVPs, AI agents, full platforms — from brief to live in 6–20 weeks." },
-              { step: "03", title: "Commercialize", body: "Find pricing, positioning, and first revenue. Sales pipeline, ICP definition, multi-channel outreach." },
-              { step: "04", title: "Shape the story", body: "Pitch decks, data rooms, and investor targeting. We build the fundraising narrative that gets responses." },
-            ].map((step, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+            {offering.process.steps.map((step, i) => (
               <motion.div
                 key={step.step}
                 className="relative pl-8 md:pl-0 md:pt-8 md:border-l md:first:border-l-0 border-t md:border-t-0 first:border-t-0 border-white/[0.06]"
@@ -347,7 +350,7 @@ export default function OfferingSection() {
               className="text-crimson text-[13px] font-[600] uppercase tracking-[0.3em] mb-4"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
-              Ready to start?
+              {offering.cta.eyebrow}
             </p>
             <h2
               className="text-warm-white leading-[0.9]"
@@ -357,12 +360,12 @@ export default function OfferingSection() {
                 letterSpacing: "0.02em",
               }}
             >
-              Two paragraphs.{" "}
+              {offering.cta.headline}{" "}
               <span
                 className="text-crimson italic"
                 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "0.9em" }}
               >
-                That&apos;s all it takes.
+                {offering.cta.headlineAccent}
               </span>
             </h2>
           </div>
@@ -370,16 +373,16 @@ export default function OfferingSection() {
           <div className="flex flex-col gap-4 items-start md:items-end flex-shrink-0">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-crimson text-white rounded-full text-[17px] font-[500] hover:bg-[#a80d25] transition-colors duration-200 tracking-wide whitespace-nowrap"
+              className="cta-pulse-crimson inline-flex items-center gap-2 px-8 py-4 bg-crimson text-white rounded-full text-[17px] font-[500] hover:bg-crimson-dark transition-colors duration-200 tracking-wide whitespace-nowrap"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
-              Send us a brief →
+              {offering.cta.ctaLabel}
             </Link>
             <p
               className="text-warm-white/25 text-[14px]"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
-              Average response: 48 hours
+              {offering.cta.ctaSub}
             </p>
           </div>
         </motion.div>

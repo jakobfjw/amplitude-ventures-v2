@@ -5,7 +5,7 @@ import FooterCta from "@/components/sections/FooterCta";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Amplitude Ventures",
+  title: "Portfolio",
   description:
     "40+ ventures supported across music tech, SaaS, and deep tech. Meet the companies Amplitude Ventures has co-built and backed from first idea through traction.",
 };

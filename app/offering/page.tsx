@@ -5,7 +5,7 @@ import FooterCta from "@/components/sections/FooterCta";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Offering — Amplitude Ventures",
+  title: "Offering",
   description:
     "Capital, operator support, and investor readiness. Three ways we accelerate early-stage companies from first cheque to Series A.",
 };

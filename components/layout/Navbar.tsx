@@ -36,19 +36,16 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto max-w-[1400px] px-8 md:px-12 h-[80px] flex items-center justify-between gap-6">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-12 h-[72px] md:h-[80px] flex items-center justify-between gap-6">
           {/* Logo */}
-          <Link href="/" className="group flex-shrink-0">
+          <Link href="/" className="group flex-shrink-0 flex items-center">
             <Image
-              src="/logo-trimmed.png"
+              src="/logo-main.png"
               alt="Amplitude Ventures"
-              height={115}
-              width={453}
-              placeholder="empty"
+              height={200}
+              width={400}
               style={{
-                filter: "brightness(0) invert(1)",
-                opacity: 0.9,
-                height: "40px",
+                height: "clamp(38px, 6vw, 48px)",
                 width: "auto",
               }}
               priority
@@ -63,7 +60,7 @@ export default function Navbar() {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="hidden md:block">
               <Link
                 href={nav.cta.href}
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-crimson text-white text-[15px] font-[500] rounded-full hover:bg-[#a80d25] transition-colors duration-200 tracking-wide whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-crimson text-white text-[15px] font-[500] rounded-full hover:bg-crimson-dark transition-colors duration-200 tracking-wide whitespace-nowrap"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {nav.cta.label}
@@ -101,7 +98,7 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-40 bg-void/98 backdrop-blur-2xl flex flex-col pt-28 px-8 pb-12"
+            className="fixed inset-0 z-40 bg-void/98 backdrop-blur-2xl flex flex-col pt-24 px-6 pb-12"
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
@@ -126,7 +123,7 @@ export default function Navbar() {
                       className="text-crimson/50 group-hover:text-crimson transition-colors"
                     />
                     <span
-                      className="font-display text-[38px] tracking-[0.06em] text-warm-white/80 group-hover:text-crimson transition-colors leading-none"
+                      className="text-[34px] tracking-[0.06em] text-warm-white/80 group-hover:text-crimson transition-colors leading-none"
                       style={{ fontFamily: "var(--font-bebas)" }}
                     >
                       {item.name.toUpperCase()}

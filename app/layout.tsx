@@ -90,7 +90,7 @@ const orgSchema = {
   "@type": "Organization",
   name: "Amplitude Ventures",
   url: "https://amplitude.ventures",
-  logo: "https://amplitude.ventures/logo.png",
+  logo: "https://amplitude.ventures/logo-main.png",
   description:
     "Pre-seed venture studio based in Stavanger, Norway. We co-build with founders from first idea to investor-ready company.",
   foundingLocation: {
@@ -103,7 +103,7 @@ const orgSchema = {
     value: 70,
   },
   sameAs: [
-    "https://www.linkedin.com/company/amplitude-ventures",
+    "https://www.linkedin.com/company/amplitudeventures/",
   ],
 };
 

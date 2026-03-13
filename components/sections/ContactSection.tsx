@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { contact } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { MiniOrbital, PulseNode, DashedArc } from "@/components/ui/ambient-orbitals";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -29,10 +31,10 @@ export default function ContactSection() {
     <section className="relative bg-void min-h-[calc(100vh-80px)] pt-[120px] pb-24 overflow-hidden">
       {/* Dot grid */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.035) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
@@ -48,6 +50,40 @@ export default function ContactSection() {
         aria-hidden
       >
         TALK.
+      </div>
+
+      {/* Crimson radial glow — bottom area */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 50% 40% at 50% 85%, rgba(200,16,46,0.03) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* LogoMark — mid-right, ghosted */}
+      <div className="absolute top-[40%] right-[-30px] hidden lg:block pointer-events-none select-none" aria-hidden>
+        <LogoMark
+          className="w-[220px] h-auto opacity-[0.035]"
+          pillarColor="rgba(242,237,228,0.025)"
+          archColor="rgba(200,16,46,0.025)"
+          strokeWidth={4}
+          style={{ transform: "rotate(8deg)" }}
+        />
+      </div>
+
+      {/* MiniOrbital — top-left */}
+      <div className="absolute top-28 left-[4%] hidden lg:block w-[160px] h-[160px]">
+        <MiniOrbital size={160} rings={2} tilt={-20} speed={75} ringColor="rgba(200,16,46,0.06)" nodeColor="rgba(200,16,46,0.3)" dotColor="rgba(242,237,228,0.1)" />
+      </div>
+
+      {/* PulseNode — bottom-right */}
+      <div className="absolute bottom-20 right-[10%] hidden md:block w-[44px] h-[44px]">
+        <PulseNode size={44} color="rgba(200,16,46,0.18)" coreColor="rgba(200,16,46,0.4)" pulseSpeed={3.8} />
+      </div>
+
+      {/* DashedArc — mid-section, flipped */}
+      <div className="absolute top-[55%] left-[15%] hidden lg:block w-[220px] h-[120px]">
+        <DashedArc width={220} height={120} color="rgba(200,16,46,0.06)" dashArray="3 14" flip />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
@@ -104,7 +140,7 @@ export default function ContactSection() {
                 {
                   label: "LinkedIn",
                   value: contact.linkedin,
-                  href: `https://${contact.linkedin}`,
+                  href: contact.linkedin,
                   external: true,
                 },
                 { label: "Based in", value: "Oslo, Norway" },
@@ -216,7 +252,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="mt-2 inline-flex items-center justify-center gap-2 px-8 py-4 bg-crimson text-white rounded-full text-[16px] font-[500] hover:bg-[#a80d25] disabled:opacity-50 transition-colors duration-200 tracking-wide"
+                    className="mt-2 inline-flex items-center justify-center gap-2 px-8 py-4 bg-crimson text-white rounded-full text-[16px] font-[500] hover:bg-crimson-dark disabled:opacity-50 transition-colors duration-200 tracking-wide"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
                     {sending ? "Sending…" : "Send brief →"}

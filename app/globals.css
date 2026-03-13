@@ -8,6 +8,7 @@
   --color-surface-3:     #1f1f1f;
   --color-crimson:       #C8102E;
   --color-crimson-dim:   rgba(200,16,46,0.15);
+  --color-crimson-dark:  #a80d25;
   --color-warm-white:    #F2EDE4;
   --color-text-muted:    #666666;
   --color-text-faint:    #2e2e2e;
@@ -63,10 +64,39 @@ body::after {
   to   { transform: translateX(-50%); }
 }
 .ticker-track {
-  animation: ticker 28s linear infinite;
+  animation: ticker 70s linear infinite;
 }
 .ticker-track:hover {
   animation-play-state: paused;
+}
+
+@keyframes ticker-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.ticker-track-reverse {
+  animation: ticker-reverse 85s linear infinite;
+}
+.ticker-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* ── CTA heartbeat pulse ── */
+@keyframes cta-pulse-white {
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+  60%  { box-shadow: 0 0 0 14px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0   rgba(255,255,255,0); }
+}
+@keyframes cta-pulse-crimson {
+  0%   { box-shadow: 0 0 0 0 rgba(200,16,46,0.45); }
+  60%  { box-shadow: 0 0 0 14px rgba(200,16,46,0); }
+  100% { box-shadow: 0 0 0 0   rgba(200,16,46,0); }
+}
+.cta-pulse {
+  animation: cta-pulse-white 2.4s ease-out infinite;
+}
+.cta-pulse-crimson {
+  animation: cta-pulse-crimson 2.4s ease-out infinite;
 }
 
 /* ── Ring rotation (ServicesSection) ── */

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { blogPosts } from "@/lib/content";
+import LogoMark from "@/components/ui/logo-mark";
+import { PulseNode, DataFragments, DashedArc } from "@/components/ui/ambient-orbitals";
 
 function fmt(d: string) {
   return new Date(d)
@@ -12,9 +14,58 @@ function fmt(d: string) {
 
 export default function BlogSection() {
   return (
-    <section className="bg-surface py-[150px]">
-      <div className="mx-auto max-w-[1400px] px-8 md:px-12">
-        <div className="flex items-end justify-between mb-16">
+    <section className="bg-surface py-20 md:py-[150px] relative overflow-hidden">
+      {/* Mobile: crimson atmospheric glow */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 45% at 70% 55%, rgba(200,16,46,0.045) 0%, transparent 60%)",
+        }}
+      />
+      {/* Dot grid texture — desktop only */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden md:block"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(242,237,228,0.02) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      {/* Logo mark — ghosted, bottom-left, rotated */}
+      <div
+        className="absolute -left-10 -bottom-16 pointer-events-none select-none hidden lg:block"
+        style={{ transform: "rotate(-18deg)" }}
+        aria-hidden
+      >
+        <LogoMark
+          className="w-[280px] h-auto"
+          pillarColor="rgba(242,237,228,0.018)"
+          archColor="rgba(200,16,46,0.025)"
+          strokeWidth={4}
+          animate
+        />
+      </div>
+      {/* Crimson glow — right side */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 40% 50% at 85% 60%, rgba(200,16,46,0.035) 0%, transparent 70%)",
+        }}
+      />
+      {/* Ambient decorations */}
+      <div className="absolute top-16 right-12 w-[36px] h-[36px] hidden lg:block" aria-hidden>
+        <PulseNode size={36} color="rgba(200,16,46,0.22)" coreColor="rgba(200,16,46,0.55)" pulseSpeed={3.5} />
+      </div>
+      <div className="absolute bottom-20 right-[10%] w-[55px] h-[36px] hidden lg:block" aria-hidden>
+        <DataFragments count={3} width={55} color="rgba(200,16,46,0.18)" secondaryColor="rgba(242,237,228,0.07)" bobSpeed={9} />
+      </div>
+      <div className="absolute top-1/2 left-4 w-[180px] h-[90px] hidden lg:block" aria-hidden>
+        <DashedArc width={180} height={90} color="rgba(200,16,46,0.05)" flip />
+      </div>
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-16">
           <div>
             <motion.p
               className="text-crimson text-[16px] font-[600] uppercase tracking-[0.3em] mb-5"
@@ -63,7 +114,7 @@ export default function BlogSection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-4">
           {blogPosts.slice(0, 3).map((post, i) => (
             <motion.article
               key={post.slug}
