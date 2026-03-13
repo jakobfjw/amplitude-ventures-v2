@@ -10,21 +10,27 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 /**
  * Formspree form endpoint — get yours at https://formspree.io/forms
- * Create a form → copy the hash ID (e.g. "xabcdefg") → paste below.
- * Submissions will forward to the email configured in your Formspree dashboard.
+ * Submissions forward to the email configured in Formspree dashboard.
  */
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mreykdne";
 
-const FIELDS = [
-  { id: "name", label: "Full Name", type: "text", placeholder: "Your name" },
-  { id: "email", label: "Email", type: "email", placeholder: "you@company.com" },
-  { id: "company", label: "Company", type: "text", placeholder: "Company or project name" },
+const INPUT_CLS =
+  "bg-surface-3 border border-white/[0.07] rounded-lg px-4 py-3.5 text-warm-white text-[16px] placeholder:text-warm-white/20 focus:outline-none focus:border-crimson/40 transition-colors duration-200";
+
+const LABEL_CLS =
+  "text-warm-white/50 text-[13px] uppercase tracking-[0.18em]";
+
+const STARTUP_STAGES = [
+  "Idea / Pre-product",
+  "MVP / Prototype",
+  "Early Revenue",
+  "Growth / Scaling",
+  "Other",
 ];
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
-
   const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -47,7 +53,6 @@ export default function ContactSection() {
         setSubmitted(true);
 
         // ── Conversion tracking ──
-        // GA4: track as lead generation event
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const w = window as any;
         if (typeof w.gtag === "function") {
@@ -56,7 +61,6 @@ export default function ContactSection() {
             event_label: "brief_submission",
           });
         }
-        // Meta Pixel: track as Lead conversion
         if (typeof w.fbq === "function") {
           w.fbq("track", "Lead");
         }
@@ -236,7 +240,7 @@ export default function ContactSection() {
               />
 
               {!submitted ? (
-                <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-7">
+                <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-6">
                   <div>
                     <p
                       className="text-warm-white text-[22px] font-[400] mb-1"
@@ -252,44 +256,181 @@ export default function ContactSection() {
                     </p>
                   </div>
 
-                  {FIELDS.map((f) => (
-                    <div key={f.id} className="flex flex-col gap-2">
-                      <label
-                        htmlFor={f.id}
-                        className="text-warm-white/50 text-[13px] uppercase tracking-[0.18em]"
-                        style={{ fontFamily: "var(--font-dm-sans)" }}
-                      >
-                        {f.label}
+                  {/* Row 1: Name + Email */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                        Full Name <span className="text-crimson">*</span>
                       </label>
                       <input
-                        id={f.id}
-                        name={f.id}
-                        type={f.type}
+                        id="name"
+                        name="Name"
+                        type="text"
                         required
-                        placeholder={f.placeholder}
-                        className="bg-surface-3 border border-white/[0.07] rounded-lg px-4 py-3.5 text-warm-white text-[16px] placeholder:text-warm-white/20 focus:outline-none focus:border-crimson/40 transition-colors duration-200"
+                        placeholder="Your name"
+                        className={INPUT_CLS}
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                       />
                     </div>
-                  ))}
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="email" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                        Email <span className="text-crimson">*</span>
+                      </label>
+                      <input
+                        id="email"
+                        name="Email"
+                        type="email"
+                        required
+                        placeholder="you@company.com"
+                        className={INPUT_CLS}
+                        style={{ fontFamily: "var(--font-dm-sans)" }}
+                      />
+                    </div>
+                  </div>
 
+                  {/* Row 2: Phone + Role */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="phone" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                        Phone Number
+                      </label>
+                      <input
+                        id="phone"
+                        name="Phone Number"
+                        type="tel"
+                        placeholder="+47 000 00 000"
+                        className={INPUT_CLS}
+                        style={{ fontFamily: "var(--font-dm-sans)" }}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="role" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                        Role / Job Title
+                      </label>
+                      <input
+                        id="role"
+                        name="Role / Job Title"
+                        type="text"
+                        placeholder="Founder, CTO, etc."
+                        className={INPUT_CLS}
+                        style={{ fontFamily: "var(--font-dm-sans)" }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 3: Company + Website */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="company" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                        Company / Startup Name <span className="text-crimson">*</span>
+                      </label>
+                      <input
+                        id="company"
+                        name="Company / Startup Name"
+                        type="text"
+                        required
+                        placeholder="Company or project name"
+                        className={INPUT_CLS}
+                        style={{ fontFamily: "var(--font-dm-sans)" }}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="website" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                        Website URL
+                      </label>
+                      <input
+                        id="website"
+                        name="Website URL"
+                        type="url"
+                        placeholder="https://yourcompany.com"
+                        className={INPUT_CLS}
+                        style={{ fontFamily: "var(--font-dm-sans)" }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* LinkedIn */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="linkedin" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                      LinkedIn Profile Link
+                    </label>
+                    <input
+                      id="linkedin"
+                      name="LinkedIn Profile Link"
+                      type="url"
+                      placeholder="https://linkedin.com/in/yourprofile"
+                      className={INPUT_CLS}
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    />
+                  </div>
+
+                  {/* Startup Stage — Radio */}
+                  <div className="flex flex-col gap-3">
+                    <p className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                      Startup Stage
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {STARTUP_STAGES.map((stage) => (
+                        <label
+                          key={stage}
+                          className="flex items-center gap-2 cursor-pointer group"
+                        >
+                          <input
+                            type="radio"
+                            name="Startup Stage"
+                            value={stage}
+                            className="sr-only peer"
+                          />
+                          <span
+                            className="px-4 py-2 rounded-full border border-white/[0.07] bg-surface-3 text-warm-white/50 text-[14px] transition-all duration-200 peer-checked:border-crimson/50 peer-checked:text-crimson peer-checked:bg-crimson/[0.08] hover:border-white/15 hover:text-warm-white/70"
+                            style={{ fontFamily: "var(--font-dm-sans)" }}
+                          >
+                            {stage}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Brief / Description */}
                   <div className="flex flex-col gap-2">
                     <label
                       htmlFor="brief"
-                      className="text-warm-white/50 text-[13px] uppercase tracking-[0.18em]"
+                      className={LABEL_CLS}
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
-                      Your brief
+                      Tell us about your startup <span className="text-crimson">*</span>
                     </label>
                     <textarea
                       id="brief"
-                      name="brief"
+                      name="Brief"
                       required
                       rows={5}
-                      placeholder="Tell us what you're building and where you are in the journey."
-                      className="bg-surface-3 border border-white/[0.07] rounded-lg px-4 py-3.5 text-warm-white text-[16px] placeholder:text-warm-white/20 focus:outline-none focus:border-crimson/40 transition-colors duration-200 resize-none"
+                      placeholder="Tell us what you're building, where you are in the journey, and what kind of support you're looking for."
+                      className={`${INPUT_CLS} resize-none`}
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     />
+                  </div>
+
+                  {/* Supporting Documents Link */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="documents" className={LABEL_CLS} style={{ fontFamily: "var(--font-dm-sans)" }}>
+                      Supporting Documents Link
+                    </label>
+                    <input
+                      id="documents"
+                      name="Supporting Documents Link"
+                      type="url"
+                      placeholder="Google Drive, Notion, or Dropbox link"
+                      className={INPUT_CLS}
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    />
+                    <p
+                      className="text-warm-white/20 text-[12px]"
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    >
+                      Pitch deck, one-pager, or any relevant material.
+                    </p>
                   </div>
 
                   <button

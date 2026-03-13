@@ -127,6 +127,22 @@ export default function RootLayout({
           }}
         />
 
+        {/* Google Tag Manager — as high in <head> as possible
+         * The dangerouslySetInnerHTML below is SAFE: it contains only a
+         * hardcoded, developer-controlled GTM installation snippet with
+         * a static container ID. No user input is interpolated.
+         */}
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MTT6BHBQ');`,
+          }}
+        />
+
         {/* Security meta tags */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="X-Frame-Options" content="DENY" />
@@ -144,6 +160,15 @@ export default function RootLayout({
       <body
         className={`${bebas.variable} ${dmSans.variable} antialiased`}
       >
+        {/* Google Tag Manager (noscript) — must be immediately after <body> */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MTT6BHBQ"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <ThemeProvider>
           <Spotlight size={700} />
           {children}

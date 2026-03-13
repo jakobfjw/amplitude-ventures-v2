@@ -15,7 +15,7 @@ import Script from "next/script";
  * because the injected strings are developer-controlled constants,
  * identical to what Google and Meta provide as installation snippets.
  */
-const GTM_ID = "GTM-XXXXXXX";
+const GTM_ID = "GTM-MTT6BHBQ";
 const GA4_ID = "G-XXXXXXXXXX";
 const META_PIXEL_ID = "PIXEL_ID";
 
