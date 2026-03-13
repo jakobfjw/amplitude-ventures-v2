@@ -34,11 +34,17 @@ jobs:
       - name: Verify build output
         run: |
           echo "Checking critical routes..."
-          for page in index.html about.html offering.html portfolio.html blog.html contact.html privacy.html; do
-            if [ -f "out/$page" ]; then
-              echo "  ok $page"
+          # Root page is out/index.html; sub-routes are out/<route>/index.html
+          for page in index about offering portfolio blog contact privacy; do
+            if [ "$page" = "index" ]; then
+              FILE="out/index.html"
             else
-              echo "  MISSING $page" && exit 1
+              FILE="out/$page/index.html"
+            fi
+            if [ -f "$FILE" ]; then
+              echo "  ✓ /$page"
+            else
+              echo "  ✗ MISSING /$page ($FILE)" && exit 1
             fi
           done
           echo ""
