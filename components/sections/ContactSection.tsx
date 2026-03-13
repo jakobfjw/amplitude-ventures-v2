@@ -346,7 +346,7 @@ export default function ContactSection() {
                       className="text-warm-white/40 text-[16px] max-w-[260px]"
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
-                      We'll be in touch within 48 hours.
+                      We&apos;ll be in touch within 48 hours.
                     </p>
                   </div>
                 </motion.div>

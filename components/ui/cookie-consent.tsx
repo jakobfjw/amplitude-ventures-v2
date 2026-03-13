@@ -29,7 +29,7 @@ function readConsent(): ConsentStatus {
  *   which re-shows the banner
  */
 export default function CookieConsent() {
-  const [status, setStatus] = useState<ConsentStatus>("accepted"); // SSR-safe default
+  const [, setStatus] = useState<ConsentStatus>("accepted"); // SSR-safe default
   const [visible, setVisible] = useState(false);
 
   // Hydrate from localStorage on mount
