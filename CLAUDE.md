@@ -1,6 +1,6 @@
 # Amplitude Ventures v2 — Codebase & Brand Reference
 
-> **Production site**: `http://172.239.240.151:4000` (Linode VPS, nginx static)
+> **Production site**: `https://amplitude.ventures` (Render Static Site, auto-deploys from GitHub)
 > **Dev server**: `npm run dev` → `http://localhost:3003`
 > **Project path**: `/Users/jakobwredstrom/Desktop/New website/amplitude-ventures-v2/`
 
@@ -10,7 +10,7 @@
 
 Production marketing website for **Amplitude Ventures**, a Scandinavian pre-seed venture studio based in Stavanger, Norway. They co-build with early-stage founders — product, validation, sales, and fundraising — from first idea to investor-ready company.
 
-The site is a fully static Next.js export (no server runtime), deployed to a Linode VPS via rsync and served by nginx.
+The site is a fully static Next.js export (no server runtime), deployed via GitHub → Render Static Site.
 
 ---
 
@@ -25,7 +25,7 @@ The site is a fully static Next.js export (no server runtime), deployed to a Lin
 | Icons | Lucide React | 0.577.x | Only a handful used (Linkedin, nav icons) |
 | Language | TypeScript | 5.x | Strict mode |
 | Build | Static HTML export | — | `npm run build` → `out/` directory |
-| Deploy | rsync over SSH to Linode | — | nginx serves port 4000 |
+| Deploy | Render Static Site | — | Auto-deploys from GitHub `main` branch |
 
 ### Key Architectural Decisions
 
@@ -350,45 +350,30 @@ npm run build
 
 This generates `out/` with static HTML. Build must pass with **zero TypeScript errors** before deploying.
 
-### Deploy to Linode
+### Deploy
+
+Push to `main` on GitHub — Render auto-deploys:
 
 ```bash
-tar -cf - -C out . | ssh -i ~/.ssh/gigevate_deploy -p 2222 deploy@172.239.240.151 \
-  "sudo rm -rf /var/www/amplitude-ventures/* && sudo tar -xf - -C /var/www/amplitude-ventures/"
+git push origin main
 ```
 
-The site runs on nginx at port 4000. The nginx config handles:
-- SPA-style routing (`.html` extension stripping)
-- Static asset caching
-- Gzip compression
+The site is configured via `render.yaml` blueprint:
+- **Build**: `npm run build` → `out/` static export
+- **HTTPS**: Automatic via Let's Encrypt
+- **Custom domain**: `amplitude.ventures`
+- **Security headers**: Configured in `render.yaml` (X-Frame-Options, HSTS, etc.)
 
 ### Verify
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/
-curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/about
-curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/offering
-curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/portfolio
+curl -s -o /dev/null -w "%{http_code}" https://amplitude.ventures/
+curl -s -o /dev/null -w "%{http_code}" https://amplitude.ventures/about
+curl -s -o /dev/null -w "%{http_code}" https://amplitude.ventures/offering
+curl -s -o /dev/null -w "%{http_code}" https://amplitude.ventures/portfolio
 ```
 
 All should return `200`.
-
-### Deploy to Render (Recommended)
-
-The site includes a `render.yaml` blueprint for Render static site deployment:
-
-1. Push repo to GitHub
-2. Connect repo on [render.com](https://render.com) → New → Static Site
-3. Render auto-detects `render.yaml` and configures build, publish path, and security headers
-4. HTTPS is automatic on Render (Let's Encrypt)
-5. Configure custom domain `amplitude.ventures` in Render dashboard
-
-After deploy, configure these headers in the Render dashboard (also defined in `render.yaml`):
-- `X-Frame-Options: DENY`
-- `X-Content-Type-Options: nosniff`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
-- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
 
 ---
 
@@ -416,7 +401,7 @@ After deploy, configure these headers in the Render dashboard (also defined in `
 5. Add content to `lib/content/index.ts`
 6. Follow animation patterns from Section 6
 7. Run `npm run build` — must pass cleanly
-8. Deploy with the rsync pipeline
+8. Push to GitHub — Render auto-deploys
 
 ### Template
 
@@ -533,5 +518,5 @@ Blur entrance: filter: "blur(12px)" → "blur(0px)"
 Logo:          /public/logo-main.png (28px in nav, 24px in footer)
 Dev port:      3003
 Build:         npm run build → out/
-Deploy:        tar pipe over SSH to 172.239.240.151
+Deploy:        git push origin main → Render auto-deploys
 ```
