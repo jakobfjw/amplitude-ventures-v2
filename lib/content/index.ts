@@ -936,8 +936,8 @@ export const portfolioCompanies: {
     industry: "Music Tech",
   },
   {
-    name: "Mantik Music Norway",
-    tagline: "Norwegian music platform for discovery and artist development.",
+    name: "Mantik Music Group",
+    tagline: "Music publishing and management for internationally ambitious Nordic and American songwriters and producers.",
     category: "Music Tech",
     type: "Investment",
     url: "https://mantik.cc/",
@@ -947,7 +947,7 @@ export const portfolioCompanies: {
   },
   {
     name: "Russelåter.no",
-    tagline: "Digital platform preserving and celebrating Norwegian graduation music traditions.",
+    tagline: "Norway's first AI artist — music production company.",
     category: "Music / Culture",
     type: "Investment",
     role: "Co-Founder",
@@ -956,7 +956,7 @@ export const portfolioCompanies: {
   },
   {
     name: "Mintix",
-    tagline: "Next-generation ticketing platform for live events.",
+    tagline: "Web3 ticketing B2B solution for live events.",
     category: "Events Tech",
     type: "Investment",
     url: "https://mintixapp.com/",
@@ -968,7 +968,7 @@ export const portfolioCompanies: {
   // ── Projects (AV-owned / internal) ────────────────────────────────────────
   {
     name: "Venture Builder AI",
-    tagline: "AI-driven venture building platform. MVP built and customer pipeline established.",
+    tagline: "AI-driven venture building platform.",
     category: "AI / SaaS",
     type: "Investment",
     role: "Co-found and Co-own / End-to-End Platform Development",
@@ -1005,8 +1005,8 @@ export const portfolioCompanies: {
   },
   {
     name: "Capella Norway",
-    tagline: "Digital choir platform. Building community through collaborative music creation.",
-    category: "Music Tech",
+    tagline: "South West Norway music entertainment company.",
+    category: "Music / Entertainment",
     type: "Investment",
     role: "Co-Founder",
     logo: "/logos/capella-norway.png",
@@ -1148,7 +1148,7 @@ export const portfolioCompanies: {
     name: "WARM",
     tagline: "Real-time radio airplay monitoring and music analytics.",
     category: "Music Tech",
-    type: "Investment",
+    type: "Client",
     url: "https://www.warmmusic.net/",
     role: "Modernize Web Application / Conduct Lead Research / Manage Outreach to Partners",
     logo: "/logos/warm.png",

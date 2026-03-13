@@ -39,6 +39,11 @@ export default function ContactSection() {
     setError(null);
 
     const form = e.currentTarget;
+    // Sync _replyto with the email field so Formspree sets Reply-To header
+    const emailVal = (form.elements.namedItem("Email") as HTMLInputElement)?.value;
+    const replyTo = form.elements.namedItem("_replyto") as HTMLInputElement;
+    if (replyTo && emailVal) replyTo.value = emailVal;
+
     const data = new FormData(form);
 
     try {
@@ -241,6 +246,9 @@ export default function ContactSection() {
 
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-6">
+                  {/* Formspree special fields */}
+                  <input type="hidden" name="_subject" value="New submission from amplitude.ventures" />
+                  <input type="hidden" name="_replyto" id="_replyto" />
                   <div>
                     <p
                       className="text-warm-white text-[22px] font-[400] mb-1"
