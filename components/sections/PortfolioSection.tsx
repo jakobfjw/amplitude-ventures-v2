@@ -246,10 +246,7 @@ export default function PortfolioSection() {
                     <img
                       src={company.logo}
                       alt={`${company.name} logo`}
-                      className="max-h-[56px] max-w-[200px] w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        filter: "brightness(0) invert(1)",
-                      }}
+                      className="logo-adaptive max-h-[56px] max-w-[200px] w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                       loading="lazy"
                     />
                   </div>

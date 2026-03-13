@@ -145,3 +145,11 @@ body::after {
 .ring-cw-2  { animation: ring-cw  18s linear infinite; }
 .ring-ccw-1 { animation: ring-ccw 35s linear infinite; }
 .ring-ccw-2 { animation: ring-ccw 22s linear infinite; }
+
+/* ── Logo adaptive filter (light = black, dark = white) ── */
+.logo-adaptive {
+  filter: brightness(0);
+}
+html.dark .logo-adaptive {
+  filter: brightness(0) invert(1);
+}
