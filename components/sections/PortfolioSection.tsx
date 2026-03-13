@@ -149,6 +149,16 @@ export default function PortfolioSection() {
               {s}
             </button>
           ))}
+
+          <motion.span
+            className="ml-1 text-warm-white/25 text-[13px] italic"
+            style={{ fontFamily: "var(--font-cormorant)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.55, duration: 0.8 }}
+          >
+            All investments also receive hands-on studio services.
+          </motion.span>
         </motion.div>
 
         {/* ── Grid ── */}
