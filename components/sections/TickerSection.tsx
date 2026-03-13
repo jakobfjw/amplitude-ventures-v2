@@ -16,15 +16,15 @@ export default function TickerSection() {
       {/* Ambient decorations */}
       <PulseNode
         size={36}
-        color="rgba(200,16,46,0.12)"
-        coreColor="rgba(200,16,46,0.3)"
+        color="rgba(var(--crimson-rgb),0.12)"
+        coreColor="rgba(var(--crimson-rgb),0.3)"
         pulseSpeed={4}
         className="absolute right-6 top-1/2 -translate-y-1/2 w-9 h-9 hidden lg:block"
       />
       <DashedArc
         width={140}
         height={80}
-        color="rgba(200,16,46,0.06)"
+        color="rgba(var(--crimson-rgb),0.06)"
         dashArray="2 8"
         className="absolute -top-2 -left-4 w-[140px] h-[80px] hidden lg:block"
       />
@@ -32,11 +32,11 @@ export default function TickerSection() {
       {/* Fade edges */}
       <div
         className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #0f0f0f, transparent)" }}
+        style={{ background: "linear-gradient(to right, rgb(var(--surface-rgb)), transparent)" }}
       />
       <div
         className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #0f0f0f, transparent)" }}
+        style={{ background: "linear-gradient(to left, rgb(var(--surface-rgb)), transparent)" }}
       />
 
       {/* Row 1 — left to right */}

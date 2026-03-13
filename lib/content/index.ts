@@ -28,7 +28,7 @@ export const hero = {
   lineOne: "Zero",
   lineTwo: "To Investor-",
   lineThree: "Ready.",
-  sub: "We co-build with early-stage founders — product, validation, sales, and fundraising. From first idea to investor-ready. No deck required.",
+  sub: "We co-build and invest alongside early-stage founders — product, validation, sales, and fundraising. From first idea to investor-ready.",
 };
 
 // Stats — all values are verifiable from portfolio and team data
@@ -68,13 +68,6 @@ export const whoWeWorkWith = [
 
 export const services = [
   {
-    id: "co-build",
-    title: "Co-build",
-    headline: "Technology that works.",
-    body: "AI agents, functional MVPs, full platform builds, and production-ready codebases — delivered in 6–20 weeks. We embed engineers and stay close to execution, not just oversight.",
-    detail: "We co-build and co-own. Not outsourced development.",
-  },
-  {
     id: "validate",
     title: "Validate",
     headline: "Know before you build.",
@@ -82,9 +75,16 @@ export const services = [
     detail: "Research-backed clarity so you build what the market needs.",
   },
   {
+    id: "co-build",
+    title: "Co-build",
+    headline: "Business that works.",
+    body: "AI agents, functional MVPs, full platform builds, and production-ready codebases — delivered in 6–20 weeks. We embed engineers and stay close to execution, not just oversight.",
+    detail: "We co-build and co-own. Not outsourced development.",
+  },
+  {
     id: "sell",
     title: "Sell",
-    headline: "First revenue. Real traction.",
+    headline: "Product Market Fit. Revenue and Profitability.",
     body: "ICP definition, prospect sourcing, multi-channel outreach, pipeline setup, and lead qualification. We build the sales motion that converts prospects to paying customers — not vanity metrics.",
     detail: "100+ campaigns. 10–40% response rates on targeted prospecting.",
   },
@@ -744,21 +744,21 @@ export const blogPosts = [
 // ── Inner page content ────────────────────────────────────────────────────────
 
 // All real portfolio companies from Framer CMS
-// type: "Company" = co-built / strategic partner | "Project" = AV internal | "Client" = service engagement
+// type: "Investment" = equity / co-owned | "Project" = AV-built | "Client" = service engagement
 export const portfolioCompanies: {
   name: string;
   tagline: string;
   category: string;
-  type: "Company" | "Project" | "Client";
+  type: "Investment" | "Project" | "Client";
   url?: string;
   role: string;
 }[] = [
-  // ── Companies (co-built / strategic partner) ──────────────────────────────
+  // ── Investments (equity / co-owned) ────────────────────────────────────────
   {
     name: "WizeMice",
     tagline: "Music tech platform. Slush Music Accelerator winner. Backed by SoundHub and Wave Lab.",
     category: "Music Tech",
-    type: "Company",
+    type: "Client",
     url: "https://wizemice.com/",
     role: "Market Research / Define Investor ICPs / Execute Investor Outreach Campaigns",
   },
@@ -766,7 +766,7 @@ export const portfolioCompanies: {
     name: "SiriNor",
     tagline: "Zero-emission jet engine technology. Deep-tech energy meets aerospace.",
     category: "CleanTech",
-    type: "Company",
+    type: "Client",
     url: "https://www.sirinor.com/",
     role: "Build Pitch Deck, Data Rooms, and Investor Strategy",
   },
@@ -774,7 +774,7 @@ export const portfolioCompanies: {
     name: "Lissen",
     tagline: "Interactive music streaming platform with fan-first royalties.",
     category: "Music Tech",
-    type: "Company",
+    type: "Client",
     url: "",
     role: "Consultation on Storytelling and Podcast Production Strategy",
   },
@@ -782,7 +782,7 @@ export const portfolioCompanies: {
     name: "MOD INC.",
     tagline: "Fan art licensing platform. Business pivot support, value proposition clarity, and pitch refinement.",
     category: "Creative Industries",
-    type: "Company",
+    type: "Client",
     url: "https://modfanart.com/",
     role: "Build Pitch Deck, Data Rooms, and Investor Strategy",
   },
@@ -790,7 +790,7 @@ export const portfolioCompanies: {
     name: "AI:OK",
     tagline: "Ethical AI music creation. Responsible AI tools for artists and rights holders.",
     category: "Music Tech / AI",
-    type: "Company",
+    type: "Client",
     url: "https://ai-ok.org/",
     role: "Develop Pitch Deck, Data Room, and Investor Strategy / Enhance Communication Strategies",
   },
@@ -798,7 +798,7 @@ export const portfolioCompanies: {
     name: "Digit Music",
     tagline: "Music education technology. Making music learning accessible and scalable.",
     category: "EdTech",
-    type: "Company",
+    type: "Client",
     url: "https://www.digitmusic.co.uk/",
     role: "Develop Product Features / Build Strategic Storytelling, Pitch Decks, and Investor Capital Strategy",
   },
@@ -806,7 +806,7 @@ export const portfolioCompanies: {
     name: "Allfeat",
     tagline: "Blockchain-based music metadata infrastructure. Royalty transparency at scale.",
     category: "Music Tech / Web3",
-    type: "Company",
+    type: "Client",
     url: "https://allfeat.org/",
     role: "Conduct Market Research / Build Pitch Deck, Data Room, and Investor Strategy",
   },
@@ -814,7 +814,7 @@ export const portfolioCompanies: {
     name: "Vyve",
     tagline: "AI sustainability platform. Idea to live product in 3 months. Active user pipeline.",
     category: "AI / Sustainability",
-    type: "Company",
+    type: "Investment",
     url: "https://www.vyve.no/",
     role: "Early-Stage Strategic Partner / Full-Stack Tech Development / Website Storytelling, Brand Messaging, and Social Media / Develop ICP and One-Pagers",
   },
@@ -822,7 +822,7 @@ export const portfolioCompanies: {
     name: "Blizbi",
     tagline: "Activity discovery platform. MVP built, customer acquisition underway.",
     category: "Consumer Tech",
-    type: "Company",
+    type: "Investment",
     url: "https://blizbi.no/",
     role: "Develop Full MVP Platform / Conduct Market Research and Create Storytelling and Pitch Deck / Provide Ongoing Operational Support",
   },
@@ -830,7 +830,7 @@ export const portfolioCompanies: {
     name: "The Blues Project",
     tagline: "Soul and R&B platform connecting artists with audiences and opportunities.",
     category: "Music Tech",
-    type: "Company",
+    type: "Client",
     url: "https://thebluesproject.co/",
     role: "Develop MVP for B2C Platform / Design UI/UX, Build Backend Architecture, and Payment Integration",
   },
@@ -838,7 +838,7 @@ export const portfolioCompanies: {
     name: "Thor Kraft",
     tagline: "Nuclear energy startup. Clean, scalable power for a post-fossil world.",
     category: "Energy",
-    type: "Company",
+    type: "Client",
     url: "https://thor-kraft.no/",
     role: "Pitch Deck, Data Room, and Investor Strategy",
   },
@@ -846,7 +846,7 @@ export const portfolioCompanies: {
     name: "Unlisted AI",
     tagline: "Digital ownership and cap table platform.",
     category: "FinTech / AI",
-    type: "Company",
+    type: "Client",
     url: "https://en.unlisted.ai/",
     role: "Produce the 'Venture Capital Unlocked' Podcast",
   },
@@ -854,7 +854,7 @@ export const portfolioCompanies: {
     name: "Altech AS",
     tagline: "Valve distribution and industrial control systems in the Nordic region.",
     category: "Industrial Tech",
-    type: "Company",
+    type: "Client",
     url: "https://www.altech.no/",
     role: "Design and Develop Full-Stack Valve Management System",
   },
@@ -862,7 +862,7 @@ export const portfolioCompanies: {
     name: "Tuned Global",
     tagline: "B2B music streaming infrastructure. White-label platform for telcos and brands.",
     category: "Music Tech",
-    type: "Company",
+    type: "Client",
     url: "https://www.tunedglobal.com/",
     role: "Provide Development Services",
   },
@@ -870,7 +870,7 @@ export const portfolioCompanies: {
     name: "AIDAR",
     tagline: "AI-powered artist scouting platform.",
     category: "Music Tech / AI",
-    type: "Company",
+    type: "Investment",
     url: "https://www.aidar.ai/",
     role: "Platform Development with AI Integration",
   },
@@ -878,7 +878,7 @@ export const portfolioCompanies: {
     name: "Unitesync",
     tagline: "Royalty recovery platform. Helping artists and rights holders reclaim what's owed.",
     category: "Music Tech",
-    type: "Company",
+    type: "Client",
     url: "https://www.unitesync.com/",
     role: "End-to-End Platform Development",
   },
@@ -886,7 +886,7 @@ export const portfolioCompanies: {
     name: "Music Tech Europe Academy",
     tagline: "Pan-European accelerator for music-tech startups.",
     category: "EdTech / Music",
-    type: "Company",
+    type: "Client",
     url: "https://www.musictecheuropeacademy.eu/",
     role: "Mentorship on Financing Strategy for Music Tech Startups in MTEA Accelerator",
   },
@@ -894,14 +894,14 @@ export const portfolioCompanies: {
     name: "Advochord",
     tagline: "Music technology and advocacy platform.",
     category: "Music Tech",
-    type: "Company",
+    type: "Client",
     role: "—",
   },
   {
     name: "Mantik Music Norway",
     tagline: "Norwegian music platform for discovery and artist development.",
     category: "Music Tech",
-    type: "Company",
+    type: "Investment",
     url: "https://mantik.cc/",
     role: "—",
   },
@@ -909,7 +909,7 @@ export const portfolioCompanies: {
     name: "Russelåter.no",
     tagline: "Digital platform preserving and celebrating Norwegian graduation music traditions.",
     category: "Music / Culture",
-    type: "Company",
+    type: "Project",
     url: "",
     role: "—",
   },
@@ -917,7 +917,7 @@ export const portfolioCompanies: {
     name: "Mintix",
     tagline: "Next-generation ticketing platform for live events.",
     category: "Events Tech",
-    type: "Company",
+    type: "Investment",
     url: "https://mintixapp.com/",
     role: "—",
   },
@@ -927,7 +927,7 @@ export const portfolioCompanies: {
     name: "Venture Builder AI",
     tagline: "AI-driven venture building platform. MVP built and customer pipeline established.",
     category: "AI / SaaS",
-    type: "Project",
+    type: "Investment",
     role: "Co-found and Co-own / End-to-End Platform Development",
   },
   {
@@ -956,14 +956,14 @@ export const portfolioCompanies: {
     name: "Capella Norway",
     tagline: "Digital choir platform. Building community through collaborative music creation.",
     category: "Music Tech",
-    type: "Project",
+    type: "Investment",
     role: "Co-found / Platform Development / Community Building",
   },
   {
     name: "Molly og Mi",
     tagline: "Norwegian family music brand. Social media, music production, and platform development.",
     category: "Music / Entertainment",
-    type: "Project",
+    type: "Investment",
     url: "https://mollyogmi.no/",
     role: "Co-own and Cooperate / Manage Social Media / Handle Music Production / Conduct Market Research / Develop Website",
   },
@@ -1069,7 +1069,7 @@ export const portfolioCompanies: {
     name: "WARM",
     tagline: "Real-time radio airplay monitoring and music analytics.",
     category: "Music Tech",
-    type: "Client",
+    type: "Investment",
     url: "https://www.warmmusic.net/",
     role: "Modernize Web Application / Conduct Lead Research / Manage Outreach to Partners",
   },
@@ -1150,7 +1150,7 @@ export const portfolioCompanies: {
 export const about = {
   eyebrow: "Our story",
   headline: "We build\ncompanies.",
-  subheadline: "Then we help raise.",
+  subheadline: "From zero to investor-ready.",
   story: [
     "Amplitude Ventures is a venture studio based in Stavanger, Norway. We partner with founders as early-stage co-builders — taking on the heavy lifting of product development, market validation, and investor storytelling.",
     "Our thesis is simple: most early-stage companies don't fail because they can't raise. They fail because they can't execute to the point where raising makes sense. We close the execution gap.",
@@ -1191,7 +1191,6 @@ export const about = {
 export const contact = {
   headline: "Let's talk.",
   sub: "Building something and need a co-builder? We want to hear it — no deck required.",
-  email: "hello@amplitudeventures.vc",
   linkedin: "https://www.linkedin.com/company/amplitudeventures/?viewAsMember=true",
 };
 
@@ -1199,7 +1198,7 @@ export const contact = {
 
 export const offering = {
   eyebrow: "What we do",
-  headline: { line1: "Build. Sell.", line2: "Validate. Raise." },
+  headline: { line1: "Validate. Build.", line2: "Sell. Raise." },
   sub: "Four ways we work with early-stage companies — from idea through product, revenue, and the raise.",
   details: {
     "co-build": { stat: "6–20 wks", statLabel: "Typical delivery" },
@@ -1220,9 +1219,9 @@ export const offering = {
   },
   cta: {
     eyebrow: "Ready to start?",
-    headline: "Two paragraphs.",
-    headlineAccent: "That's all it takes.",
-    ctaLabel: "Send us a brief →",
+    headline: "Interested?",
+    headlineAccent: "Let's talk.",
+    ctaLabel: "Start a conversation →",
     ctaSub: "Average response: 48 hours",
   },
 };
@@ -1230,9 +1229,9 @@ export const offering = {
 export const footerCta = {
   line1: "READY TO",
   line2: "build?",
-  sub: "No deck required. Just a conversation about what you're building and why it matters.",
+  sub: "",
   ctaLabel: "Start a conversation",
-  ctaSub: "No commitment. One conversation.",
+  ctaSub: "",
 };
 
 export const footer = {
@@ -1269,4 +1268,43 @@ export const footer = {
 
 export const statsSection = {
   eyebrow: "By the numbers",
+};
+
+export const privacy = {
+  headline: "Privacy Policy",
+  lastUpdated: "March 2026",
+  sections: [
+    {
+      title: "Who we are",
+      body: "Amplitude Ventures is a pre-seed venture studio based in Stavanger, Norway. This privacy policy explains how we collect, use, and protect data when you visit amplitude.ventures.",
+    },
+    {
+      title: "What data we collect",
+      body: "We collect data through three channels: (1) Contact form submissions — your name, email, company, and brief are sent to Formspree and forwarded to build@amplitude.ventures. (2) Analytics — Google Analytics 4 collects anonymized usage data (pages visited, time on site, device type, approximate location). (3) Advertising measurement — Meta Pixel collects interaction data to measure ad campaign effectiveness.",
+    },
+    {
+      title: "Cookies and tracking",
+      body: "We use cookies set by Google Analytics and Meta Pixel for analytics and advertising measurement. These cookies are only loaded after you give explicit consent via our cookie banner. You can withdraw consent at any time using the Cookie Preferences link in the footer.",
+    },
+    {
+      title: "How we use your data",
+      body: "Contact form data is used solely to respond to your inquiry. Analytics data helps us understand how visitors use our site so we can improve it. Advertising data helps us measure the effectiveness of our campaigns and reach relevant founders.",
+    },
+    {
+      title: "Data sharing",
+      body: "We do not sell your personal data. Form submissions are processed by Formspree (US-based, Privacy Shield certified). Analytics data is processed by Google (Google Analytics 4). Ad measurement data is processed by Meta Platforms (Meta Pixel).",
+    },
+    {
+      title: "Your rights under GDPR",
+      body: "As a Norwegian company, we comply with the EU General Data Protection Regulation (GDPR). You have the right to: access your personal data, request correction or deletion, withdraw consent at any time, object to processing, and lodge a complaint with the Norwegian Data Protection Authority (Datatilsynet).",
+    },
+    {
+      title: "Data retention",
+      body: "Contact form submissions are retained for 24 months. Analytics data is retained according to Google Analytics default settings (14 months). You can request deletion of your data at any time.",
+    },
+    {
+      title: "Contact",
+      body: "For privacy-related inquiries, contact us at build@amplitude.ventures or write to Amplitude Ventures, Stavanger, Norway.",
+    },
+  ],
 };

@@ -22,8 +22,8 @@ interface LogoMarkProps {
 
 export default function LogoMark({
   className = "",
-  pillarColor = "rgba(242,237,228,0.08)",
-  archColor = "rgba(200,16,46,0.08)",
+  pillarColor = "rgba(var(--warm-white-rgb),0.08)",
+  archColor = "rgba(var(--crimson-rgb),0.08)",
   animate = false,
   strokeWidth = 8,
   style,

@@ -27,7 +27,7 @@ export function Spotlight({ size = 700 }: { size?: number }) {
         left,
         top,
         background:
-          'radial-gradient(circle at center, rgba(200,16,46,0.13) 0%, rgba(200,16,46,0.04) 50%, transparent 72%)',
+          'radial-gradient(circle at center, rgba(var(--crimson-rgb),0.22) 0%, rgba(var(--crimson-rgb),0.07) 50%, transparent 72%)',
         filter: 'blur(60px)',
       }}
     />

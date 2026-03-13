@@ -13,9 +13,9 @@ export function MiniOrbital({
   rings = 2,
   tilt = -18,
   speed = 65,
-  nodeColor = "rgba(200,16,46,0.6)",
-  ringColor = "rgba(200,16,46,0.1)",
-  dotColor = "rgba(242,237,228,0.2)",
+  nodeColor = "rgba(var(--crimson-rgb),0.6)",
+  ringColor = "rgba(var(--crimson-rgb),0.1)",
+  dotColor = "rgba(var(--warm-white-rgb),0.2)",
 }: {
   className?: string;
   size?: number;
@@ -38,7 +38,7 @@ export function MiniOrbital({
     <div className={`pointer-events-none select-none ${className}`} aria-hidden>
       <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full">
         {/* Haze */}
-        <circle cx={cx} cy={cy} r={size * 0.3} fill="rgba(200,16,46,0.03)" />
+        <circle cx={cx} cy={cy} r={size * 0.3} fill="rgba(var(--crimson-rgb),0.06)" />
 
         {ringConfigs.map((ring, i) => (
           <motion.g
@@ -66,7 +66,7 @@ export function MiniOrbital({
               <circle
                 cx={cx + ring.rx * 0.9} cy={cy}
                 r={10}
-                fill="rgba(200,16,46,0.06)"
+                fill="rgba(var(--crimson-rgb),0.06)"
               />
             )}
             {/* Secondary dot */}
@@ -82,13 +82,13 @@ export function MiniOrbital({
         <motion.circle
           cx={cx} cy={cy} r={8}
           fill="none"
-          stroke="rgba(200,16,46,0.18)"
+          stroke="rgba(var(--crimson-rgb),0.18)"
           strokeWidth={0.8}
           animate={{ r: [6, 14, 6], opacity: [0.2, 0.06, 0.2] }}
           transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
         />
-        <circle cx={cx} cy={cy} r={3} fill="rgba(200,16,46,0.5)" />
-        <circle cx={cx} cy={cy} r={1.5} fill="rgba(242,237,228,0.7)" />
+        <circle cx={cx} cy={cy} r={3} fill="rgba(var(--crimson-rgb),0.5)" />
+        <circle cx={cx} cy={cy} r={1.5} fill="rgba(var(--warm-white-rgb),0.7)" />
       </svg>
     </div>
   );
@@ -103,8 +103,8 @@ export function DataFragments({
   className = "",
   count = 3,
   width = 60,
-  color = "rgba(200,16,46,0.25)",
-  secondaryColor = "rgba(242,237,228,0.1)",
+  color = "rgba(var(--crimson-rgb),0.25)",
+  secondaryColor = "rgba(var(--warm-white-rgb),0.1)",
   bobSpeed = 7,
   bobAmount = 10,
 }: {
@@ -153,8 +153,8 @@ export function DataFragments({
 export function PulseNode({
   className = "",
   size = 48,
-  color = "rgba(200,16,46,0.35)",
-  coreColor = "rgba(200,16,46,0.7)",
+  color = "rgba(var(--crimson-rgb),0.35)",
+  coreColor = "rgba(var(--crimson-rgb),0.7)",
   pulseSpeed = 3.2,
 }: {
   className?: string;
@@ -179,7 +179,7 @@ export function PulseNode({
         {/* Static ring */}
         <circle cx={c} cy={c} r={size * 0.15} fill="none" stroke={color} strokeWidth={0.6} />
         {/* Core glow */}
-        <circle cx={c} cy={c} r={size * 0.12} fill="rgba(200,16,46,0.06)" />
+        <circle cx={c} cy={c} r={size * 0.12} fill="rgba(var(--crimson-rgb),0.06)" />
         {/* Core dot */}
         <motion.circle
           cx={c} cy={c}
@@ -200,7 +200,7 @@ export function DashedArc({
   className = "",
   width = 200,
   height = 120,
-  color = "rgba(200,16,46,0.08)",
+  color = "rgba(var(--crimson-rgb),0.08)",
   dashArray = "3 10",
   flip = false,
 }: {
@@ -239,8 +239,8 @@ export function ScatterField({
   count = 12,
   width = 300,
   height = 200,
-  dotColor = "rgba(242,237,228,0.06)",
-  accentColor = "rgba(200,16,46,0.12)",
+  dotColor = "rgba(var(--warm-white-rgb),0.06)",
+  accentColor = "rgba(var(--crimson-rgb),0.12)",
   accentCount = 2,
 }: {
   className?: string;
@@ -303,13 +303,13 @@ export function FloatingNodes({
     >
       <svg viewBox="0 0 60 50" className="w-full h-full">
         {/* Hollow ring node */}
-        <circle cx={25} cy={18} r={5} fill="none" stroke="rgba(200,16,46,0.35)" strokeWidth={1.2} />
+        <circle cx={25} cy={18} r={5} fill="none" stroke="rgba(var(--crimson-rgb),0.35)" strokeWidth={1.2} />
         {/* Small solid dot */}
-        <circle cx={10} cy={32} r={2} fill="rgba(242,237,228,0.22)" />
+        <circle cx={10} cy={32} r={2} fill="rgba(var(--warm-white-rgb),0.22)" />
         {/* Tiny accent dot */}
-        <circle cx={42} cy={12} r={1.5} fill="rgba(200,16,46,0.4)" />
+        <circle cx={42} cy={12} r={1.5} fill="rgba(var(--crimson-rgb),0.4)" />
         {/* Connection line */}
-        <line x1={25} y1={18} x2={10} y2={32} stroke="rgba(200,16,46,0.08)" strokeWidth={0.5} />
+        <line x1={25} y1={18} x2={10} y2={32} stroke="rgba(var(--crimson-rgb),0.08)" strokeWidth={0.5} />
       </svg>
     </motion.div>
   );

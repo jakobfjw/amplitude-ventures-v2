@@ -28,7 +28,7 @@ export default function TestimonialsSection() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 65% 50% at 50% 40%, rgba(200,16,46,0.05) 0%, transparent 65%)",
+            "radial-gradient(ellipse 65% 50% at 50% 40%, rgba(var(--crimson-rgb),0.08) 0%, transparent 65%)",
         }}
       />
       {/* Dot grid texture — desktop only */}
@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
         className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(var(--warm-white-rgb),0.045) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -44,18 +44,18 @@ export default function TestimonialsSection() {
       <div className="absolute right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block" aria-hidden>
         <LogoMark
           className="w-[260px] h-auto"
-          pillarColor="rgba(242,237,228,0.018)"
-          archColor="rgba(200,16,46,0.022)"
+          pillarColor="rgba(var(--warm-white-rgb),0.04)"
+          archColor="rgba(var(--crimson-rgb),0.05)"
           strokeWidth={4}
           animate
         />
       </div>
       {/* Ambient decorations */}
       <div className="absolute bottom-16 left-12 w-[140px] h-[140px] hidden lg:block opacity-[0.5]" aria-hidden>
-        <MiniOrbital size={140} rings={2} tilt={-25} speed={80} nodeColor="rgba(200,16,46,0.4)" ringColor="rgba(200,16,46,0.06)" />
+        <MiniOrbital size={140} rings={2} tilt={-25} speed={80} nodeColor="rgba(var(--crimson-rgb),0.55)" ringColor="rgba(var(--crimson-rgb),0.1)" />
       </div>
       <div className="absolute top-1/3 right-4 w-[160px] h-[80px] hidden lg:block" aria-hidden>
-        <DashedArc width={160} height={80} color="rgba(200,16,46,0.06)" />
+        <DashedArc width={160} height={80} color="rgba(var(--crimson-rgb),0.1)" />
       </div>
       <div className="absolute bottom-8 right-[20%] w-[60px] h-[50px] hidden lg:block" aria-hidden>
         <FloatingNodes bobSpeed={11} bobAmount={6} />
@@ -64,10 +64,10 @@ export default function TestimonialsSection() {
       <motion.div
         className="absolute top-8 left-0 right-0 text-center leading-none pointer-events-none select-none"
         style={{
-          fontFamily: "var(--font-cormorant)",
-          fontSize: "clamp(120px, 22vw, 320px)",
+          fontFamily: "var(--font-dm-sans)",
+          fontSize: "clamp(80px, 14vw, 200px)",
           color: "transparent",
-          WebkitTextStroke: "1px rgba(200,16,46,0.09)",
+          WebkitTextStroke: "1px rgba(var(--crimson-rgb),0.14)",
           fontStyle: "italic",
         }}
         initial={{ opacity: 0, scale: 0.85, filter: "blur(20px)" }}
@@ -150,7 +150,7 @@ export default function TestimonialsSection() {
               <p
                 className="italic text-warm-white leading-[1.25] mb-10"
                 style={{
-                  fontFamily: "var(--font-cormorant)",
+                  fontFamily: "var(--font-dm-sans)",
                   fontSize: "clamp(24px, 4vw, 52px)",
                   fontWeight: 400,
                 }}

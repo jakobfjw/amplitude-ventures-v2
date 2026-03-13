@@ -37,7 +37,7 @@ export default function BlogPostSection({ post }: Props) {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(var(--warm-white-rgb),0.05) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
@@ -46,16 +46,16 @@ export default function BlogPostSection({ post }: Props) {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 35% 45% at 10% 50%, rgba(200,16,46,0.025) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 35% 45% at 10% 50%, rgba(var(--crimson-rgb),0.05) 0%, transparent 70%)",
         }}
       />
 
       {/* LogoMark — far right center, ghosted */}
       <div className="absolute top-[35%] right-[-40px] hidden lg:block pointer-events-none select-none" aria-hidden>
         <LogoMark
-          className="w-[200px] h-auto opacity-[0.03]"
-          pillarColor="rgba(242,237,228,0.02)"
-          archColor="rgba(200,16,46,0.02)"
+          className="w-[200px] h-auto opacity-[0.06]"
+          pillarColor="rgba(var(--warm-white-rgb),0.04)"
+          archColor="rgba(var(--crimson-rgb),0.04)"
           strokeWidth={4}
           style={{ transform: "rotate(5deg)" }}
         />
@@ -63,12 +63,12 @@ export default function BlogPostSection({ post }: Props) {
 
       {/* PulseNode — top-right */}
       <div className="absolute top-32 right-[12%] hidden lg:block w-[40px] h-[40px]">
-        <PulseNode size={40} color="rgba(200,16,46,0.15)" coreColor="rgba(200,16,46,0.35)" pulseSpeed={4} />
+        <PulseNode size={40} color="rgba(var(--crimson-rgb),0.15)" coreColor="rgba(var(--crimson-rgb),0.35)" pulseSpeed={4} />
       </div>
 
       {/* ScatterField — background, very faint */}
       <div className="absolute top-[15%] left-[2%] hidden lg:block w-[280px] h-[180px] opacity-50">
-        <ScatterField count={8} width={280} height={180} dotColor="rgba(242,237,228,0.025)" accentColor="rgba(200,16,46,0.05)" accentCount={1} />
+        <ScatterField count={8} width={280} height={180} dotColor="rgba(var(--warm-white-rgb),0.05)" accentColor="rgba(var(--crimson-rgb),0.05)" accentCount={1} />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[860px] px-8 md:px-12">
@@ -144,8 +144,8 @@ export default function BlogPostSection({ post }: Props) {
         <motion.p
           className="text-warm-white/65 italic leading-[1.4] mb-8 md:mb-12 pl-6 border-l-2 border-crimson/40"
           style={{
-            fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(22px, 2.5vw, 30px)",
+            fontFamily: "var(--font-dm-sans)",
+            fontSize: "clamp(20px, 2.5vw, 26px)",
             fontWeight: 400,
           }}
           initial={{ opacity: 0, x: -16, filter: "blur(8px)" }}

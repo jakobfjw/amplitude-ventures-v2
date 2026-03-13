@@ -27,7 +27,7 @@ export default function ServicesSection() {
         className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.02) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(var(--warm-white-rgb),0.045) 1px, transparent 1px)",
           backgroundSize: "36px 36px",
         }}
       />
@@ -39,8 +39,8 @@ export default function ServicesSection() {
       >
         <LogoMark
           className="w-[clamp(220px,26vw,380px)] h-auto"
-          pillarColor="rgba(242,237,228,0.02)"
-          archColor="rgba(200,16,46,0.028)"
+          pillarColor="rgba(var(--warm-white-rgb),0.045)"
+          archColor="rgba(var(--crimson-rgb),0.055)"
           strokeWidth={5}
         />
       </div>
@@ -49,7 +49,7 @@ export default function ServicesSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 35% 50% at 10% 25%, rgba(200,16,46,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 35% 50% at 10% 25%, rgba(var(--crimson-rgb),0.07) 0%, transparent 70%)",
         }}
       />
       {/* Mobile: stronger center glow since ring visual is smaller */}
@@ -57,18 +57,18 @@ export default function ServicesSection() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 70% 40% at 50% 65%, rgba(200,16,46,0.06) 0%, transparent 60%)",
+            "radial-gradient(ellipse 70% 40% at 50% 65%, rgba(var(--crimson-rgb),0.09) 0%, transparent 60%)",
         }}
       />
       {/* Ambient decorations */}
       <div className="absolute bottom-12 left-8 w-[40px] h-[40px] hidden lg:block" aria-hidden>
-        <PulseNode size={40} color="rgba(200,16,46,0.2)" coreColor="rgba(200,16,46,0.5)" pulseSpeed={4} />
+        <PulseNode size={40} color="rgba(var(--crimson-rgb),0.2)" coreColor="rgba(var(--crimson-rgb),0.5)" pulseSpeed={4} />
       </div>
       <div className="absolute top-20 right-[15%] w-[50px] h-[40px] hidden lg:block" aria-hidden>
-        <DataFragments count={3} width={50} color="rgba(200,16,46,0.15)" secondaryColor="rgba(242,237,228,0.06)" bobSpeed={8} />
+        <DataFragments count={3} width={50} color="rgba(var(--crimson-rgb),0.15)" secondaryColor="rgba(var(--warm-white-rgb),0.09)" bobSpeed={8} />
       </div>
       <div className="absolute inset-0 hidden md:block opacity-[0.4] pointer-events-none" aria-hidden>
-        <ScatterField count={10} width={1400} height={800} dotColor="rgba(242,237,228,0.025)" accentColor="rgba(200,16,46,0.06)" accentCount={2} />
+        <ScatterField count={10} width={1400} height={800} dotColor="rgba(var(--warm-white-rgb),0.05)" accentColor="rgba(var(--crimson-rgb),0.09)" accentCount={2} />
       </div>
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12">
         {/* Header */}
@@ -97,10 +97,10 @@ export default function ServicesSection() {
           >
             MORE THAN{" "}
             <span
-              className="text-crimson italic"
-              style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400 }}
+              className="text-crimson"
+              style={{ fontFamily: "var(--font-bebas)" }}
             >
-              capital
+              CAPITAL
             </span>
           </motion.h2>
         </div>
@@ -206,7 +206,7 @@ export default function ServicesSection() {
                     style={{
                       width: `clamp(${mobileSize}px, ${size / 4}vw, ${size}px)`,
                       height: `clamp(${mobileSize}px, ${size / 4}vw, ${size}px)`,
-                      border: `1px solid rgba(200,16,46,${0.06 + i * 0.06})`,
+                      border: `1px solid rgba(var(--crimson-rgb),${0.06 + i * 0.06})`,
                     }}
                     initial={{ scale: 0.3, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -225,7 +225,7 @@ export default function ServicesSection() {
                 style={{
                   width: "clamp(150px, 30vw, 280px)",
                   height: "clamp(150px, 30vw, 280px)",
-                  background: "radial-gradient(circle, rgba(200,16,46,0.14) 0%, transparent 70%)",
+                  background: "radial-gradient(circle, rgba(var(--crimson-rgb),0.14) 0%, transparent 70%)",
                 }}
                 initial={{ scale: 0.4, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -237,7 +237,7 @@ export default function ServicesSection() {
                 className="relative text-crimson leading-none select-none z-10"
                 style={{
                   fontFamily: "var(--font-bebas)",
-                  fontSize: "clamp(88px, 10vw, 130px)",
+                  fontSize: "clamp(64px, 8vw, 100px)",
                   letterSpacing: "0.02em",
                 }}
                 aria-hidden

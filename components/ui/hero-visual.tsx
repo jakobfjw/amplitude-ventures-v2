@@ -29,14 +29,14 @@ export function HeroVisual({ className = "" }: { className?: string }) {
         <defs>
           {/* Central crimson glow */}
           <radialGradient id="hv-core-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(200,16,46,0.55)" />
-            <stop offset="45%" stopColor="rgba(200,16,46,0.12)" />
-            <stop offset="100%" stopColor="rgba(200,16,46,0)" />
+            <stop offset="0%" stopColor="rgba(var(--crimson-rgb),0.55)" />
+            <stop offset="45%" stopColor="rgba(var(--crimson-rgb),0.12)" />
+            <stop offset="100%" stopColor="rgba(var(--crimson-rgb),0)" />
           </radialGradient>
           {/* Soft outer haze */}
           <radialGradient id="hv-haze" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(200,16,46,0.04)" />
-            <stop offset="100%" stopColor="rgba(200,16,46,0)" />
+            <stop offset="0%" stopColor="rgba(var(--crimson-rgb),0.07)" />
+            <stop offset="100%" stopColor="rgba(var(--crimson-rgb),0)" />
           </radialGradient>
         </defs>
 
@@ -45,20 +45,20 @@ export function HeroVisual({ className = "" }: { className?: string }) {
 
         {/* ── SCATTER DOTS (background depth) ── */}
         {([
-          [cx + 215, cy - 240, 1.5, 0.07],
-          [cx + 315, cy - 165, 1.0, 0.05],
-          [cx - 215, cy - 210, 2.0, 0.05],
-          [cx + 345, cy + 95,  1.5, 0.06],
-          [cx - 195, cy + 215, 1.0, 0.04],
-          [cx + 230, cy + 235, 2.0, 0.05],
-          [cx - 255, cy + 140, 1.5, 0.04],
-          [cx + 155, cy - 285, 1.0, 0.07],
-          [cx - 295, cy - 55,  1.5, 0.04],
-          [cx + 285, cy - 55,  1.0, 0.06],
-          [cx - 140, cy + 270, 1.5, 0.05],
-          [cx + 110, cy + 275, 1.0, 0.04],
+          [cx + 215, cy - 240, 1.5, 0.12],
+          [cx + 315, cy - 165, 1.0, 0.09],
+          [cx - 215, cy - 210, 2.0, 0.09],
+          [cx + 345, cy + 95,  1.5, 0.10],
+          [cx - 195, cy + 215, 1.0, 0.07],
+          [cx + 230, cy + 235, 2.0, 0.09],
+          [cx - 255, cy + 140, 1.5, 0.07],
+          [cx + 155, cy - 285, 1.0, 0.12],
+          [cx - 295, cy - 55,  1.5, 0.07],
+          [cx + 285, cy - 55,  1.0, 0.10],
+          [cx - 140, cy + 270, 1.5, 0.09],
+          [cx + 110, cy + 275, 1.0, 0.07],
         ] as [number, number, number, number][]).map(([x, y, r, op], i) => (
-          <circle key={`d${i}`} cx={x} cy={y} r={r} fill={`rgba(242,237,228,${op})`} />
+          <circle key={`d${i}`} cx={x} cy={y} r={r} fill={`rgba(var(--warm-white-rgb),${op})`} />
         ))}
 
         {/* ── OUTER ORBIT (slow, clockwise, tilted) ── */}
@@ -72,18 +72,18 @@ export function HeroVisual({ className = "" }: { className?: string }) {
             cx={cx} cy={cy}
             rx={278} ry={88}
             fill="none"
-            stroke="rgba(242,237,228,0.065)"
+            stroke="rgba(var(--warm-white-rgb),0.12)"
             strokeWidth="1"
             transform={`rotate(-22, ${cx}, ${cy})`}
           />
           {/* 5 nodes — mix of crimson (portfolio co.) and white (connection) */}
-          <circle cx={cx + 278} cy={cy}        r={5.5} fill="rgba(200,16,46,0.88)" />
-          <circle cx={cx + 278} cy={cy}        r={14}  fill="rgba(200,16,46,0.08)" />
-          <circle cx={cx - 278} cy={cy}        r={3.5} fill="rgba(242,237,228,0.30)" />
-          <circle cx={cx + 100} cy={cy + 83}   r={4.5} fill="rgba(200,16,46,0.72)" />
-          <circle cx={cx + 100} cy={cy + 83}   r={11}  fill="rgba(200,16,46,0.07)" />
-          <circle cx={cx - 160} cy={cy - 68}   r={3.0} fill="rgba(242,237,228,0.25)" />
-          <circle cx={cx + 50}  cy={cy - 86}   r={2.5} fill="rgba(242,237,228,0.20)" />
+          <circle cx={cx + 278} cy={cy}        r={5.5} fill="rgba(var(--crimson-rgb),0.88)" />
+          <circle cx={cx + 278} cy={cy}        r={14}  fill="rgba(var(--crimson-rgb),0.14)" />
+          <circle cx={cx - 278} cy={cy}        r={3.5} fill="rgba(var(--warm-white-rgb),0.30)" />
+          <circle cx={cx + 100} cy={cy + 83}   r={4.5} fill="rgba(var(--crimson-rgb),0.72)" />
+          <circle cx={cx + 100} cy={cy + 83}   r={11}  fill="rgba(var(--crimson-rgb),0.13)" />
+          <circle cx={cx - 160} cy={cy - 68}   r={3.0} fill="rgba(var(--warm-white-rgb),0.25)" />
+          <circle cx={cx + 50}  cy={cy - 86}   r={2.5} fill="rgba(var(--warm-white-rgb),0.20)" />
         </motion.g>
 
         {/* ── MIDDLE ORBIT (medium speed, counter-clockwise) ── */}
@@ -96,15 +96,15 @@ export function HeroVisual({ className = "" }: { className?: string }) {
             cx={cx} cy={cy}
             rx={172} ry={54}
             fill="none"
-            stroke="rgba(200,16,46,0.14)"
+            stroke="rgba(var(--crimson-rgb),0.22)"
             strokeWidth="1.5"
             transform={`rotate(14, ${cx}, ${cy})`}
           />
-          <circle cx={cx + 172} cy={cy}       r={6.5} fill="rgba(200,16,46,0.92)" />
-          <circle cx={cx + 172} cy={cy}       r={16}  fill="rgba(200,16,46,0.07)" />
-          <circle cx={cx - 172} cy={cy}       r={3.5} fill="rgba(242,237,228,0.40)" />
-          <circle cx={cx}       cy={cy + 54}  r={4.5} fill="rgba(242,237,228,0.30)" />
-          <circle cx={cx}       cy={cy - 54}  r={3.0} fill="rgba(200,16,46,0.55)" />
+          <circle cx={cx + 172} cy={cy}       r={6.5} fill="rgba(var(--crimson-rgb),0.92)" />
+          <circle cx={cx + 172} cy={cy}       r={16}  fill="rgba(var(--crimson-rgb),0.13)" />
+          <circle cx={cx - 172} cy={cy}       r={3.5} fill="rgba(var(--warm-white-rgb),0.40)" />
+          <circle cx={cx}       cy={cy + 54}  r={4.5} fill="rgba(var(--warm-white-rgb),0.30)" />
+          <circle cx={cx}       cy={cy - 54}  r={3.0} fill="rgba(var(--crimson-rgb),0.55)" />
         </motion.g>
 
         {/* ── INNER ORBIT (fast, clockwise, circular) ── */}
@@ -116,31 +116,31 @@ export function HeroVisual({ className = "" }: { className?: string }) {
           <circle
             cx={cx} cy={cy} r={90}
             fill="none"
-            stroke="rgba(242,237,228,0.08)"
+            stroke="rgba(var(--warm-white-rgb),0.15)"
             strokeWidth="1"
           />
-          <circle cx={cx + 90} cy={cy}  r={4.5} fill="rgba(200,16,46,0.80)" />
-          <circle cx={cx - 90} cy={cy}  r={2.5} fill="rgba(242,237,228,0.40)" />
-          <circle cx={cx}      cy={cy + 90} r={3.0} fill="rgba(242,237,228,0.30)" />
+          <circle cx={cx + 90} cy={cy}  r={4.5} fill="rgba(var(--crimson-rgb),0.80)" />
+          <circle cx={cx - 90} cy={cy}  r={2.5} fill="rgba(var(--warm-white-rgb),0.40)" />
+          <circle cx={cx}      cy={cy + 90} r={3.0} fill="rgba(var(--warm-white-rgb),0.30)" />
         </motion.g>
 
         {/* ── STATIC CONNECTION LINES (center → outer nodes) ── */}
         <line
           x1={cx} y1={cy}
           x2={cx + 278} y2={cy}
-          stroke="rgba(200,16,46,0.07)"
+          stroke="rgba(var(--crimson-rgb),0.12)"
           strokeWidth="0.5"
         />
         <line
           x1={cx} y1={cy}
           x2={cx - 160} y2={cy - 68}
-          stroke="rgba(200,16,46,0.05)"
+          stroke="rgba(var(--crimson-rgb),0.09)"
           strokeWidth="0.5"
         />
         <line
           x1={cx} y1={cy}
           x2={cx + 172} y2={cy}
-          stroke="rgba(200,16,46,0.06)"
+          stroke="rgba(var(--crimson-rgb),0.10)"
           strokeWidth="0.5"
         />
 
@@ -152,31 +152,31 @@ export function HeroVisual({ className = "" }: { className?: string }) {
         <motion.circle
           cx={cx} cy={cy} r={30}
           fill="none"
-          stroke="rgba(200,16,46,0.22)"
+          stroke="rgba(var(--crimson-rgb),0.22)"
           strokeWidth="1"
           animate={{ r: [24, 38, 24], opacity: [0.25, 0.08, 0.25] }}
           transition={{ duration: 3.8, ease: "easeInOut", repeat: Infinity }}
         />
         {/* Static inner ring */}
-        <circle cx={cx} cy={cy} r={16} fill="none" stroke="rgba(200,16,46,0.38)" strokeWidth="1" />
+        <circle cx={cx} cy={cy} r={16} fill="none" stroke="rgba(var(--crimson-rgb),0.38)" strokeWidth="1" />
         {/* Pulsing center dot */}
         <motion.circle
           cx={cx} cy={cy}
-          fill="rgba(200,16,46,0.95)"
+          fill="rgba(var(--crimson-rgb),0.95)"
           animate={{ r: [6.5, 9, 6.5] }}
           transition={{ duration: 2.8, ease: "easeInOut", repeat: Infinity }}
         />
         {/* Crisp white core */}
-        <circle cx={cx} cy={cy} r={3.5} fill="rgba(242,237,228,0.96)" />
+        <circle cx={cx} cy={cy} r={3.5} fill="rgba(var(--warm-white-rgb),0.96)" />
 
         {/* ── FLOATING DATA FRAGMENTS (top-right decoration) ── */}
         <motion.g
           animate={{ y: [0, -11, 0] }}
           transition={{ duration: 7.5, ease: "easeInOut", repeat: Infinity }}
         >
-          <rect x={cx + 240} y={cy - 188} width={54} height={1.5} fill="rgba(200,16,46,0.32)" rx={1} />
-          <rect x={cx + 240} y={cy - 178} width={34} height={1.0} fill="rgba(242,237,228,0.12)" rx={1} />
-          <rect x={cx + 240} y={cy - 170} width={44} height={1.0} fill="rgba(242,237,228,0.09)" rx={1} />
+          <rect x={cx + 240} y={cy - 188} width={54} height={1.5} fill="rgba(var(--crimson-rgb),0.32)" rx={1} />
+          <rect x={cx + 240} y={cy - 178} width={34} height={1.0} fill="rgba(var(--warm-white-rgb),0.20)" rx={1} />
+          <rect x={cx + 240} y={cy - 170} width={44} height={1.0} fill="rgba(var(--warm-white-rgb),0.15)" rx={1} />
         </motion.g>
 
         {/* ── FLOATING NODES (bottom-right decoration) ── */}
@@ -184,16 +184,16 @@ export function HeroVisual({ className = "" }: { className?: string }) {
           animate={{ y: [0, 9, 0] }}
           transition={{ duration: 9.5, ease: "easeInOut", repeat: Infinity, delay: 1.8 }}
         >
-          <circle cx={cx + 298} cy={cy + 205} r={4} fill="none" stroke="rgba(200,16,46,0.42)" strokeWidth="1.5" />
-          <circle cx={cx + 272} cy={cy + 222} r={2.0} fill="rgba(242,237,228,0.28)" />
-          <circle cx={cx + 318} cy={cy + 190} r={1.5} fill="rgba(200,16,46,0.48)" />
+          <circle cx={cx + 298} cy={cy + 205} r={4} fill="none" stroke="rgba(var(--crimson-rgb),0.42)" strokeWidth="1.5" />
+          <circle cx={cx + 272} cy={cy + 222} r={2.0} fill="rgba(var(--warm-white-rgb),0.28)" />
+          <circle cx={cx + 318} cy={cy + 190} r={1.5} fill="rgba(var(--crimson-rgb),0.48)" />
         </motion.g>
 
         {/* ── DASHED ARC (upper-right flourish) ── */}
         <path
           d={`M ${cx + 195} ${cy - 250} A 280 280 0 0 1 ${cx + 290} ${cy - 100}`}
           fill="none"
-          stroke="rgba(200,16,46,0.08)"
+          stroke="rgba(var(--crimson-rgb),0.14)"
           strokeWidth="1"
           strokeDasharray="3 10"
         />

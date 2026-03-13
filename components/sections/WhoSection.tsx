@@ -24,15 +24,15 @@ export default function WhoSection() {
         tilt={-12}
         speed={75}
         nodeColor="rgba(200,16,46,0.3)"
-        ringColor="rgba(200,16,46,0.06)"
-        dotColor="rgba(242,237,228,0.08)"
+        ringColor="rgba(200,16,46,0.1)"
+        dotColor="rgba(242,237,228,0.12)"
         className="absolute top-16 right-[5%] w-[180px] h-[180px] opacity-[0.5] hidden lg:block"
       />
       <DataFragments
         count={4}
         width={70}
         color="rgba(200,16,46,0.1)"
-        secondaryColor="rgba(242,237,228,0.04)"
+        secondaryColor="rgba(242,237,228,0.07)"
         bobSpeed={9}
         bobAmount={6}
         className="absolute bottom-24 left-[3%] w-[70px] h-[60px] hidden lg:block"
@@ -41,8 +41,8 @@ export default function WhoSection() {
         count={16}
         width={600}
         height={400}
-        dotColor="rgba(242,237,228,0.025)"
-        accentColor="rgba(200,16,46,0.05)"
+        dotColor="rgba(242,237,228,0.05)"
+        accentColor="rgba(200,16,46,0.08)"
         accentCount={3}
         className="absolute inset-0 w-full h-full hidden md:block"
       />
@@ -52,7 +52,7 @@ export default function WhoSection() {
         className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(242,237,228,0.05) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
@@ -65,8 +65,8 @@ export default function WhoSection() {
       >
         <LogoMark
           className="w-[clamp(200px,28vw,420px)] h-auto"
-          pillarColor="rgba(242,237,228,0.025)"
-          archColor="rgba(200,16,46,0.03)"
+          pillarColor="rgba(242,237,228,0.05)"
+          archColor="rgba(200,16,46,0.06)"
           strokeWidth={6}
         />
       </motion.div>
@@ -99,8 +99,8 @@ export default function WhoSection() {
               transition={{ delay: 0.1, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             >
               THE<br />
-              <span className="text-crimson italic" style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400 }}>
-                right
+              <span className="text-crimson" style={{ fontFamily: "var(--font-bebas)" }}>
+                RIGHT
               </span>
               <br />
               FOUNDER

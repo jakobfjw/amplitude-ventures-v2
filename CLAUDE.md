@@ -335,6 +335,7 @@ Defined in `app/globals.css`:
 | `/blog` | `app/blog/page.tsx` | ✅ Complete | Blog index |
 | `/blog/[slug]` | `app/blog/[slug]/page.tsx` | ✅ Complete | Individual blog posts |
 | `/contact` | `app/contact/page.tsx` | ✅ Complete | Contact form + methods |
+| `/privacy` | `app/privacy/page.tsx` | ✅ Complete | GDPR privacy policy |
 
 ---
 
@@ -371,6 +372,23 @@ curl -s -o /dev/null -w "%{http_code}" http://172.239.240.151:4000/portfolio
 ```
 
 All should return `200`.
+
+### Deploy to Render (Recommended)
+
+The site includes a `render.yaml` blueprint for Render static site deployment:
+
+1. Push repo to GitHub
+2. Connect repo on [render.com](https://render.com) → New → Static Site
+3. Render auto-detects `render.yaml` and configures build, publish path, and security headers
+4. HTTPS is automatic on Render (Let's Encrypt)
+5. Configure custom domain `amplitude.ventures` in Render dashboard
+
+After deploy, configure these headers in the Render dashboard (also defined in `render.yaml`):
+- `X-Frame-Options: DENY`
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
 
 ---
 
@@ -440,18 +458,57 @@ The root layout (`app/layout.tsx`) includes:
 
 ---
 
-## 14 · Known Issues & Future Work
+## 14 · Analytics & Tracking
+
+### Architecture
+
+All tracking scripts are conditionally loaded via `components/ui/analytics-scripts.tsx`, which only renders `<Script>` tags after the user grants GDPR consent via the cookie banner (`components/ui/cookie-consent.tsx`).
+
+### Tracking IDs (Placeholders — Replace Before Launch)
+
+| Service | Placeholder | Where to Get Real ID | File |
+|---|---|---|---|
+| Google Tag Manager | `GTM-XXXXXXX` | tagmanager.google.com | `components/ui/analytics-scripts.tsx` |
+| Google Analytics 4 | `G-XXXXXXXXXX` | analytics.google.com → Admin → Data Streams | `components/ui/analytics-scripts.tsx` |
+| Meta Pixel | `PIXEL_ID` | business.facebook.com → Events Manager | `components/ui/analytics-scripts.tsx` |
+
+### Consent Flow
+
+1. First visit → cookie banner appears (slide-up from bottom)
+2. User clicks "Accept" → consent stored in `localStorage` as `av_cookie_consent=accepted`
+3. `AnalyticsScripts` component detects consent → GTM, GA4, Meta Pixel scripts inject
+4. User clicks "Reject" → no scripts load, `av_cookie_consent=rejected` stored
+5. Footer "Cookie Preferences" link dispatches `av:consent-reset` event → banner re-shows
+
+### Conversion Tracking
+
+Contact form (`ContactSection.tsx`) fires these events on successful submission:
+- GA4: `gtag('event', 'generate_lead', { event_category: 'contact' })`
+- Meta Pixel: `fbq('track', 'Lead')`
+
+### Security Headers
+
+Meta tags in `app/layout.tsx`:
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+
+Server-side headers configured in `render.yaml` (+ Permissions-Policy, HSTS).
+
+---
+
+## 15 · Known Issues & Future Work
 
 - **Forms backend** — Contact form submits to [Formspree](https://formspree.io) endpoint `https://formspree.io/f/mreykdne`. Submissions forward to `build@amplitude.ventures`. The endpoint is configured in `components/sections/ContactSection.tsx` as `FORMSPREE_ENDPOINT`.
+- **Tracking IDs are placeholders** — Replace `GTM-XXXXXXX`, `G-XXXXXXXXXX`, and `PIXEL_ID` in `components/ui/analytics-scripts.tsx` before launch.
 - **No CMS** — Blog posts are static in `lib/content/`. Consider MDX or Sanity for production.
 - **Spline dependencies** — `@splinetool/react-spline` and `@splinetool/runtime` are still in `package.json` but unused. Safe to remove.
-- **OG image** — `/public/og-image.png` exists (1200×630, programmatically generated). To regenerate with Nano Banana 2 (Gemini image gen), enable billing on the Google AI Studio project first — the free tier daily quota is shared across all image models.
-- **Gemini API key** — stored in `.env.local` as `GEMINI_API_KEY`. Free tier only — enable billing at [Google AI Studio](https://aistudio.google.com/) to unlock paid-tier rate limits for image generation.
+- **OG image** — `/public/og-image.png` exists (1200×630, programmatically generated).
 - **Domain** — `amplitude.ventures` is configured in metadata but DNS may point elsewhere.
 
 ---
 
-## 15 · Session Tips for AI Agents
+## 16 · Session Tips for AI Agents
 
 - The `.bashrc` prints `pyenv`/`nvm` warnings on every Bash call — **ignore them**, they're harmless
 - `npm run build` is the ground truth for "does the code work" — run it before claiming anything is done
@@ -462,7 +519,7 @@ The root layout (`app/layout.tsx`) includes:
 
 ---
 
-## 16 · Quick Reference Card
+## 17 · Quick Reference Card
 
 ```
 Background:    bg-void (#080808)

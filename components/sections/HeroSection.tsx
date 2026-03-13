@@ -13,7 +13,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.03) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(var(--warm-white-rgb),0.05) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -23,7 +23,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 90% 80% at 40% 45%, transparent 40%, #080808 95%)",
+            "radial-gradient(ellipse 90% 80% at 40% 45%, transparent 40%, rgb(var(--void-rgb)) 95%)",
         }}
       />
 
@@ -32,7 +32,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 55% at 32% 48%, rgba(200,16,46,0.09) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 55% at 32% 48%, rgba(var(--crimson-rgb),0.12) 0%, transparent 70%)",
         }}
       />
 
@@ -41,7 +41,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 85% 75%, rgba(200,16,46,0.07) 0%, transparent 65%)",
+            "radial-gradient(ellipse 60% 40% at 85% 75%, rgba(var(--crimson-rgb),0.10) 0%, transparent 65%)",
         }}
       />
 
@@ -50,7 +50,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 80% 30% at 50% 0%, rgba(200,16,46,0.04) 0%, transparent 60%)",
+            "radial-gradient(ellipse 80% 30% at 50% 0%, rgba(var(--crimson-rgb),0.07) 0%, transparent 60%)",
         }}
       />
 
@@ -95,14 +95,14 @@ export default function HeroSection() {
               className="text-warm-white leading-[0.9] tracking-[0.02em] select-none"
               style={{
                 fontFamily: "var(--font-bebas)",
-                fontSize: "clamp(70px, 15vw, 210px)",
+                fontSize: "clamp(48px, 10vw, 140px)",
               }}
             >
               {hero.lineOne}
             </h1>
           </motion.div>
 
-          {/* Line 2: Extraordinary — Cormorant Italic, crimson, overlapping */}
+          {/* Line 2: Extraordinary — Bebas, crimson, overlapping */}
           <motion.div
             initial={{ opacity: 0, y: 60, filter: "blur(16px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -111,11 +111,10 @@ export default function HeroSection() {
           >
             <span
               role="doc-subtitle"
-              className="block text-crimson italic leading-[0.85] select-none"
+              className="block text-crimson uppercase leading-[0.85] select-none"
               style={{
-                fontFamily: "var(--font-cormorant)",
-                fontSize: "clamp(37px, 12vw, 175px)",
-                fontWeight: 400,
+                fontFamily: "var(--font-bebas)",
+                fontSize: "clamp(32px, 8vw, 120px)",
               }}
             >
               {hero.lineTwo}
@@ -134,8 +133,8 @@ export default function HeroSection() {
               aria-hidden="true"
               style={{
                 fontFamily: "var(--font-bebas)",
-                fontSize: "clamp(70px, 15vw, 210px)",
-                WebkitTextStroke: "1.5px rgba(242,237,228,0.4)",
+                fontSize: "clamp(48px, 10vw, 140px)",
+                WebkitTextStroke: "1.5px rgba(var(--warm-white-rgb),0.4)",
                 color: "transparent",
               }}
             >
@@ -225,7 +224,7 @@ export default function HeroSection() {
               <path id="scroll-arc" d="M 36,36 m -26,0 a 26,26 0 1,1 52,0 a 26,26 0 1,1 -52,0" />
             </defs>
             <text
-              fill="rgba(242,237,228,0.28)"
+              fill="rgba(var(--warm-white-rgb),0.28)"
               fontSize="7.5"
               letterSpacing="3.5"
               fontFamily="var(--font-dm-sans)"

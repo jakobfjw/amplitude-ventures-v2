@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Cormorant, DM_Sans } from "next/font/google";
+import { Bebas_Neue, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Spotlight } from "@/components/ui/spotlight";
+import CookieConsent from "@/components/ui/cookie-consent";
+import AnalyticsScripts from "@/components/ui/analytics-scripts";
 
 const bebas = Bebas_Neue({
   variable: "--font-bebas",
   subsets: ["latin"],
   weight: "400",
-});
-
-const cormorant = Cormorant({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 const dmSans = DM_Sans({
@@ -111,8 +107,31 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Anti-flash: apply saved theme before first paint */}
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: [
+              "try{",
+              "if(localStorage.getItem('av-theme')==='dark')",
+              "document.documentElement.classList.add('dark');",
+              "document.documentElement.classList.add('no-transition');",
+              "requestAnimationFrame(function(){requestAnimationFrame(function(){",
+              "document.documentElement.classList.remove('no-transition')",
+              "})})",
+              "}catch(e){}",
+            ].join(""),
+          }}
+        />
+
+        {/* Security meta tags */}
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta httpEquiv="X-Frame-Options" content="DENY" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+        {/* JSON-LD structured data */}
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
@@ -122,10 +141,14 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${bebas.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
+        className={`${bebas.variable} ${dmSans.variable} antialiased`}
       >
-        <Spotlight size={700} />
-        {children}
+        <ThemeProvider>
+          <Spotlight size={700} />
+          {children}
+          <CookieConsent />
+          <AnalyticsScripts />
+        </ThemeProvider>
       </body>
     </html>
   );

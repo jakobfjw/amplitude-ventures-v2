@@ -52,7 +52,7 @@ export default function TeamMemberCard({
           fontFamily: "var(--font-bebas)",
           fontSize: "clamp(160px, 18vw, 260px)",
           lineHeight: 1,
-          color: "rgba(242,237,228,0.025)",
+          color: "rgba(var(--warm-white-rgb),0.05)",
           letterSpacing: "-0.02em",
         }}
         aria-hidden
@@ -103,24 +103,26 @@ export default function TeamMemberCard({
           transition={{ duration: 0.7, delay: index * 0.15 + 0.15, ease }}
         >
           {/* Bottom gradient — strong dissolve into void */}
-          <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#080808] via-[#080808]/40 via-[28%] to-transparent" />
+          <div className="pointer-events-none absolute inset-0 z-10" style={{ background: `linear-gradient(to top, rgb(var(--void-rgb)), rgba(var(--void-rgb),0.4) 28%, transparent)` }} />
           {/* Top gradient — subtle haze */}
-          <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-[#080808]/50 via-transparent via-[20%] to-transparent" />
+          <div className="pointer-events-none absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, rgba(var(--void-rgb),0.5), transparent 20%)` }} />
           {/* Side gradient blending toward info block */}
           <div
-            className={`pointer-events-none absolute inset-y-0 z-10 w-36 ${
-              isRight
-                ? "left-0 bg-gradient-to-r from-[#080808]/60 to-transparent"
-                : "right-0 bg-gradient-to-l from-[#080808]/60 to-transparent"
-            }`}
+            className="pointer-events-none absolute inset-y-0 z-10 w-36"
+            style={{
+              ...(isRight
+                ? { left: 0, background: `linear-gradient(to right, rgba(var(--void-rgb),0.6), transparent)` }
+                : { right: 0, background: `linear-gradient(to left, rgba(var(--void-rgb),0.6), transparent)` }),
+            }}
           />
           {/* Opposite side bleed */}
           <div
-            className={`pointer-events-none absolute inset-y-0 z-10 w-20 ${
-              isRight
-                ? "right-0 bg-gradient-to-l from-[#080808]/35 to-transparent"
-                : "left-0 bg-gradient-to-r from-[#080808]/35 to-transparent"
-            }`}
+            className="pointer-events-none absolute inset-y-0 z-10 w-20"
+            style={{
+              ...(isRight
+                ? { right: 0, background: `linear-gradient(to left, rgba(var(--void-rgb),0.35), transparent)` }
+                : { left: 0, background: `linear-gradient(to right, rgba(var(--void-rgb),0.35), transparent)` }),
+            }}
           />
           {/* Film grain texture */}
           <div
@@ -170,10 +172,9 @@ export default function TeamMemberCard({
               {firstName}
             </h3>
             <span
-              className="text-crimson italic block leading-[0.95]"
+              className="text-crimson block leading-[0.95]"
               style={{
-                fontFamily: "var(--font-cormorant)",
-                fontWeight: 400,
+                fontFamily: "var(--font-bebas)",
                 fontSize: "clamp(40px, 5.5vw, 76px)",
               }}
             >
@@ -185,7 +186,7 @@ export default function TeamMemberCard({
           <motion.p
             className="text-warm-white/30 italic mb-8 max-w-[380px]"
             style={{
-              fontFamily: "var(--font-cormorant)",
+              fontFamily: "var(--font-dm-sans)",
               fontSize: "clamp(16px, 1.4vw, 20px)",
               fontWeight: 300,
               lineHeight: 1.5,
@@ -208,7 +209,7 @@ export default function TeamMemberCard({
             {linkedin && (
               <Link href={linkedin} target="_blank" rel="noopener noreferrer">
                 <motion.div
-                  whileHover={{ scale: 1.08, borderColor: "rgba(200,16,46,0.6)" }}
+                  whileHover={{ scale: 1.08, borderColor: "rgba(var(--crimson-rgb),0.6)" }}
                   whileTap={{ scale: 0.95 }}
                   className="group flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] transition-all duration-300 hover:bg-crimson/10"
                 >

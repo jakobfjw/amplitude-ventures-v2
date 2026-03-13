@@ -18,7 +18,7 @@ export default function NotFound() {
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(var(--warm-white-rgb),0.025) 1px, transparent 1px)",
             backgroundSize: "48px 48px",
           }}
         />
@@ -31,9 +31,9 @@ export default function NotFound() {
           <span
             style={{
               fontFamily: "var(--font-bebas)",
-              fontSize: "clamp(200px, 40vw, 500px)",
+              fontSize: "clamp(140px, 28vw, 340px)",
               letterSpacing: "0.04em",
-              color: "rgba(242,237,228,0.02)",
+              color: "rgba(var(--warm-white-rgb),0.02)",
               lineHeight: 1,
             }}
           >
@@ -63,10 +63,9 @@ export default function NotFound() {
             >
               Wrong{" "}
               <span
-                className="text-crimson italic"
+                className="text-crimson uppercase"
                 style={{
-                  fontFamily: "var(--font-cormorant)",
-                  fontWeight: 400,
+                  fontFamily: "var(--font-bebas)",
                   fontSize: "0.85em",
                 }}
               >

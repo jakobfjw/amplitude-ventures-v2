@@ -21,7 +21,7 @@ export default function BlogIndexSection() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(242,237,228,0.02) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(var(--warm-white-rgb),0.05) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -30,16 +30,16 @@ export default function BlogIndexSection() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 40% 50% at 85% 40%, rgba(200,16,46,0.03) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 40% 50% at 85% 40%, rgba(var(--crimson-rgb),0.06) 0%, transparent 70%)",
         }}
       />
 
       {/* LogoMark — top-left, ghosted */}
       <div className="absolute top-16 left-[-20px] hidden lg:block pointer-events-none select-none" aria-hidden>
         <LogoMark
-          className="w-[240px] h-auto opacity-[0.035]"
-          pillarColor="rgba(242,237,228,0.025)"
-          archColor="rgba(200,16,46,0.025)"
+          className="w-[240px] h-auto opacity-[0.07]"
+          pillarColor="rgba(var(--warm-white-rgb),0.05)"
+          archColor="rgba(var(--crimson-rgb),0.05)"
           strokeWidth={4}
           style={{ transform: "rotate(-10deg)" }}
         />
@@ -52,12 +52,12 @@ export default function BlogIndexSection() {
 
       {/* DataFragments — bottom-left */}
       <div className="absolute bottom-20 left-[10%] hidden md:block w-[55px] h-[36px]">
-        <DataFragments count={3} width={55} color="rgba(200,16,46,0.15)" secondaryColor="rgba(242,237,228,0.06)" bobSpeed={9} bobAmount={7} />
+        <DataFragments count={3} width={55} color="rgba(var(--crimson-rgb),0.15)" secondaryColor="rgba(var(--warm-white-rgb),0.06)" bobSpeed={9} bobAmount={7} />
       </div>
 
       {/* DashedArc — bottom area */}
       <div className="absolute bottom-8 right-[20%] hidden lg:block w-[240px] h-[100px]">
-        <DashedArc width={240} height={100} color="rgba(200,16,46,0.05)" dashArray="3 12" flip />
+        <DashedArc width={240} height={100} color="rgba(var(--crimson-rgb),0.05)" dashArray="3 12" flip />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
@@ -91,14 +91,13 @@ export default function BlogIndexSection() {
           >
             Sharp{" "}
             <span
-              className="text-crimson italic"
+              className="text-crimson"
               style={{
-                fontFamily: "var(--font-cormorant)",
-                fontWeight: 400,
+                fontFamily: "var(--font-bebas)",
                 fontSize: "0.88em",
               }}
             >
-              thinking.
+              THINKING.
             </span>
           </motion.h1>
 
@@ -136,7 +135,7 @@ export default function BlogIndexSection() {
                 className="absolute inset-x-0 top-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-t-2xl"
                 style={{
                   background:
-                    "linear-gradient(to bottom, rgba(200,16,46,0.06), transparent)",
+                    "linear-gradient(to bottom, rgba(var(--crimson-rgb),0.06), transparent)",
                 }}
               />
 

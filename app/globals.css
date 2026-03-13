@@ -1,32 +1,64 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* ── Core palette ── */
-  --color-void:          #080808;
-  --color-surface:       #0f0f0f;
-  --color-surface-2:     #171717;
-  --color-surface-3:     #1f1f1f;
+@theme {
+  /* ── Light mode defaults (warm cream editorial) ── */
+  --color-void:          #FCFBF9;
+  --color-surface:       #F7F5F1;
+  --color-surface-2:     #FFFEFC;
+  --color-surface-3:     #FFFFFF;
   --color-crimson:       #C8102E;
-  --color-crimson-dim:   rgba(200,16,46,0.15);
+  --color-crimson-dim:   rgba(200,16,46,0.05);
   --color-crimson-dark:  #a80d25;
-  --color-warm-white:    #F2EDE4;
-  --color-text-muted:    #666666;
-  --color-text-faint:    #2e2e2e;
+  --color-warm-white:    #1A1A1A;
+  --color-text-muted:    #5C5C5C;
+  --color-text-faint:    #D4CFC6;
   --color-white:         #ffffff;
 
   /* ── Typography ── */
   --font-display:  var(--font-bebas);
-  --font-serif:    var(--font-cormorant);
   --font-sans:     var(--font-dm-sans);
+}
+
+/* ── RGB triplets for inline rgba() usage ── */
+:root {
+  --warm-white-rgb: 26, 26, 26;
+  --void-rgb: 252, 251, 249;
+  --crimson-rgb: 200, 16, 46;
+  --surface-rgb: 243, 240, 235;
+}
+
+/* ── Dark mode overrides ── */
+html.dark {
+  --color-void:        #080808;
+  --color-surface:     #0f0f0f;
+  --color-surface-2:   #171717;
+  --color-surface-3:   #1f1f1f;
+  --color-crimson-dim: rgba(200,16,46,0.15);
+  --color-warm-white:  #F2EDE4;
+  --color-text-muted:  #666666;
+  --color-text-faint:  #2e2e2e;
+
+  --warm-white-rgb: 242, 237, 228;
+  --void-rgb: 8, 8, 8;
+  --surface-rgb: 15, 15, 15;
 }
 
 html {
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Smooth mode toggle for all elements */
+html:not(.no-transition) * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Disable transition on page load */
+html.no-transition * { transition: none !important; }
+
 body {
-  background: #080808;
-  color: #F2EDE4;
+  background: var(--color-void);
+  color: var(--color-warm-white);
   font-family: var(--font-dm-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,18 +77,21 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.03;
+  opacity: 0.045;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
+}
+.dark body::after {
+  opacity: 0.035;
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-track { background: var(--color-void); }
 ::-webkit-scrollbar-thumb { background: #C8102E; border-radius: 2px; }
 
 /* ── Selection ── */
-::selection { background: #C8102E; color: #fff; }
+::selection { background: #C8102E; color: var(--color-void); }
 
 /* ── Ticker marquee ── */
 @keyframes ticker {

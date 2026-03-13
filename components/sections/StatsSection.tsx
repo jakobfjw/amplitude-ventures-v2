@@ -82,16 +82,16 @@ export default function StatsSection() {
         rings={3}
         tilt={-25}
         speed={80}
-        nodeColor="rgba(200,16,46,0.25)"
-        ringColor="rgba(200,16,46,0.05)"
-        dotColor="rgba(242,237,228,0.07)"
+        nodeColor="rgba(var(--crimson-rgb),0.25)"
+        ringColor="rgba(var(--crimson-rgb),0.08)"
+        dotColor="rgba(var(--warm-white-rgb),0.12)"
         className="absolute bottom-8 left-[2%] w-[200px] h-[200px] opacity-[0.45] hidden lg:block"
       />
       <DataFragments
         count={3}
         width={55}
-        color="rgba(200,16,46,0.12)"
-        secondaryColor="rgba(242,237,228,0.05)"
+        color="rgba(var(--crimson-rgb),0.12)"
+        secondaryColor="rgba(var(--warm-white-rgb),0.08)"
         bobSpeed={8}
         bobAmount={7}
         className="absolute top-20 right-[6%] w-[55px] h-[50px] hidden lg:block"
@@ -99,7 +99,7 @@ export default function StatsSection() {
       <DashedArc
         width={320}
         height={60}
-        color="rgba(200,16,46,0.05)"
+        color="rgba(var(--crimson-rgb),0.08)"
         dashArray="4 14"
         className="absolute top-0 left-[10%] w-[320px] h-[60px] hidden lg:block"
       />
@@ -109,7 +109,7 @@ export default function StatsSection() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(200,16,46,0.06) 0%, transparent 60%)",
+            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(var(--crimson-rgb),0.09) 0%, transparent 60%)",
         }}
       />
       {/* Crimson radial glow */}
@@ -117,7 +117,7 @@ export default function StatsSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 50% 70% at 80% 50%, rgba(200,16,46,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 50% 70% at 80% 50%, rgba(var(--crimson-rgb),0.08) 0%, transparent 70%)",
         }}
       />
 
@@ -129,8 +129,8 @@ export default function StatsSection() {
       >
         <LogoMark
           className="w-[clamp(300px,38vw,560px)] h-auto"
-          pillarColor="rgba(242,237,228,0.03)"
-          archColor="rgba(200,16,46,0.045)"
+          pillarColor="rgba(var(--warm-white-rgb),0.06)"
+          archColor="rgba(var(--crimson-rgb),0.07)"
           strokeWidth={4}
         />
       </motion.div>
@@ -168,7 +168,7 @@ export default function StatsSection() {
                 className="text-warm-white leading-none mb-4 tabular-nums"
                 style={{
                   fontFamily: "var(--font-bebas)",
-                  fontSize: "clamp(72px, 14vw, 200px)",
+                  fontSize: "clamp(52px, 10vw, 140px)",
                   letterSpacing: "0.01em",
                 }}
               >

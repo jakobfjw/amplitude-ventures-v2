@@ -23,7 +23,7 @@ export function ShimmerText({
         style={{
           WebkitTextFillColor: "transparent",
           background:
-            "currentColor linear-gradient(105deg, currentColor 0%, rgba(242,237,228,0.85) 38%, rgba(255,255,255,0.95) 50%, rgba(242,237,228,0.85) 62%, currentColor 100%)",
+            `currentColor linear-gradient(105deg, currentColor 0%, rgba(var(--warm-white-rgb),0.85) 38%, rgba(var(--warm-white-rgb),0.95) 50%, rgba(var(--warm-white-rgb),0.85) 62%, currentColor 100%)`,
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
           backgroundRepeat: "no-repeat",

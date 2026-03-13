@@ -57,8 +57,8 @@ export function TubelightNav({ items, className }: TubelightNavProps) {
                 layoutId="tubelight-lamp"
                 className="absolute inset-0 rounded-full -z-10"
                 style={{
-                  background: "rgba(200,16,46,0.08)",
-                  border: "1px solid rgba(200,16,46,0.15)",
+                  background: "rgba(var(--crimson-rgb),0.08)",
+                  border: "1px solid rgba(var(--crimson-rgb),0.15)",
                 }}
                 initial={false}
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -66,15 +66,15 @@ export function TubelightNav({ items, className }: TubelightNavProps) {
                 {/* The "tube" glow above */}
                 <div
                   className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-10 h-[3px] rounded-t-full"
-                  style={{ background: "#C8102E" }}
+                  style={{ background: "rgb(var(--crimson-rgb))" }}
                 >
                   <div
                     className="absolute w-14 h-5 rounded-full blur-md -top-1 -left-2"
-                    style={{ background: "rgba(200,16,46,0.35)" }}
+                    style={{ background: "rgba(var(--crimson-rgb),0.35)" }}
                   />
                   <div
                     className="absolute w-10 h-4 rounded-full blur-sm -top-0.5"
-                    style={{ background: "rgba(200,16,46,0.25)" }}
+                    style={{ background: "rgba(var(--crimson-rgb),0.25)" }}
                   />
                 </div>
               </motion.div>

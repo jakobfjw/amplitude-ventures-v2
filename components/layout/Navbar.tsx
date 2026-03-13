@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Users, Briefcase, BarChart2, FileText, Mail } from "lucide-react";
+import { Home, Users, Briefcase, BarChart2, FileText, Mail, Sun, Moon } from "lucide-react";
 import { nav } from "@/lib/content";
 import { TubelightNav, type NavItem } from "@/components/ui/tubelight-navbar";
+import { useTheme } from "@/components/ui/theme-provider";
 
 const NAV_ITEMS: NavItem[] = [
   { name: "Home",      url: "/",         icon: Home },
@@ -20,6 +21,7 @@ const NAV_ITEMS: NavItem[] = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 32);
@@ -30,11 +32,13 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          scrolled
-            ? "bg-[#080808]/92 backdrop-blur-xl border-b border-white/[0.05]"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-700 border-b border-transparent"
+        style={{
+          backgroundColor: scrolled ? "rgba(var(--void-rgb), 0.92)" : "transparent",
+          backdropFilter: scrolled ? "blur(24px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
+          borderColor: scrolled ? "rgba(var(--warm-white-rgb), 0.05)" : "transparent",
+        }}
       >
         <div className="mx-auto max-w-[1400px] px-5 md:px-12 h-[72px] md:h-[80px] flex items-center justify-between gap-6">
           {/* Logo */}
@@ -47,6 +51,8 @@ export default function Navbar() {
               style={{
                 height: "clamp(38px, 6vw, 48px)",
                 width: "auto",
+                filter: theme === "light" ? "invert(1) brightness(0.15)" : "none",
+                transition: "filter 0.3s ease",
               }}
               priority
             />
@@ -55,8 +61,39 @@ export default function Navbar() {
           {/* Desktop nav — tubelight */}
           <TubelightNav items={NAV_ITEMS} className="flex-1 justify-center" />
 
-          {/* CTA */}
+          {/* Theme toggle + CTA */}
           <div className="flex items-center gap-4 flex-shrink-0">
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className="relative w-9 h-9 flex items-center justify-center rounded-full text-warm-white/60 hover:text-crimson transition-colors duration-200"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {theme === "dark" ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Sun size={20} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, scale: 0, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: -90, scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Moon size={20} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="hidden md:block">
               <Link
                 href={nav.cta.href}

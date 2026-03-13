@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { footerCta } from "@/lib/content";
-import { ShimmerText } from "@/components/ui/shimmer-text";
 import LogoMark from "@/components/ui/logo-mark";
 import { MiniOrbital, FloatingNodes, ScatterField } from "@/components/ui/ambient-orbitals";
 
@@ -40,8 +39,8 @@ export default function FooterCta() {
       >
         <LogoMark
           className="w-[160px] h-auto"
-          pillarColor="rgba(255,255,255,0.04)"
-          archColor="rgba(255,255,255,0.05)"
+          pillarColor="rgba(255,255,255,0.07)"
+          archColor="rgba(255,255,255,0.08)"
           strokeWidth={3}
         />
       </div>
@@ -50,7 +49,7 @@ export default function FooterCta() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%)",
         }}
       />
       {/* Dark vignette edges */}
@@ -69,7 +68,7 @@ export default function FooterCta() {
         <FloatingNodes bobSpeed={10} bobAmount={7} />
       </div>
       <div className="absolute inset-0 hidden md:block opacity-[0.3] pointer-events-none" aria-hidden>
-        <ScatterField count={14} width={1400} height={600} dotColor="rgba(255,255,255,0.04)" accentColor="rgba(255,255,255,0.08)" accentCount={3} />
+        <ScatterField count={14} width={1400} height={600} dotColor="rgba(255,255,255,0.06)" accentColor="rgba(255,255,255,0.12)" accentCount={3} />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12 text-center">
@@ -78,7 +77,7 @@ export default function FooterCta() {
           className="text-white leading-[0.88] mb-6"
           style={{
             fontFamily: "var(--font-bebas)",
-            fontSize: "clamp(56px, 10.5vw, 170px)",
+            fontSize: "clamp(48px, 8vw, 120px)",
             letterSpacing: "0.02em",
           }}
         >
@@ -92,51 +91,32 @@ export default function FooterCta() {
             {footerCta.line1}
           </motion.span>
           <motion.span
-            className="block italic"
-            style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400 }}
+            className="block uppercase"
+            style={{ fontFamily: "var(--font-bebas)" }}
             initial={{ opacity: 0, x: 52, filter: "blur(16px)" }}
             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: 0.1, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ShimmerText duration={2.4} delay={1.8} className="text-white">
-              {footerCta.line2}
-            </ShimmerText>
+            {footerCta.line2}
           </motion.span>
         </h2>
 
-        <motion.p
-          className="text-white/70 text-[17px] md:text-[20px] leading-relaxed mb-8 md:mb-10 max-w-md mx-auto"
-          style={{ fontFamily: "var(--font-dm-sans)" }}
-          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.28, duration: 0.6 }}
-        >
-          {footerCta.sub}
-        </motion.p>
-
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-8"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.42, duration: 0.6 }}
+          transition={{ delay: 0.28, duration: 0.6 }}
         >
           <Link
             href="/contact"
-            className="cta-pulse inline-flex items-center gap-2 px-9 py-[18px] bg-white text-[#080808] rounded-full text-[18px] font-[500] hover:bg-warm-white transition-colors duration-200"
+            className="cta-pulse inline-flex items-center gap-2 px-9 py-[18px] bg-warm-white text-void rounded-full text-[18px] font-[500] hover:opacity-90 transition-colors duration-200"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {footerCta.ctaLabel}
             <span aria-hidden>→</span>
           </Link>
-          <p
-            className="text-white/40 text-[17px]"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
-            {footerCta.ctaSub}
-          </p>
         </motion.div>
       </div>
     </section>

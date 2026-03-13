@@ -45,6 +45,21 @@ export default function ContactSection() {
       if (res.ok) {
         setSending(false);
         setSubmitted(true);
+
+        // ── Conversion tracking ──
+        // GA4: track as lead generation event
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const w = window as any;
+        if (typeof w.gtag === "function") {
+          w.gtag("event", "generate_lead", {
+            event_category: "contact",
+            event_label: "brief_submission",
+          });
+        }
+        // Meta Pixel: track as Lead conversion
+        if (typeof w.fbq === "function") {
+          w.fbq("track", "Lead");
+        }
       } else {
         const json = await res.json();
         setSending(false);
@@ -63,7 +78,7 @@ export default function ContactSection() {
         className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(var(--warm-white-rgb),0.05) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
@@ -72,8 +87,8 @@ export default function ContactSection() {
         className="absolute top-16 right-0 leading-none select-none pointer-events-none"
         style={{
           fontFamily: "var(--font-bebas)",
-          fontSize: "clamp(140px, 22vw, 300px)",
-          color: "rgba(242,237,228,0.025)",
+          fontSize: "clamp(100px, 16vw, 200px)",
+          color: "rgba(var(--warm-white-rgb),0.05)",
           letterSpacing: "0.01em",
         }}
         aria-hidden
@@ -85,16 +100,16 @@ export default function ContactSection() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 50% 40% at 50% 85%, rgba(200,16,46,0.03) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 50% 40% at 50% 85%, rgba(var(--crimson-rgb),0.055) 0%, transparent 70%)",
         }}
       />
 
       {/* LogoMark — mid-right, ghosted */}
       <div className="absolute top-[40%] right-[-30px] hidden lg:block pointer-events-none select-none" aria-hidden>
         <LogoMark
-          className="w-[220px] h-auto opacity-[0.035]"
-          pillarColor="rgba(242,237,228,0.025)"
-          archColor="rgba(200,16,46,0.025)"
+          className="w-[220px] h-auto opacity-[0.06]"
+          pillarColor="rgba(var(--warm-white-rgb),0.045)"
+          archColor="rgba(var(--crimson-rgb),0.045)"
           strokeWidth={4}
           style={{ transform: "rotate(8deg)" }}
         />
@@ -102,17 +117,17 @@ export default function ContactSection() {
 
       {/* MiniOrbital — top-left */}
       <div className="absolute top-28 left-[4%] hidden lg:block w-[160px] h-[160px]">
-        <MiniOrbital size={160} rings={2} tilt={-20} speed={75} ringColor="rgba(200,16,46,0.06)" nodeColor="rgba(200,16,46,0.3)" dotColor="rgba(242,237,228,0.1)" />
+        <MiniOrbital size={160} rings={2} tilt={-20} speed={75} ringColor="rgba(var(--crimson-rgb),0.1)" nodeColor="rgba(var(--crimson-rgb),0.45)" dotColor="rgba(var(--warm-white-rgb),0.18)" />
       </div>
 
       {/* PulseNode — bottom-right */}
       <div className="absolute bottom-20 right-[10%] hidden md:block w-[44px] h-[44px]">
-        <PulseNode size={44} color="rgba(200,16,46,0.18)" coreColor="rgba(200,16,46,0.4)" pulseSpeed={3.8} />
+        <PulseNode size={44} color="rgba(var(--crimson-rgb),0.18)" coreColor="rgba(var(--crimson-rgb),0.4)" pulseSpeed={3.8} />
       </div>
 
       {/* DashedArc — mid-section, flipped */}
       <div className="absolute top-[55%] left-[15%] hidden lg:block w-[220px] h-[120px]">
-        <DashedArc width={220} height={120} color="rgba(200,16,46,0.06)" dashArray="3 14" flip />
+        <DashedArc width={220} height={120} color="rgba(var(--crimson-rgb),0.1)" dashArray="3 14" flip />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
@@ -138,7 +153,7 @@ export default function ContactSection() {
               className="text-warm-white leading-[0.88] mb-6"
               style={{
                 fontFamily: "var(--font-bebas)",
-                fontSize: "clamp(72px, 10vw, 144px)",
+                fontSize: "clamp(52px, 8vw, 120px)",
                 letterSpacing: "0.02em",
               }}
               initial={{ opacity: 0, x: -28, filter: "blur(20px)" }}
@@ -165,14 +180,13 @@ export default function ContactSection() {
               transition={{ delay: 0.45, duration: 0.7 }}
             >
               {[
-                { label: "Email", value: contact.email, href: `mailto:${contact.email}` },
                 {
                   label: "LinkedIn",
                   value: contact.linkedin,
                   href: contact.linkedin,
                   external: true,
                 },
-                { label: "Based in", value: "Oslo, Norway" },
+                { label: "Based in", value: "Stavanger, Norway" },
               ].map(({ label, value, href, external }) => (
                 <div key={label}>
                   <p
@@ -217,7 +231,7 @@ export default function ContactSection() {
                 className="absolute inset-x-0 top-0 h-32 pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(to bottom, rgba(200,16,46,0.05), transparent)",
+                    "linear-gradient(to bottom, rgba(var(--crimson-rgb),0.08), transparent)",
                 }}
               />
 
@@ -314,7 +328,7 @@ export default function ContactSection() {
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
                       <path
                         d="M4 11.5L8.5 16L18 7"
-                        stroke="#C8102E"
+                        stroke="rgb(var(--crimson-rgb))"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"

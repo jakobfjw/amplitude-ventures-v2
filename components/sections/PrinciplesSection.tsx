@@ -20,15 +20,15 @@ export default function PrinciplesSection() {
       <DashedArc
         width={180}
         height={100}
-        color="rgba(200,16,46,0.06)"
+        color="rgba(var(--crimson-rgb),0.1)"
         dashArray="3 12"
         flip
         className="absolute bottom-12 left-[2%] w-[180px] h-[100px] hidden lg:block"
       />
       <PulseNode
         size={42}
-        color="rgba(200,16,46,0.1)"
-        coreColor="rgba(200,16,46,0.25)"
+        color="rgba(var(--crimson-rgb),0.18)"
+        coreColor="rgba(var(--crimson-rgb),0.4)"
         pulseSpeed={3.8}
         className="absolute top-1/2 right-[3%] -translate-y-1/2 w-[42px] h-[42px] hidden lg:block"
       />
@@ -38,7 +38,7 @@ export default function PrinciplesSection() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 70% 40% at 30% 50%, rgba(200,16,46,0.05) 0%, transparent 60%)",
+            "radial-gradient(ellipse 70% 40% at 30% 50%, rgba(var(--crimson-rgb),0.08) 0%, transparent 60%)",
         }}
       />
       {/* Fine dot grid — desktop only */}
@@ -46,7 +46,7 @@ export default function PrinciplesSection() {
         className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(var(--warm-white-rgb),0.045) 1px, transparent 1px)",
           backgroundSize: "44px 44px",
         }}
       />
@@ -54,8 +54,8 @@ export default function PrinciplesSection() {
       <div className="absolute -left-12 bottom-0 pointer-events-none select-none" aria-hidden>
         <LogoMark
           className="w-[clamp(180px,22vw,340px)] h-auto opacity-[0.6]"
-          pillarColor="rgba(242,237,228,0.02)"
-          archColor="rgba(200,16,46,0.025)"
+          pillarColor="rgba(var(--warm-white-rgb),0.04)"
+          archColor="rgba(var(--crimson-rgb),0.05)"
           strokeWidth={5}
           animate
         />
@@ -65,7 +65,7 @@ export default function PrinciplesSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 40% 50% at 20% 30%, rgba(200,16,46,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 40% 50% at 20% 30%, rgba(var(--crimson-rgb),0.07) 0%, transparent 70%)",
         }}
       />
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12">
@@ -96,10 +96,10 @@ export default function PrinciplesSection() {
             >
               OUR<br />
               <span
-                className="text-crimson italic"
-                style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400 }}
+                className="text-crimson"
+                style={{ fontFamily: "var(--font-bebas)" }}
               >
-                principles
+                PRINCIPLES
               </span>
             </motion.h2>
           </div>
@@ -150,7 +150,7 @@ export default function PrinciplesSection() {
                       {p.title}
                     </span>
                     <motion.span
-                      animate={{ rotate: isOpen ? 45 : 0, color: isOpen ? "rgba(200,16,46,0.6)" : "rgba(242,237,228,0.3)" }}
+                      animate={{ rotate: isOpen ? 45 : 0, color: isOpen ? "rgba(var(--crimson-rgb),0.6)" : "rgba(var(--warm-white-rgb),0.3)" }}
                       transition={{ duration: 0.25 }}
                       className="text-xl flex-shrink-0"
                     >

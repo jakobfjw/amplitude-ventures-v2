@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { about } from "@/lib/content";
 import LogoMark from "@/components/ui/logo-mark";
 import { MiniOrbital, FloatingNodes, DashedArc } from "@/components/ui/ambient-orbitals";
-import TeamMemberCard from "@/components/ui/team-member-card";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -26,7 +25,7 @@ export default function AboutSection() {
           className="absolute inset-0 pointer-events-none hidden md:block"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(242,237,228,0.025) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(var(--warm-white-rgb),0.05) 1px, transparent 1px)",
             backgroundSize: "44px 44px",
           }}
         />
@@ -36,8 +35,8 @@ export default function AboutSection() {
           aria-hidden
           style={{
             fontFamily: "var(--font-bebas)",
-            fontSize: "clamp(100px, 18vw, 240px)",
-            color: "rgba(242,237,228,0.02)",
+            fontSize: "clamp(72px, 12vw, 160px)",
+            color: "rgba(var(--warm-white-rgb),0.04)",
             letterSpacing: "0.02em",
           }}
         >
@@ -48,16 +47,16 @@ export default function AboutSection() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 40% 50% at 10% 50%, rgba(200,16,46,0.035) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse 40% 50% at 10% 50%, rgba(var(--crimson-rgb),0.06) 0%, transparent 70%)",
           }}
         />
 
         {/* LogoMark — top-right, ghosted */}
         <div className="absolute top-12 right-[-40px] hidden lg:block pointer-events-none select-none" aria-hidden>
           <LogoMark
-            className="w-[260px] h-auto opacity-[0.04]"
-            pillarColor="rgba(242,237,228,0.03)"
-            archColor="rgba(200,16,46,0.03)"
+            className="w-[260px] h-auto opacity-[0.07]"
+            pillarColor="rgba(var(--warm-white-rgb),0.05)"
+            archColor="rgba(var(--crimson-rgb),0.05)"
             strokeWidth={4}
             style={{ transform: "rotate(12deg)" }}
           />
@@ -65,7 +64,7 @@ export default function AboutSection() {
 
         {/* MiniOrbital — mid-right */}
         <div className="absolute top-[45%] right-[5%] hidden lg:block w-[220px] h-[220px]">
-          <MiniOrbital size={220} rings={2} tilt={-14} speed={70} ringColor="rgba(200,16,46,0.06)" nodeColor="rgba(200,16,46,0.35)" dotColor="rgba(242,237,228,0.1)" />
+          <MiniOrbital size={220} rings={2} tilt={-14} speed={70} ringColor="rgba(var(--crimson-rgb),0.1)" nodeColor="rgba(var(--crimson-rgb),0.45)" dotColor="rgba(var(--warm-white-rgb),0.18)" />
         </div>
 
         {/* FloatingNodes — bottom-left */}
@@ -75,7 +74,7 @@ export default function AboutSection() {
 
         {/* DashedArc — top area */}
         <div className="absolute top-8 left-[20%] hidden lg:block w-[200px] h-[100px]">
-          <DashedArc width={200} height={100} color="rgba(200,16,46,0.06)" dashArray="4 12" />
+          <DashedArc width={200} height={100} color="rgba(var(--crimson-rgb),0.1)" dashArray="4 12" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
@@ -104,7 +103,7 @@ export default function AboutSection() {
                 className="text-warm-white leading-[0.86] mb-4"
                 style={{
                   fontFamily: "var(--font-bebas)",
-                  fontSize: "clamp(72px, 11vw, 160px)",
+                  fontSize: "clamp(52px, 8vw, 120px)",
                   letterSpacing: "0.02em",
                   whiteSpace: "pre-line",
                 }}
@@ -112,11 +111,11 @@ export default function AboutSection() {
                 {about.headline}
               </h1>
               <h2
-                className="text-crimson italic leading-none"
+                className="text-crimson leading-none uppercase"
                 style={{
-                  fontFamily: "var(--font-cormorant)",
+                  fontFamily: "var(--font-bebas)",
                   fontSize: "clamp(40px, 7vw, 100px)",
-                  fontWeight: 400,
+                  letterSpacing: "0.02em",
                 }}
               >
                 {about.subheadline}
@@ -166,7 +165,7 @@ export default function AboutSection() {
             <p
               className="text-warm-white/80 italic leading-[1.25] mb-8 max-w-[900px]"
               style={{
-                fontFamily: "var(--font-cormorant)",
+                fontFamily: "var(--font-dm-sans)",
                 fontSize: "clamp(28px, 4vw, 52px)",
                 fontWeight: 400,
               }}
@@ -186,60 +185,6 @@ export default function AboutSection() {
         </motion.div>
       </section>
 
-      {/* ── Team ── */}
-      <section className="bg-void py-24 md:py-36">
-        <div className="mx-auto max-w-[1400px] px-8 md:px-12">
-          <motion.div
-            className="mb-14"
-            initial={{ opacity: 0, x: -28, filter: "blur(12px)" }}
-            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease }}
-          >
-            <p
-              className="text-crimson text-[13px] font-[600] uppercase tracking-[0.3em] mb-4"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
-              The Partners
-            </p>
-            <h2
-              className="text-warm-white leading-[0.9]"
-              style={{
-                fontFamily: "var(--font-bebas)",
-                fontSize: "clamp(52px, 7vw, 96px)",
-                letterSpacing: "0.02em",
-              }}
-            >
-              Who{" "}
-              <span
-                className="text-crimson italic"
-                style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "0.9em" }}
-              >
-                backs
-              </span>{" "}
-              you.
-            </h2>
-          </motion.div>
-
-          <div className="flex flex-col gap-28 md:gap-40">
-            {about.team.map((member, i) => (
-              <TeamMemberCard
-                key={member.name}
-                position={i % 2 === 0 ? "left" : "right"}
-                firstName={member.firstName}
-                lastName={member.lastName}
-                role={member.role}
-                tagline={member.tagline}
-                image={member.image}
-                linkedin={member.linkedin}
-                background={member.background}
-                focus={member.focus}
-                index={i}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

@@ -4,10 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { footer as footerContent } from "@/lib/content";
+import { useTheme } from "@/components/ui/theme-provider";
 
 const cols = footerContent.columns;
 
 export default function Footer() {
+  const { theme } = useTheme();
   return (
     <footer className="bg-void border-t border-white/[0.05] pt-16 pb-10">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
@@ -31,8 +33,10 @@ export default function Footer() {
                   height: "clamp(32px, 5vw, 40px)",
                   width: "auto",
                   opacity: 0.55,
+                  filter: theme === "light" ? "invert(1) brightness(0.15)" : "none",
+                  transition: "filter 0.3s ease, opacity 0.2s ease",
                 }}
-                className="group-hover:opacity-75 transition-opacity duration-200"
+                className="group-hover:opacity-75"
               />
             </Link>
             <p
@@ -75,7 +79,7 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom: copyright */}
+        {/* Bottom: copyright + legal links */}
         <motion.div
           className="pt-8 border-t border-white/[0.05] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
           initial={{ opacity: 0 }}
@@ -83,15 +87,34 @@ export default function Footer() {
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <p
-            className="text-warm-white/30 text-[13px]"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
-            © {new Date().getFullYear()} {footerContent.copyright}. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
+            <p
+              className="text-warm-white/30 text-[13px]"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              © {new Date().getFullYear()} {footerContent.copyright}. All rights reserved.
+            </p>
+            <div
+              className="flex items-center gap-4 text-[13px]"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              <Link
+                href="/privacy"
+                className="text-warm-white/25 hover:text-warm-white/50 transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+              <button
+                onClick={() => window.dispatchEvent(new Event("av:consent-reset"))}
+                className="text-warm-white/25 hover:text-warm-white/50 transition-colors duration-200"
+              >
+                Cookie Preferences
+              </button>
+            </div>
+          </div>
           <p
             className="text-warm-white/40 text-[15px] italic"
-            style={{ fontFamily: "var(--font-cormorant)" }}
+            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {footerContent.motto}
           </p>

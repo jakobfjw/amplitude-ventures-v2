@@ -26,7 +26,7 @@ export default function OfferingSection() {
           className="absolute inset-0 pointer-events-none hidden md:block"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(242,237,228,0.03) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(var(--warm-white-rgb),0.055) 1px, transparent 1px)",
             backgroundSize: "44px 44px",
           }}
         />
@@ -37,8 +37,8 @@ export default function OfferingSection() {
           aria-hidden
           style={{
             fontFamily: "var(--font-bebas)",
-            fontSize: "clamp(120px, 20vw, 280px)",
-            color: "rgba(242,237,228,0.018)",
+            fontSize: "clamp(84px, 14vw, 200px)",
+            color: "rgba(var(--warm-white-rgb),0.035)",
             letterSpacing: "0.02em",
           }}
         >
@@ -50,13 +50,13 @@ export default function OfferingSection() {
           className="absolute inset-0 pointer-events-none md:hidden"
           style={{
             background:
-              "radial-gradient(ellipse 60% 40% at 80% 30%, rgba(200,16,46,0.06) 0%, transparent 60%)",
+              "radial-gradient(ellipse 60% 40% at 80% 30%, rgba(var(--crimson-rgb),0.09) 0%, transparent 60%)",
           }}
         />
 
         {/* MiniOrbital — top-left area */}
         <div className="absolute top-20 left-[5%] hidden lg:block w-[200px] h-[200px]">
-          <MiniOrbital size={200} rings={3} tilt={-16} speed={68} ringColor="rgba(200,16,46,0.06)" nodeColor="rgba(200,16,46,0.3)" dotColor="rgba(242,237,228,0.1)" />
+          <MiniOrbital size={200} rings={3} tilt={-16} speed={68} ringColor="rgba(var(--crimson-rgb),0.1)" nodeColor="rgba(var(--crimson-rgb),0.45)" dotColor="rgba(var(--warm-white-rgb),0.18)" />
         </div>
 
         {/* FloatingNodes — bottom-right */}
@@ -66,7 +66,7 @@ export default function OfferingSection() {
 
         {/* DashedArc — mid-section */}
         <div className="absolute top-[50%] right-[18%] hidden lg:block w-[180px] h-[90px]">
-          <DashedArc width={180} height={90} color="rgba(200,16,46,0.05)" dashArray="3 12" />
+          <DashedArc width={180} height={90} color="rgba(var(--crimson-rgb),0.08)" dashArray="3 12" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1400px] px-8 md:px-12">
@@ -95,18 +95,18 @@ export default function OfferingSection() {
                 className="text-warm-white leading-[0.88] mb-3"
                 style={{
                   fontFamily: "var(--font-bebas)",
-                  fontSize: "clamp(64px, 11vw, 160px)",
+                  fontSize: "clamp(52px, 8vw, 120px)",
                   letterSpacing: "0.02em",
                 }}
               >
                 {offering.headline.line1}
               </h1>
               <span
-                className="block text-crimson italic leading-[0.88]"
+                className="block text-crimson leading-[0.88] uppercase"
                 style={{
-                  fontFamily: "var(--font-cormorant)",
-                  fontSize: "clamp(52px, 9vw, 130px)",
-                  fontWeight: 400,
+                  fontFamily: "var(--font-bebas)",
+                  fontSize: "clamp(48px, 7vw, 100px)",
+                  letterSpacing: "0.02em",
                 }}
               >
                 {offering.headline.line2}
@@ -138,8 +138,8 @@ export default function OfferingSection() {
           aria-hidden
           style={{
             fontFamily: "var(--font-bebas)",
-            fontSize: "clamp(200px, 30vw, 460px)",
-            color: "rgba(242,237,228,0.012)",
+            fontSize: "clamp(140px, 21vw, 320px)",
+            color: "rgba(var(--warm-white-rgb),0.05)",
             letterSpacing: "0.04em",
             x: watermarkX,
           }}
@@ -217,7 +217,7 @@ export default function OfferingSection() {
                     <div className="border-l-2 border-crimson/20 pl-5">
                       <p
                         className="text-warm-white/35 text-[15px] leading-relaxed italic"
-                        style={{ fontFamily: "var(--font-cormorant)", fontSize: "20px" }}
+                        style={{ fontFamily: "var(--font-dm-sans)", fontSize: "20px" }}
                       >
                         {svc.detail}
                       </p>
@@ -277,10 +277,10 @@ export default function OfferingSection() {
             >
               From first{" "}
               <span
-                className="text-crimson italic"
-                style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400 }}
+                className="text-crimson"
+                style={{ fontFamily: "var(--font-bebas)" }}
               >
-                conversation
+                CONVERSATION
               </span>{" "}
               to backed.
             </h2>
@@ -362,8 +362,8 @@ export default function OfferingSection() {
             >
               {offering.cta.headline}{" "}
               <span
-                className="text-crimson italic"
-                style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "0.9em" }}
+                className="text-crimson uppercase"
+                style={{ fontFamily: "var(--font-bebas)", fontSize: "0.9em" }}
               >
                 {offering.cta.headlineAccent}
               </span>

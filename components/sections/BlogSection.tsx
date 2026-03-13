@@ -20,7 +20,7 @@ export default function BlogSection() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            "radial-gradient(ellipse 60% 45% at 70% 55%, rgba(200,16,46,0.045) 0%, transparent 60%)",
+            "radial-gradient(ellipse 60% 45% at 70% 55%, rgba(var(--crimson-rgb),0.08) 0%, transparent 60%)",
         }}
       />
       {/* Dot grid texture — desktop only */}
@@ -28,7 +28,7 @@ export default function BlogSection() {
         className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(242,237,228,0.02) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(var(--warm-white-rgb),0.045) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -40,8 +40,8 @@ export default function BlogSection() {
       >
         <LogoMark
           className="w-[280px] h-auto"
-          pillarColor="rgba(242,237,228,0.018)"
-          archColor="rgba(200,16,46,0.025)"
+          pillarColor="rgba(var(--warm-white-rgb),0.04)"
+          archColor="rgba(var(--crimson-rgb),0.05)"
           strokeWidth={4}
           animate
         />
@@ -51,18 +51,18 @@ export default function BlogSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 40% 50% at 85% 60%, rgba(200,16,46,0.035) 0%, transparent 70%)",
+            "radial-gradient(ellipse 40% 50% at 85% 60%, rgba(var(--crimson-rgb),0.06) 0%, transparent 70%)",
         }}
       />
       {/* Ambient decorations */}
       <div className="absolute top-16 right-12 w-[36px] h-[36px] hidden lg:block" aria-hidden>
-        <PulseNode size={36} color="rgba(200,16,46,0.22)" coreColor="rgba(200,16,46,0.55)" pulseSpeed={3.5} />
+        <PulseNode size={36} color="rgba(var(--crimson-rgb),0.35)" coreColor="rgba(var(--crimson-rgb),0.7)" pulseSpeed={3.5} />
       </div>
       <div className="absolute bottom-20 right-[10%] w-[55px] h-[36px] hidden lg:block" aria-hidden>
-        <DataFragments count={3} width={55} color="rgba(200,16,46,0.18)" secondaryColor="rgba(242,237,228,0.07)" bobSpeed={9} />
+        <DataFragments count={3} width={55} color="rgba(var(--crimson-rgb),0.3)" secondaryColor="rgba(var(--warm-white-rgb),0.12)" bobSpeed={9} />
       </div>
       <div className="absolute top-1/2 left-4 w-[180px] h-[90px] hidden lg:block" aria-hidden>
-        <DashedArc width={180} height={90} color="rgba(200,16,46,0.05)" flip />
+        <DashedArc width={180} height={90} color="rgba(var(--crimson-rgb),0.09)" flip />
       </div>
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-16">
@@ -91,10 +91,10 @@ export default function BlogSection() {
             >
               SHARP{" "}
               <span
-                className="text-crimson italic"
-                style={{ fontFamily: "var(--font-cormorant)", fontWeight: 400 }}
+                className="text-crimson"
+                style={{ fontFamily: "var(--font-bebas)" }}
               >
-                thinking
+                THINKING
               </span>
             </motion.h2>
           </div>
@@ -138,7 +138,7 @@ export default function BlogSection() {
             >
               {/* Hover top-glow */}
               <div className="absolute inset-x-0 top-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-t-2xl"
-                style={{ background: "linear-gradient(to bottom, rgba(200,16,46,0.06), transparent)" }}
+                style={{ background: "linear-gradient(to bottom, rgba(var(--crimson-rgb),0.06), transparent)" }}
               />
               <div className="flex items-center justify-between mb-5">
                 <span
