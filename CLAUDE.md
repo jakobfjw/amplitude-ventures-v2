@@ -442,7 +442,7 @@ The root layout (`app/layout.tsx`) includes:
 
 ## 14 · Known Issues & Future Work
 
-- **No forms backend** — Contact form needs a handler (Resend, Formspree, etc.)
+- **Forms backend** — Contact form submits to [Formspree](https://formspree.io) endpoint `https://formspree.io/f/mreykdne`. Submissions forward to `build@amplitude.ventures`. The endpoint is configured in `components/sections/ContactSection.tsx` as `FORMSPREE_ENDPOINT`.
 - **No CMS** — Blog posts are static in `lib/content/`. Consider MDX or Sanity for production.
 - **Spline dependencies** — `@splinetool/react-spline` and `@splinetool/runtime` are still in `package.json` but unused. Safe to remove.
 - **OG image** — `/public/og-image.png` exists (1200×630, programmatically generated). To regenerate with Nano Banana 2 (Gemini image gen), enable billing on the Google AI Studio project first — the free tier daily quota is shared across all image models.
