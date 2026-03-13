@@ -30,7 +30,7 @@ export default function Footer() {
                 width={400}
                 height={200}
                 style={{
-                  height: "clamp(32px, 5vw, 40px)",
+                  height: "clamp(42px, 6vw, 52px)",
                   width: "auto",
                   opacity: 0.55,
                   filter: theme === "light" ? "invert(1) brightness(0.15)" : "none",

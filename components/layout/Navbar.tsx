@@ -49,7 +49,7 @@ export default function Navbar() {
               height={200}
               width={400}
               style={{
-                height: "clamp(38px, 6vw, 48px)",
+                height: "clamp(48px, 7vw, 60px)",
                 width: "auto",
                 filter: theme === "light" ? "invert(1) brightness(0.15)" : "none",
                 transition: "filter 0.3s ease",
