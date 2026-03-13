@@ -162,9 +162,12 @@ export default function PortfolioSection() {
             transition={{ duration: 0.25 }}
           >
             {filtered.map((company, i) => (
-              <motion.div
+              <motion.a
                 key={company.name}
-                className="group relative border border-warm-white/[0.08] bg-surface-2 rounded-xl p-6 hover:border-crimson/30 transition-all duration-300 overflow-hidden flex flex-col"
+                href={company.url || undefined}
+                target={company.url ? "_blank" : undefined}
+                rel={company.url ? "noopener noreferrer" : undefined}
+                className={`group relative border border-warm-white/[0.08] bg-surface-2 rounded-xl p-6 hover:border-crimson/30 transition-all duration-300 overflow-hidden flex flex-col ${company.url ? "cursor-pointer" : ""}`}
                 initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{
@@ -276,19 +279,15 @@ export default function PortfolioSection() {
                     {company.category}
                   </span>
                   {company.url && (
-                    <a
-                      href={company.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-warm-white/40 hover:text-crimson transition-colors duration-200 text-[16px] leading-none"
-                      onClick={(e) => e.stopPropagation()}
-                      aria-label={`Visit ${company.name}`}
+                    <span
+                      className="text-warm-white/40 group-hover:text-crimson transition-colors duration-200 text-[16px] leading-none"
+                      aria-hidden
                     >
                       ↗
-                    </a>
+                    </span>
                   )}
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
         </AnimatePresence>

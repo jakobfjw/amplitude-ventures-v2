@@ -115,8 +115,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: [
               "try{",
-              "if(localStorage.getItem('av-theme')==='dark')",
-              "document.documentElement.classList.add('dark');",
+              "var t=localStorage.getItem('av-theme');",
+              "var d=t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;",
+              "if(d)document.documentElement.classList.add('dark');",
               "document.documentElement.classList.add('no-transition');",
               "requestAnimationFrame(function(){requestAnimationFrame(function(){",
               "document.documentElement.classList.remove('no-transition')",
