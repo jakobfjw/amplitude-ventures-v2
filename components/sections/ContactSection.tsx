@@ -8,6 +8,13 @@ import { MiniOrbital, PulseNode, DashedArc } from "@/components/ui/ambient-orbit
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+/**
+ * Formspree form endpoint — get yours at https://formspree.io/forms
+ * Create a form → copy the hash ID (e.g. "xabcdefg") → paste below.
+ * Submissions will forward to the email configured in your Formspree dashboard.
+ */
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnnqgwjz";
+
 const FIELDS = [
   { id: "name", label: "Full Name", type: "text", placeholder: "Your name" },
   { id: "email", label: "Email", type: "email", placeholder: "you@company.com" },
@@ -18,13 +25,35 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
+  const [error, setError] = useState<string | null>(null);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSending(true);
-    // TODO: Replace with Resend API route — app/api/contact/route.ts
-    await new Promise((r) => setTimeout(r, 900));
-    setSending(false);
-    setSubmitted(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setSending(false);
+        setSubmitted(true);
+      } else {
+        const json = await res.json();
+        setSending(false);
+        setError(json?.errors?.[0]?.message ?? "Something went wrong. Please email us directly.");
+      }
+    } catch {
+      setSending(false);
+      setError("Network error. Please email us directly at build@amplitude.ventures");
+    }
   }
 
   return (
@@ -257,6 +286,15 @@ export default function ContactSection() {
                   >
                     {sending ? "Sending…" : "Send brief →"}
                   </button>
+
+                  {error && (
+                    <p
+                      className="text-crimson text-[14px] -mt-3"
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    >
+                      {error}
+                    </p>
+                  )}
 
                   <p
                     className="text-warm-white/20 text-[13px] -mt-3"
