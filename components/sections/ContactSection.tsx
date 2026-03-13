@@ -13,7 +13,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
  * Create a form → copy the hash ID (e.g. "xabcdefg") → paste below.
  * Submissions will forward to the email configured in your Formspree dashboard.
  */
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnnqgwjz";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mreykdne";
 
 const FIELDS = [
   { id: "name", label: "Full Name", type: "text", placeholder: "Your name" },
