@@ -240,15 +240,16 @@ export default function PortfolioSection() {
                   </span>
                 </div>
 
-                {/* Company logo — small, monochrome */}
+                {/* Company logo — monochrome, transparent bg via invert+screen */}
                 {company.logo && (
-                  <div className="mb-4 h-[28px] flex items-center">
+                  <div className="mb-4 h-[56px] flex items-center">
                     <img
                       src={company.logo}
                       alt={`${company.name} logo`}
-                      className="max-h-[28px] max-w-[100px] w-auto object-contain opacity-50 group-hover:opacity-80 transition-opacity duration-300"
+                      className="max-h-[56px] max-w-[200px] w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                       style={{
-                        filter: "grayscale(1) brightness(1.8) contrast(0.9)",
+                        filter: "grayscale(1) invert(1) brightness(1) contrast(1)",
+                        mixBlendMode: "screen",
                       }}
                       loading="lazy"
                     />
