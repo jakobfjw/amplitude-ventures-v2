@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 import { contact } from "@/lib/content";
 import LogoMark from "@/components/ui/logo-mark";
 import { MiniOrbital, PulseNode, DashedArc } from "@/components/ui/ambient-orbitals";
@@ -188,15 +189,26 @@ export default function ContactSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.7 }}
             >
-              {[
-                {
-                  label: "LinkedIn",
-                  value: contact.linkedin,
-                  href: contact.linkedin,
-                  external: true,
-                },
-                { label: "Based in", value: "Stavanger, Norway" },
-              ].map(({ label, value, href, external }) => (
+              {/* LinkedIn icon link */}
+              <div>
+                <p
+                  className="text-warm-white/25 text-[12px] uppercase tracking-[0.2em] mb-2"
+                  style={{ fontFamily: "var(--font-dm-sans)" }}
+                >
+                  LinkedIn
+                </p>
+                <a
+                  href={contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex text-warm-white/70 hover:text-crimson transition-colors duration-200"
+                >
+                  <Linkedin size={22} strokeWidth={1.5} />
+                </a>
+              </div>
+
+              {/* Based in */}
+              {[{ label: "Based in", value: "Stavanger, Norway" }].map(({ label, value }) => (
                 <div key={label}>
                   <p
                     className="text-warm-white/25 text-[12px] uppercase tracking-[0.2em] mb-1"
@@ -204,24 +216,12 @@ export default function ContactSection() {
                   >
                     {label}
                   </p>
-                  {href ? (
-                    <a
-                      href={href}
-                      target={external ? "_blank" : undefined}
-                      rel={external ? "noopener noreferrer" : undefined}
-                      className="text-warm-white text-[18px] hover:text-crimson transition-colors duration-200"
-                      style={{ fontFamily: "var(--font-dm-sans)" }}
-                    >
-                      {value}
-                    </a>
-                  ) : (
-                    <p
-                      className="text-warm-white text-[18px]"
-                      style={{ fontFamily: "var(--font-dm-sans)" }}
-                    >
-                      {value}
-                    </p>
-                  )}
+                  <p
+                    className="text-warm-white text-[18px]"
+                    style={{ fontFamily: "var(--font-dm-sans)" }}
+                  >
+                    {value}
+                  </p>
                 </div>
               ))}
             </motion.div>
